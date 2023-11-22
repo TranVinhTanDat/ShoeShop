@@ -20,9 +20,7 @@ public class ForgotPasswordControl extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
         response.setContentType("text/html;charset=UTF-8");
-
         try {
             String emailAddress = request.getParameter("email");
             String username = request.getParameter("username");
@@ -34,8 +32,8 @@ public class ForgotPasswordControl extends HttpServlet {
             }
             if (account != null) {
                 Email email = new Email();
-                email.setFrom("huynhminhduc01082001@gmail.com");
-                email.setFromPassword("wtxzwokuzbxmhodm");
+                email.setFrom("j2eeprojectshoe@gmail.com");
+                email.setFromPassword("mzrb jsji baam yagp");
                 email.setTo(emailAddress);
                 email.setSubject("Forgot Password Function");
                 StringBuilder sb = new StringBuilder();
@@ -58,5 +56,4 @@ public class ForgotPasswordControl extends HttpServlet {
         }
         request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
     }
-
 }

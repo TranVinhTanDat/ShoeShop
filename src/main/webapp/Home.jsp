@@ -345,23 +345,23 @@
         });
     }
 
-    function searchByName(param) {
-        var txtSearch = param.value;
-        $.ajax({
-            url: "/shoestoreweb/searchAjax",
-            type: "get", //send it through get method
-            data: {
-                txt: txtSearch
-            },
-            success: function (data) {
-                var row = document.getElementById("content");
-                row.innerHTML = data;
-            },
-            error: function (xhr) {
-                //Do Something to handle error
-            }
-        });
-    }
+        // function searchByName(param) {
+    //     var txtSearch = param.value;
+    //     $.ajax({
+    //         url: "/shoestoreweb/searchAjax",
+    //         type: "get", //send it through get method
+    //         data: {
+    //             txt: txtSearch
+    //         },
+    //         success: function (data) {
+    //             var row = document.getElementById("content");
+    //             row.innerHTML = data;
+    //         },
+    //         error: function (xhr) {
+    //             //Do Something to handle error
+    //         }
+    //     });
+    // }
 
     function load(cateid) {
         $.ajax({

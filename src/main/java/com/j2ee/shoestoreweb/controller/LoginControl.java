@@ -66,9 +66,4 @@ public class LoginControl extends HttpServlet {
             response.sendRedirect("home");
         }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }

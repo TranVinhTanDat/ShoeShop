@@ -27,7 +27,7 @@ public class SignUpControl extends HttpServlet {
             Account a = dao.checkAccountExist(user);
             if (a == null) {
                 //dc signup
-                dao.singup(user, pass, email);
+                dao.insertAccount(user, pass, "1", "0", email);
                 response.sendRedirect("login");
             } else {
                 //day ve trang login.jsp
