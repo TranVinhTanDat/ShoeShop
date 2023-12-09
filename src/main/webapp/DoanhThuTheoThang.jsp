@@ -16,7 +16,9 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
-
+ <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -106,9 +108,23 @@
         <!-- Section: Main chart 2 -->
         <section class="mb-4" id="doanhThuThang">
             <div class="card">
-                <div class="card-header py-3">
-                    <h5 class="mb-0 text-center"><strong>Doanh thu theo tháng</strong></h5>
-                </div>
+                <div class="page-header" style="margin: 0">
+                <h4 class="page-title m-1">Dữ liệu</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="bi bi-house"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="bi bi-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Doanh thu</a>
+                        </li>
+                    </ul>
+            </div>
+                <h4 style="width: 100%;text-align: center">Doanh thu theo tháng</h4>
                 <div class="card-body">
                     <canvas id="horizontalBar"></canvas>
                 </div>
@@ -143,21 +159,24 @@
 <script>// Graph
 //Horizontal Bar Chart
 new Chart(document.getElementById("horizontalBar"), {
-    "type": "horizontalBar",
+    "type": "line",
     "data": {
-        "labels": ["Tháng 12", "Tháng 11", "Tháng 10", "Tháng 9", "Tháng 8", "Tháng 7", "Tháng 6", "Tháng 5", "Tháng 4", "Tháng 3", "Tháng 2", "Tháng 1"],
+        "labels": ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8"
+        ,"Tháng 9","Tháng 10","Tháng 11","Tháng 12"],
         "datasets": [{
             "label": "Doanh thu $",
-            "data": [${totalMoneyMonth12}, ${totalMoneyMonth11}, ${totalMoneyMonth10}, ${totalMoneyMonth9}, ${totalMoneyMonth8}, ${totalMoneyMonth7}, ${totalMoneyMonth6}, ${totalMoneyMonth5}, ${totalMoneyMonth4}, ${totalMoneyMonth3}, ${totalMoneyMonth2}, ${totalMoneyMonth1}],
+            "data": [${totalMoneyMonth1}, ${totalMoneyMonth2}, ${totalMoneyMonth3}, ${totalMoneyMonth4},
+     ${totalMoneyMonth5}, ${totalMoneyMonth6}, ${totalMoneyMonth7}, ${totalMoneyMonth8}, ${totalMoneyMonth9},
+     ${totalMoneyMonth10}, ${totalMoneyMonth11}, ${totalMoneyMonth12}],
             "fill": false,
-            "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+            "backgroundColor": ["#006400", "rgba(255, 159, 64, 0.2)",
                 "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
                 "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "#99FF99", "#FFFF99", "#FFC1C1", "#FFB5C5", "#DDC488"
             ],
             "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
                 "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)", "	#66FF99", "#FFFF66", "#EEB4B4", "#EEA9B8", "#ECAB53"
             ],
-            "borderWidth": 1
+            "borderWidth": 8
         }]
     },
     "options": {

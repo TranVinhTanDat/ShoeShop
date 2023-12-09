@@ -24,6 +24,26 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
+    <%--Teamplace--%>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="static/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="static/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="static/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+    <%--End Teamplace--%>
+
     <style>
         .gallery-wrap .img-big-wrap img {
             height: 450px;
@@ -65,9 +85,7 @@
 
 <div class="jumbotron color-grey-light mt-70">
     <div class="d-flex align-items-center h-100">
-        <div class="container text-center py-5">
-            <h3 class="mb-0"></h3>
-        </div>
+
     </div>
 </div>
 

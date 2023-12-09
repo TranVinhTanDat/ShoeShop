@@ -98,26 +98,26 @@
 
 <!--Main layout-->
 <main>
-    <div class="container pt-4">
+    <div class="container pt-4" style="background-color: #f8f9fa; color: #343a40;">
 
-
-        <!--Section: Quan Ly tai Khoan-->
+        <!--Section: Top 5 Nhân Viên Bán Hàng Xuất Sắc-->
         <section class="mb-4">
-            <div class="card">
-                <div class="card-header py-3">
-                    <h5 class="mb-0 text-center"><strong>Top 5 nhân viên bán hàng xuất sắc</strong></h5>
+            <div class="card" style="border: 1px solid #dee2e6; border-radius: 0.25rem;">
+
+                <div class="card-header py-3" style="background-color: #007bff; color: #fff; border-bottom: 1px solid #dee2e6;">
+                    <h5 class="mb-0 text-center"><strong>Danh sách Top 5 Nhân Viên Bán Hàng Xuất Sắc</strong></h5>
                 </div>
 
-                <div class="row py-3">
-                    <div class="col-sm-12 text-right">
-                        <form action="xuatExcelTop5EmployeeControl" method="get">
-                            <button type="submit" class="mb-0 text-center btn btn-primary">Xuất file Excel</button>
+                <div class="row py-3 justify-content-end">
+                    <div class="col-sm-12 text-center">
+                        <form action="exportTop5EmployeesToExcel" method="get">
+                            <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
                         </form>
                     </div>
                 </div>
 
-                <c:if test="${mess!=null }">
-                    <div class="alert alert-success" role="alert">
+                <c:if test="${mess != null}">
+                    <div class="alert alert-success" role="alert" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                             ${mess}
                     </div>
                 </c:if>
@@ -126,25 +126,23 @@
                     <div class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
-                            <tr>
+                            <tr style="background-color: #007bff; color: #fff;">
                                 <th scope="col">ID</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Tổng bán hàng</th>
+                                <th scope="col">Tổng Bán Hàng</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${listTop5NhanVien}" var="t">
-                                <c:forEach items="${listAllAccount}" var="o">
-                                    <c:if test="${t.userID==o.id }">
-                                        <c:if test="${t.tongBanHang!=0.0 }">
-                                            <tr>
-                                                <td>${o.id}</td>
-                                                <td>${o.user}</td>
-                                                <td>${o.email}</td>
-                                                <td>${t.tongBanHang}</td>
-                                            </tr>
-                                        </c:if>
+                            <c:forEach items="${listTop5NhanVien}" var="topEmployee">
+                                <c:forEach items="${listAllAccount}" var="account">
+                                    <c:if test="${topEmployee.userID == account.id && topEmployee.tongBanHang != 0.0}">
+                                        <tr>
+                                            <td>${account.id}</td>
+                                            <td>${account.user}</td>
+                                            <td>${account.email}</td>
+                                            <td>${topEmployee.tongBanHang}</td>
+                                        </tr>
                                     </c:if>
                                 </c:forEach>
                             </c:forEach>
@@ -154,11 +152,10 @@
                 </div>
             </div>
         </section>
-        <!--Section: Quan Ly tai Khoan-->
+        <!--Section: Top 5 Nhân Viên Bán Hàng Xuất Sắc-->
     </div>
-
-
 </main>
+
 
 
 <script src="js/manager.js" type="text/javascript"></script>

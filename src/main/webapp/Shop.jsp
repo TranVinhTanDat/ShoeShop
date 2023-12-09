@@ -28,6 +28,52 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
+
+    <%--Teamplace--%>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link href="static/css/test.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="static/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="static/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="static/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+    <%--End Teamplace--%>
+
+    <style>
+        .product-img img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .col-md-5 pagination{
+            width: 20%;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            /* Thiết lập chiều rộng tối đa cho card */
+            max-width: 100%;
+            /* Đảm bảo chiều rộng bằng nhau cho các card */
+            flex: 1 1 30%; /* Điều chỉnh con số này để thay đổi kích thước card */
+            margin: 0 1rem 1rem 0; /* Điều chỉnh khoảng cách giữa các card */
+        }
+
+    </style>
 </head>
 
 <body class="skin-light" onload="loadAmountCart()">
@@ -40,246 +86,256 @@
 </header>
 <!--Main Navigation-->
 
-<!--Main layout-->
+<!-- Main layout -->
 <main>
     <div class="container" style="margin-top:100px">
 
-        <!--Grid row-->
+        <!-- Row for Sidebar and Products -->
         <div class="row mt-5">
 
-            <!--Grid column-->
-            <div class="col-md-4 mb-4">
+            <!-- Sidebar Column -->
+            <div class="col-md-12 mb-4">
 
                 <!-- Section: Sidebar -->
-                <section>
+                <section class="d-flex flex-wrap justify-content-between">
 
                     <!-- Section: Categories -->
-                    <section>
-
-                        <h5>Categories</h5>
-
-                        <div class="text-muted small text-uppercase mb-5">
+                    <section class="mb-4">
+                        <h5 style="font-weight: bold">Categories</h5>
+                        <div class="text-muted small text-uppercase d-flex flex-column flex-wrap">
                             <c:forEach items="${listCC}" var="o">
-                                <p class="mb-3"><a onclick="load(${o.cid})" class="card-link-secondary">${o.cname}</a>
-                                </p>
+                                <p class="mb-3"><a onclick="load(${o.cid})" class="card-link-secondary">${o.cname}</a></p>
                             </c:forEach>
                         </div>
-
                     </section>
                     <!-- Section: Categories -->
 
-                    <!-- Section: Filters -->
-                    <section>
 
-                        <h5 class="pt-2 mb-4">Filters</h5>
+                    <!-- Section: Price -->
+                    <section class="mb-4">
 
-                        <section class="mb-4">
+                        <h6 class="font-weight-bold mb-3">Price</h6>
 
-                            <div class="md-form md-outline mt-0 d-flex justify-content-between align-items-center">
-                                <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text"
-                                       class="form-control mb-0" placeholder="Search...">
-                                <a href="#!" class="btn btn-flat btn-md px-3 waves-effect"><i
-                                        class="fas fa-search fa-lg"></i></a>
-                            </div>
-
-                        </section>
-
-
-                        <!-- Section: Price -->
-                        <section class="mb-4">
-
-                            <h6 class="font-weight-bold mb-3">Price</h6>
-
-                            <div class="form-check pl-0 mb-3">
-                                <input onchange="searchByPriceUnder100()" type="radio" class="form-check-input"
-                                       id="under100" name="materialExampleRadios">
-                                <label class="form-check-label small text-uppercase card-link-secondary" for="under100">Under
-                                    $100</label>
-                            </div>
-                            <div class="form-check pl-0 mb-3">
-                                <input onchange="searchByPrice100To200()" type="radio" class="form-check-input"
-                                       id="100200" name="materialExampleRadios">
-                                <label class="form-check-label small text-uppercase card-link-secondary" for="100200">$100
-                                    to
-                                    $200</label>
-                            </div>
-                            <div class="form-check pl-0 mb-3">
-                                <input onchange="searchByPriceAbove200()" type="radio" class="form-check-input"
-                                       id="200above" name="materialExampleRadios">
-                                <label class="form-check-label small text-uppercase card-link-secondary" for="200above">$200
-                                    &
-                                    Above</label>
-                            </div>
-                            <form>
-                                <div class="d-flex align-items-center mt-4 pb-1">
-                                    <div class="md-form md-outline my-0">
-                                        <input oninput="searchByPriceMinToMax()" id="priceMin" type="text"
-                                               class="form-control mb-0">
-                                        <label for="priceMin">$ Min</label>
-                                    </div>
-                                    <p class="px-2 mb-0 text-muted"> - </p>
-                                    <div class="md-form md-outline my-0">
-                                        <input oninput="searchByPriceMinToMax()" id="priceMax" type="text"
-                                               class="form-control mb-0">
-                                        <label for="priceMax">$ Max</label>
-                                    </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input onchange="searchByPriceUnder100()" type="radio" class="form-check-input"
+                                   id="under100" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="under100">Under
+                                $100</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input onchange="searchByPrice100To200()" type="radio" class="form-check-input"
+                                   id="100200" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="100200">$100
+                                to
+                                $200</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input onchange="searchByPriceAbove200()" type="radio" class="form-check-input"
+                                   id="200above" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="200above">$200
+                                &
+                                Above</label>
+                        </div>
+                        <form>
+                            <div class="d-flex align-items-center mt-4 pb-1">
+                                <div class="md-form md-outline my-0">
+                                    <input oninput="searchByPriceMinToMax()" id="priceMin" type="text"
+                                           class="form-control mb-0">
+                                    <label for="priceMin">$ Min</label>
                                 </div>
-                            </form>
-
-                        </section>
-                        <!-- Section: Price -->
-
-
-                        <!-- Section: Color -->
-                        <section class="mb-4">
-
-                            <h6 class="font-weight-bold mb-3">Color</h6>
-
-                            <div class="btn-group btn-group-toggle btn-color-group d-block mt-n2 ml-n2"
-                                 data-toggle="buttons">
-                                <label class="btn rounded-circle white border-inset-grey p-3 m-2">
-                                    <input onchange="searchByColorWhite()" type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle grey p-3 m-2">
-                                    <input onchange="searchByColorGray()" type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle black p-3 m-2">
-                                    <input onchange="searchByColorBlack()" type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle green p-3 m-2">
-                                    <input type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle blue p-3 m-2">
-                                    <input type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle purple p-3 m-2">
-                                    <input type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle yellow p-3 m-2">
-                                    <input onchange="searchByColorYellow()" type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle indigo p-3 m-2">
-                                    <input type="checkbox" checked autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle red p-3 m-2">
-                                    <input type="checkbox" autocomplete="off">
-                                </label>
-                                <label class="btn rounded-circle orange p-3 m-2">
-                                    <input type="checkbox" autocomplete="off">
-                                </label>
+                                <p class="px-2 mb-0 text-muted"> - </p>
+                                <div class="md-form md-outline my-0">
+                                    <input oninput="searchByPriceMinToMax()" id="priceMax" type="text"
+                                           class="form-control mb-0">
+                                    <label for="priceMax">$ Max</label>
+                                </div>
                             </div>
-
-                        </section>
-                        <!-- Section: Color -->
+                        </form>
 
                     </section>
-                    <!-- Section: Filters -->
+                    <!-- Section: Price -->
+
+                    <!-- Section: Color -->
+                    <section class="mb-4">
+                        <h5 class="mb-3">Color</h5>
+                        <!-- Color Checkboxes -->
+                        <div class="btn-group btn-group-toggle btn-color-group d-flex flex-wrap">
+                            <label class="btn rounded-circle white border-inset-grey p-3 m-2">
+                                <input onchange="searchByColorWhite()" type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle grey p-3 m-2">
+                                <input onchange="searchByColorGray()" type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle black p-3 m-2">
+                                <input onchange="searchByColorBlack()" type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle green p-3 m-2">
+                                <input type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle blue p-3 m-2">
+                                <input type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle purple p-3 m-2">
+                                <input type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle yellow p-3 m-2">
+                                <input onchange="searchByColorYellow()" type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle indigo p-3 m-2">
+                                <input type="checkbox" checked autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle red p-3 m-2">
+                                <input type="checkbox" autocomplete="off">
+                            </label>
+                            <label class="btn rounded-circle orange p-3 m-2">
+                                <input type="checkbox" autocomplete="off">
+                            </label>
+                        </div>
+                    </section>
+                    <!-- Section: Color -->
 
                 </section>
                 <!-- Section: Sidebar -->
 
-            </div>
-            <!--Grid column-->
+                <!-- Section: Filters -->
+                <section class="col-md-4 mb-4" style="margin-left: 781px; margin-top: -80px">
+                    <h5 class="mb-3">Filters</h5>
 
-            <!--Grid column-->
-            <div class="col-md-8 mb-4">
-
-                <!-- Section: Block Content -->
-                <section class="mb-3">
-
-                    <div class="row d-flex justify-content-around align-items-center">
-                        <div class="col-12 col-md-3 text-center text-md-left">
-                            <a href="#!" class="text-reset"><i class="fas fa-th-list fa-lg mr-1"></i></a href="#!">
-                            <a href="#!" class="text-reset"><i class="fas fa-th-large fa-lg"></i></a href="#!">
+                    <!-- Search Input -->
+                    <section class="mb-4">
+                        <div class="md-form md-outline mt-0 d-flex justify-content-between align-items-center">
+                            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text"
+                                   class="form-control mb-0" placeholder="Search...">
+                            <a href="#!" class="btn btn-flat btn-md px-3 waves-effect"><i
+                                    class="fas fa-search fa-lg"></i></a>
                         </div>
-                        <div class="col-12 col-md-5">
-                            <div class="d-flex flex-wrap">
-                                <div class="select-outline position-relative w-100">
-                                    <select class="mdb-select md-outline md-form" searchable="Search here..">
-                                        <option value="" disabled selected>Choose category</option>
-                                        <option value="1">Category 1</option>
-                                        <option value="2">Category 2</option>
-                                        <option value="3">Category 3</option>
-                                        <option value="4">Category 4</option>
-                                        <option value="5">Category 5</option>
-                                    </select>
-                                    <label>Tất cả sản phẩm</label>
-                                    <button class="btn-save btn btn-primary btn-sm mt-2">Save</button>
+                    </section>
+                </section>
+                <!-- Section: Filters -->
+
+            </div>
+            <!-- Sidebar Column -->
+
+
+
+
+
+
+
+            <!-- Section: Block Content -->
+            <section class="mb-3">
+                <div class="row d-flex justify-content-between align-items-center">
+                    <%--<div class="col-12 col-md-3 text-center text-md-left d-flex justify-content-around">
+                        <a href="#!" class="text-reset"><i class="fas fa-th-list fa-lg mr-1"></i></a>
+                        <a href="#!" class="text-reset"><i class="fas fa-th-large fa-lg"></i></a>
+                    </div--%>>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
+                                    <div class="select-outline position-relative w-100">
+                                        <select class="mdb-select md-outline md-form" searchable="Search here..">
+                                            <option value="" disabled selected>Choose category</option>
+                                            <option value="1">Category 1</option>
+                                            <option value="2">Category 2</option>
+                                            <option value="3">Category 3</option>
+                                            <option value="4">Category 4</option>
+                                            <option value="5">Category 5</option>
+                                        </select>
+                                        <label class="text-center">Tất cả sản phẩm</label>
+                                        <button class="btn-save btn btn-primary btn-sm mt-2">Save</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-5 d-flex justify-content-center align-items-center pagination">
+                                    <nav aria-label="Page navigation example" style="margin-left: -310px;">
+                                        <ul class="pagination pagination-circle justify-content-center mb-0">
+                                            <c:if test="${tag != 1}">
+                                                <li class="page-item"><a href="shop?index=${tag-1 }" class="page-link"><i
+                                                        class="fas fa-chevron-left"></i></a></li>
+                                            </c:if>
+                                            <c:forEach begin="1" end="${endPage }" var="i">
+                                                <li class="${tag==i?'page-item active':'page-item'}"><a href="shop?index=${i }"
+                                                                                                        class="page-link">${i }</a>
+                                                </li>
+                                            </c:forEach>
+                                            <c:if test="${tag != endPage}">
+                                                <li class="page-item"><a href="shop?index=${tag+1 }" class="page-link"><i
+                                                        class="fas fa-chevron-right"></i></a></li>
+                                            </c:if>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 text-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination pagination-circle justify-content-center float-md-right mb-0">
-                                    <c:if test="${tag != 1}">
-                                        <li class="page-item"><a href="shop?index=${tag-1 }" class="page-link"><i
-                                                class="fas fa-chevron-left"></i></a></li>
-                                    </c:if>
-                                    <c:forEach begin="1" end="${endPage }" var="i">
-                                        <li class="${tag==i?"page-item active":"page-item" }"><a href="shop?index=${i }"
-                                                                                                 class="page-link">${i }</a>
-                                        </li>
-                                    </c:forEach>
-                                    <c:if test="${tag != endPage}">
-                                        <li class="page-item"><a href="shop?index=${tag+1 }" class="page-link"><i
-                                                class="fas fa-chevron-right"></i></a></li>
-                                    </c:if>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
 
-                </section>
+                </div>
+            </section>
+
+            <!-- Section: Block Content -->
+            <!-- Products Column -->
+            <div class="col-md-14 mb-5" style="">
+
+
+
                 <!-- Section: Block Content -->
-
-                <!--Section: Block Content-->
                 <section>
+                    <div id="store" class="width-product" style="">
 
-                    <!-- Grid row -->
-                    <div class="row" id="content">
-
-
-                        <c:forEach items="${listP}" var="o">
-                            <!-- Grid column -->
-                            <div class="col-md-4 mb-5">
-
-                                <!-- Card -->
-                                <div class="">
-
-                                    <div class="view zoom overlay rounded z-depth-2">
-                                        <img class="img-fluid w-100"
-                                             src="${o.image }" alt="Sample">
-                                        <a href="detail?pid=${o.id}">
-                                            <div class="mask">
-                                                <img class="img-fluid w-100"
-                                                     src="${o.image }">
-                                                <div class="mask rgba-black-slight"></div>
+                        <!-- Grid row for Products -->
+                        <div class="row" >
+                            <!-- Product -->
+                            <c:forEach items="${listP}" var="o">
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="product" style="height: 490px;">
+                                        <div class="product-img">
+                                            <a href="detail?pid=${o.id}" title="View Product">
+                                                <img src="${o.image}" alt="${o.name}">
+                                                <div class="product-label">
+                                                    <span class="new">NEW</span>
+                                                </div>
+                                            </a> <!-- Thêm thẻ đóng cho thẻ <a> ở đây -->
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">Category</p>
+                                            <h3 class="product-name"><a href="detail?pid=${o.id}">${o.name}</a></h3>
+                                            <h4 class="product-price">$${o.price} <del class="product-old-price">$990.00</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
                                             </div>
-                                        </a>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </div>
+                                            <%--     <div class="add-to-cart">
+                                                     <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                 </div>--%>
                                     </div>
-
-                                    <div class="text-center pt-4">
-
-                                        <h5>${o.name }</h5>
-                                        <p><span class="mr-1"><strong>${o.price }$</strong></span></p>
-
-                                    </div>
-
                                 </div>
-                                <!-- Card -->
-
-                            </div>
-                            <!-- Grid column -->
-                        </c:forEach>
+                            </c:forEach>
+                            <!-- /Product -->
+                        </div>
+                        <!-- Grid row for Products -->
 
                     </div>
-                    <!-- Grid row -->
+
                 </section>
-                <!--Section: Block Content-->
+                <!-- Section: Block Content -->
 
             </div>
+            <!-- Products Column -->
+
+        </div>
+        <!-- Row for Sidebar and Products -->
+
+    </div>
 </main>
-<!--Main layout-->
+<!-- Main layout -->
+
 
 <!-- Footer -->
 
@@ -327,7 +383,7 @@
                 cid: cateid
             },
             success: function (responseData) {
-                document.getElementById("content").innerHTML = responseData;
+                document.getElementById("store").innerHTML = responseData;
             }
         });
     }
@@ -341,7 +397,7 @@
                 txt: txtSearch
             },
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -361,7 +417,7 @@
                 priceMax: numMax
             },
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -376,7 +432,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -391,7 +447,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -406,7 +462,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -421,7 +477,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -436,7 +492,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -451,7 +507,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -466,7 +522,7 @@
             type: "get", //send it through get method
             data: {},
             success: function (data) {
-                var row = document.getElementById("content");
+                var row = document.getElementById("store");
                 row.innerHTML = data;
             },
             error: function (xhr) {
@@ -490,6 +546,13 @@
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <!-- Custom scripts -->
 <script type="text/javascript" src="js/script.js"></script>
+<!-- jQuery Plugins -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/slick.min.js"></script>
+<script src="static/js/nouislider.min.js"></script>
+<script src="static/js/jquery.zoom.min.js"></script>
+<script src="static/js/main.js"></script>
 </body>
 
 </html>

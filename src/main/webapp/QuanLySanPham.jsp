@@ -122,8 +122,8 @@
             <div class="card">
                 <div class="card-header py-3 row">
                     <div class="col-sm-3">
-                        <h5 class="mb-0 text-left" id="">
-                            <strong>Quản lý sản phẩm</strong>
+                        <h5 class="mb-0 text-left text-primary" id="">
+                            <strong>Quản Lý Sản Phẩm</strong>
                         </h5>
                     </div>
                     <div class="col-sm-9 text-right">
@@ -151,11 +151,11 @@
                     <div class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
-                            <tr>
+                            <tr style="background-color: #007bff; color: #fff;">
                                 <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Tên</th>
+                                <th scope="col">Ảnh</th>
+                                <th scope="col">Giá</th>
                                 <th scope="col">Actions</th>
                             </tr>
                             </thead>

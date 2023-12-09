@@ -58,11 +58,36 @@ public class DashboardController extends HttpServlet {
 
         int allReview = dao.countAllReview();
         int allProduct = dao.countAllProduct();
+       
         double sumAllInvoice = dao.sumAllInvoice();
 
         List<Invoice> listAllInvoice = dao.getAllInvoice();
         List<Account> listAllAccount = dao.getAllAccount();
+        
+        int countCustomer = 0;
+        int countEmployee = 0;
+        for(Account value : listAllAccount){
+            if(value.getIsSell() == 0){
+                countCustomer++;
+            }      else{
+                countEmployee++;
+            }
+        }
+        
+        //doanh thu nam
+        double money = 0;
+        for(Invoice value : listAllInvoice){
+        
+            String s = value.getNgayXuat().toString();
+            String temp[] = s.split("-");
+            if(Integer.parseInt(temp[0]) == 2021){
+                money += value.getTongGia();
+            }
+        }
+        request.setAttribute("money", money);
 
+        request.setAttribute("countCustomer", countCustomer);
+        request.setAttribute("countEmployee", countEmployee);
         request.setAttribute("listAllInvoice", listAllInvoice);
         request.setAttribute("listAllAccount", listAllAccount);
         request.setAttribute("sumAllInvoice", sumAllInvoice);

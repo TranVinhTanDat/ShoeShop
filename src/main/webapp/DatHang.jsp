@@ -15,7 +15,106 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="css/login.css" rel="stylesheet" type="text/css"/>
+    <%--Teamplace--%>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="static/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="static/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="static/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+    <%--End Teamplace--%>
     <title>Order</title>
+    <style>
+        /* Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #348F50, #56B4D3); /* Gradient màu nền */
+            color: #fff; /* Màu chữ chung */
+        }
+
+        /* Form Styling */
+        #logreg-forms {
+            width: 90%;
+            max-width: 400px;
+            margin: 10vh auto;
+            background-color: rgba(255, 255, 255, 0.1); /* Màu nền form */
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.24);
+            padding: 20px;
+        }
+
+        /* Input Styling */
+        #logreg-forms input[type="text"],
+        #logreg-forms input[type="password"],
+        #logreg-forms input[type="email"],
+        #logreg-forms button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.7); /* Màu nền input */
+            color: #333; /* Màu chữ input */
+        }
+
+        /* Button Styling */
+        #logreg-forms button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #logreg-forms button:hover {
+            background-color: #45a049;
+        }
+
+        /* Alert Styling */
+        .alert {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .alert-danger {
+            background-color: #FF6347; /* Màu thông báo lỗi */
+            color: white;
+        }
+
+        .alert-success {
+            background-color: #32CD32; /* Màu thông báo thành công */
+            color: white;
+        }
+
+        /* Links Styling */
+        #logreg-forms a {
+            color: #56B4D3;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media screen and (max-width: 500px) {
+            #logreg-forms {
+                width: 80%;
+            }
+        }
+
+    </style>
 </head>
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>

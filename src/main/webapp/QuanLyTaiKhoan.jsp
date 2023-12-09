@@ -36,7 +36,11 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link href="css/manager.css" rel="stylesheet" type="text/css"/>
-
+    
+    
+    <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!--           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"> -->
     <!--         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
     <!--       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
@@ -113,11 +117,42 @@
 <main>
     <div class="container pt-4">
 
-
         <!--Section: Quan Ly tai Khoan-->
         <section class="mb-4">
             <div class="card">
-                <div class="card-header py-3 row">
+                <div class="content-slider_bar" style="width: 1110px">
+    <div class="input-group">
+        <div class="input-group-prepend rounded" style="height: 100%">
+            <button type="submit" class="btn btn-search pr-1" style="padding: 4px">
+                <i class="rounded bi bi-search"></i>
+            </button>
+        </div>
+        <input type="text" placeholder="Search ..." class="form-control" style="height: 100%" >
+    </div>
+    <div class="author-logout" style="position: relative;">
+        <i class="bi bi-person"></i>
+        <div class="log-out" ><a href="/Orchestra/user/logout.php">Log Out</a>
+            <span></span>
+        </div>
+    </div>
+</div>
+            <div class="page-header">
+                <h4 class="page-title m-1">Dữ liệu</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="bi bi-house"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="bi bi-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Tài khoản</a>
+                        </li>
+                    </ul>
+            </div>
+<!--                <div class="card-header py-3 row">
                     <div class="col-sm-3">
                         <h5 class="mb-0 text-left" id="">
                             <strong>Quản lý tài khoản</strong>
@@ -132,7 +167,7 @@
                             <button type="submit" class="mb-0 text-center btn btn-primary">Xuất file Excel</button>
                         </form>
                     </div>
-                </div>
+                </div>-->
 
                 <c:if test="${error!=null }">
                     <div class="alert alert-danger" role="alert">
@@ -144,40 +179,73 @@
                             ${mess}
                     </div>
                 </c:if>
-
+  <div class="row m-2">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="add-row_length">
+                                    <label>Show
+                                        <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                            <option value="10">10</option><option value="25">25</option><option value="50">50</option>
+                                            <option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6">
+                                                <div id="add-row_filter" class="dataTables_filter">
+                                                    <label>Search:
+                                                    <form action="" method="post">
+                                                            <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+                                                            </form>
+                        </label>
+                    </div>
+                    </div>
+                        </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover text-nowrap">
-                            <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Là người bán hàng</th>
-                                <th scope="col">Là Admin</th>
-                                <th scope="col">Email</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${listA}" var="o">
-                                <tr>
-
-                                    <td>${o.id}</td>
-                                    <td>${o.user}</td>
-                                    <td>${o.isSell}</td>
-                                    <td>${o.isAdmin}</td>
-                                    <td>${o.email}</td>
-                                    <td>
-                                        <a href="deleteAccount?id=${o.id}">
-                                            <button type="button" class="btn btn-danger"><i class="material-icons"
-                                                                                            data-toggle="tooltip"
-                                                                                            title="Delete">&#xE872;</i>
-                                            </button>
-                                        </a>
-                                    </td>
+                         <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
+                        <thead>
+                                <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">Tài khoản</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Mật khẩu</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Chức vụ</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Email</th>
+                                
+                                 <th style="width: 100px;" class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th>
                                 </tr>
-                            </c:forEach>
+                            </thead>
+                            <tfoot>
+                                <tr><th rowspan="1" colspan="1">Tài khoản</th><th rowspan="1" colspan="1">Mật khẩu</th>
+                                    <th rowspan="1" colspan="1">Chức vụ</th>
+                                    <th rowspan="1" colspan="1">Email</th>
+                                 <th rowspan="1" colspan="1">Action</th></tr>
+                            </tfoot>
+                            <tbody>    
+                                 <c:forEach items="${listAllAccount}" var="o">
+                                   <tr role="row" class="odd">
+                                       <td class="sorting_1">${o.user}</td>  
+                                       <td>${o.pass}</td>
+                                       <c:if test="${o.isSell == 1 }">
+                                           <td>Người bán hàng</td>
+                                       </c:if>
+                                            <c:if test="${o.isSell == 0 }">
+                                           <td>Người mua hàng</td>
+                                       </c:if>
+                                        
+                                         <td>${o.email}</td>
+                                         <td>
+                                           <div class="form-button-action">
+                                                                
+                                                                <button type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                                                data-original-title="Edit">
+                                                                    <a href="deleteAccount?id=${o.id}">edit</a>
+                                                                
+                                                                </button>
+                                                
+                                           </div>  
+                                           
+                                       </td>
+                                   </tr>  
+                                    </c:forEach>
+                                    
+
                             </tbody>
                         </table>
+                  
                     </div>
                 </div>
             </div>

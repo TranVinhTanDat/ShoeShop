@@ -5,36 +5,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Home Page</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ------>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
+    <!-- Bootstrap core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
-    <!-- MDB -->
-    <link rel="stylesheet" href="css/mdb.min.css"/>
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/style.css"/>
-
-    <!-- Roboto Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap">
-    Font Awesome
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    Bootstrap core CSS
-    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css">
-    Material Design Bootstrap
-    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb-pro.min.css">
-    Material Design Bootstrap Ecommerce
-    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb.ecommerce.min.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- Your custom styles (optional) -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- Additional custom stylesheets -->
+    <link rel="stylesheet" href="./static/css/test.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="static/css/slick.css">
+    <link type="text/css" rel="stylesheet" href="static/css/slick-theme.css">
+    <link type="text/css" rel="stylesheet" href="static/css/nouislider.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="static/css/style.css">
+</head>
     <style>
         /* Carousel styling */
         #introCarousel,
@@ -45,21 +37,21 @@
         }
 
         .carousel-item:nth-child(1) {
-            background-image: url('https://file.hstatic.net/1000230642/file/banner__1__9831c8de62ca4121b4f3caa18164f352_master.jpg');
+            background-image: url('static/img/BIA.jpg');
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-position: center center;
         }
 
         .carousel-item:nth-child(2) {
-            background-image: url('https://file.hstatic.net/1000230642/file/web-top-banner_68b9a0c957374772bdf25d1d0f312b11_master.jpg');
+            background-image: url('static/img/slider-8.png');
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-position: center center;
         }
 
         .carousel-item:nth-child(3) {
-            background-image: url('https://file.hstatic.net/1000230642/file/banner_central_opt_2_76f1c057c7dc43ee9c8a36c6bee9ac4d_master.jpg');
+            background-image: url('static/img/slide4.jpg');
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-position: center center;
@@ -72,19 +64,100 @@
             }
         }
 
-        .navbar .nav-link {
-            color: #fff !important;
+        /* .navbar .nav-link {
+             color: #fff !important;
+         }*/
+        .product-img img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
+    </style>
+
+    <style>
+        /* Reset and general styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        /* Navigation styles */
+        #navigation {
+            background-color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        #responsive-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
+        .nav-barTab {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-barTab li {
+            margin-right: 10px;
+            padding: 15px; /* Expand clickable area */
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-barTab li:hover {
+            background-color: #c11818;
+            border-radius: 5px; /* Smoother transition */
+        }
+
+        .nav-barTab li a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /*.nav-barTab li a:hover {
+            background-color: #c11818;
+        }*/
+
     </style>
 
 </head>
 <body class="skin-light" onload="loadAmountCart()">
 <jsp:include page="Menu.jsp"></jsp:include>
+<%--Navigation--%>
+<nav id="navigation">
+    <div class="container">
+        <div id="responsive-nav">
+            <ul class="nav-barTab">
+                <li><a href="home">Home</a></li>
+                <li><a href="shop">Product</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">NIKE</a></li>
+                <li><a href="#">ADIDAS</a></li>
+                <li><a href="#">BITIS</a></li>
+                <li><a href="#">CONVERSE</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
+<%--End Navigation--%>
 
 <!-- Carousel wrapper -->
 <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel"
-     style="margin-top:35px;">
+     style="margin-top:-2px;">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
@@ -124,167 +197,174 @@
 <!-- Carousel wrapper -->
 
 
-<div class="card-group" style="margin-top:50px;">
-    <div class="card" style="border-style: none;">
-        <img style="height:55px; width:64px; margin: auto;"
-             src="https://giayxshop.vn/wp-content/uploads/2019/11/iconfinder_truck_1291768-1.png">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align:center">GIAO HÀNG TOÀN QUỐC</h5>
-            <p class="card-text" style="text-align:center">Vận chuyển khắp Việt Nam</p>
-        </div>
-    </div>
-    <div class="card" style="border-style: none;">
-        <img class="card-img-top" style="height:55px; width:64px; margin: auto;"
-             src="https://giayxshop.vn/wp-content/uploads/2019/11/iconfinder_payment_1954199-3.png"
-             alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align:center">THANH TOÁN KHI NHẬN HÀNG</h5>
-            <p class="card-text" style="text-align:center">Nhận hàng tại nhà rồi thanh toán</p>
-        </div>
-    </div>
-    <div class="card" style="border-style: none;">
-        <img class="card-img-top" style="height:55px; width:64px; margin: auto;"
-             src="https://giayxshop.vn/wp-content/uploads/2019/11/iconfinder_service_repair_phone_mobile_wrench_screw_driver_4014703-1.png"
-             alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align:center">BẢO HÀNH DÀI HẠN</h5>
-            <p class="card-text" style="text-align:center">Bảo hàng lên đến 60 ngày</p>
-        </div>
-    </div>
-    <div class="card" style="border-style: none;">
-        <img class="card-img-top" style="height:55px; width:64px; margin: auto;"
-             src="https://giayxshop.vn/wp-content/uploads/2019/11/iconfinder_refresh_3017918-1.png"
-             alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title" style="text-align:center">ĐỔI HÀNG DỄ DÀNG</h5>
-            <p class="card-text" style="text-align:center">Đổi hàng thoải mái trong 30 ngày</p>
-        </div>
-    </div>
-</div>
 
 
-<div class="container">
+<div class="section">
+    <div class="container">
 
-
-    <div class="row" style="margin-top:25px">
-        <h1 style="text-align:center; width:100%" id="moiNhat">SẢN PHẨM MỚI NHẤT</h1>
-        <div class="col-sm-12">
-            <div id="contentMoiNhat" class="row">
-                <c:forEach items="${list8Last}" var="o">
-                    <div class=" col-12 col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="view zoom z-depth-2 rounded">
-                                <img class="img-fluid w-100" src="${o.image}" alt="Card image cap">
-
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title show_txt"><a href="detail?pid=${o.id}"
-                                                                   title="View Product">${o.name}</a></h4>
-                                <p class="card-text show_txt">${o.title}</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="btn btn-success btn-block">${o.price} $</p>
+        <div class="row" style="margin-top:25px">
+            <h1 style="text-align:center; width:100%" id="moiNhat">SẢN PHẨM MỚI NHẤT</h1>
+            <div class="col-md-12">
+                <div class="row" id="contentMoiNhat">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                <!-- product -->
+                                <c:forEach items="${list8Last}" var="o">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <a href="detail?pid=${o.id}" title="View Product">
+                                                <img src="${o.image}" alt="">
+                                                <div class="product-label">
+                                                    <span class="new">NEW</span>
+                                                </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">Category</p>
+                                            <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
+                                            <h4 class="product-price">$980.00 <del class="product-old-price">${o.price} $</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </div>
+                                            <%--        <div class="add-to-cart">
+                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                    </div>--%>
                                     </div>
-                                </div>
+                                </c:forEach>
+                                <!-- /product -->
                             </div>
+                            <div class="products-slick-nav"></div>
                         </div>
+                        <!-- /tab -->
                     </div>
-                </c:forEach>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="row" style="margin-top:25px">
-        <h1 style="text-align:center; width:100%" id="nike">GIÀY NIKE MỚI NHẤT</h1>
-        <div class="col-sm-12">
-            <div id="contentNike" class="row">
-                <c:forEach items="${list4NikeLast}" var="o">
-                    <div class="productNike col-12 col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="view zoom z-depth-2 rounded">
-                                <img class="img-fluid w-100" src="${o.image}" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title show_txt"><a href="detail?pid=${o.id}"
-                                                                   title="View Product">${o.name}</a></h4>
-                                <p class="card-text show_txt">${o.title}</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="btn btn-success btn-block">${o.price} $</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <button onclick="loadMoreNike()" class="btn btn-primary">Load more</button>
-        </div>
-    </div>
-
-
-    <div class="row" style="margin-top:25px">
-        <h1 style="text-align:center; width:100%" id="adidas">GIÀY ADIDAS MỚI NHẤT</h1>
-        <div class="col-sm-12">
-            <div id="contentAdidas" class="row">
-                <c:forEach items="${list4AdidasLast}" var="o">
-                    <div class="productAdidas col-12 col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="view zoom z-depth-2 rounded">
-                                <img class="img-fluid w-100" src="${o.image}" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title show_txt"><a href="detail?pid=${o.id}"
-                                                                   title="View Product">${o.name}</a></h4>
-                                <p class="card-text show_txt">${o.title}</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="btn btn-success btn-block">${o.price} $</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <button onclick="loadMoreAdidas()" class="btn btn-primary">Load more</button>
-        </div>
-    </div>
-
-
-    <div class="row" style="margin-top:50px">
-        <div class="col-sm-12">
-            <div id="content" class="row">
-                <div class=" col-12 col-md-12 col-lg-6">
-                    <div class="card-body">
-                        <h4 class="card-title show_txt" style="text-align:center; font-size:18pt; color:#b57b00;">Về
-                            chúng tôi</h4>
-                        <h2 class="card-title show_txt" style="text-align:center; font-size:24pt;">Shoes Family</h2>
-                        <p style="text-align:center;">Uy tín lâu năm chuyên cung cấp giày thể thao sneaker nam, nữ hàng
-                            Replica 1:1 -
-                            Like Auth với chất lượng đảm bảo và giá tốt nhất tại Hà Nội, tpHCM.</p>
-                        <p>Bạn đang cần tìm một đôi giày thể thao sneaker đẹp và hợp thời trang và đang hot Trends
-                            đến từ các thương hiệu lớn nhưng lại không đủ hầu bao để sắm được hàng chính hãng?
-                            Hãy đến với ShoesFamily – nơi bạn thỏa lòng mong ước mà chỉ phải chi ra 1 phần nhỏ so với
-                            dòng chính hãng ngoài store
-                            mà vẫn sắm cho mình được một đôi chất lượng từ rep 1:1 đến siêu cấp like auth.</p>
-                    </div>
-                </div>
-                <div class=" col-12 col-md-12 col-lg-6">
-                    <img class="card-img-top"
-                         src="https://shopgiayreplica.com/wp-content/uploads/2020/11/shop-giay-replica-1-1.jpg"
-                         alt="Card image cap">
                 </div>
             </div>
         </div>
+
+
+        <div class="row" style="margin-top:25px">
+            <h1 style="text-align:center; width:100%" id="nike">GIÀY NIKE</h1>
+            <div class="col-md-12">
+                <div class="row" id="contentNike">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                <!-- product -->
+                                <c:forEach items="${list4NikeLast}" var="o">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <a href="detail?pid=${o.id}" title="View Product">
+                                                <img src="${o.image}" alt="">
+                                                <div class="product-label">
+<%--                                                    <span class="sale">-30%</span>--%>
+                                                    <span class="new">NEW</span>
+                                                </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">Category</p>
+                                            <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
+                                            <h4 class="product-price">$980.00 <del class="product-old-price">${o.price} $</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </div>
+                                            <%--        <div class="add-to-cart">
+                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                    </div>--%>
+                                    </div>
+                                </c:forEach>
+                                <!-- /product -->
+                            </div>
+                            <div class="products-slick-nav"></div>
+                        </div>
+                        <!-- /tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:25px">
+            <h1 style="text-align:center; width:100%" id="adidas">GIÀY ADIDAS</h1>
+            <div class="col-md-12">
+                <div class="row" id="list4AdidasLast">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div  class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                <!-- product -->
+                                <c:forEach items="${list4AdidasLast}" var="o">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <a href="detail?pid=${o.id}" title="View Product">
+                                                <img src="${o.image}" alt="">
+                                                <div class="product-label">
+                                                    <%--<span class="sale">-30%</span>--%>
+                                                    <span class="new">NEW</span>
+                                                </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">Category</p>
+                                            <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
+                                            <h4 class="product-price">$980.00 <del class="product-old-price">${o.price} $</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </div>
+                                            <%--      <div class="add-to-cart">
+                                                      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                  </div>--%>
+                                    </div>
+                                </c:forEach>
+                                <!-- /product -->
+                            </div>
+                            <div class="products-slick-nav"></div>
+                        </div>
+                        <!-- /tab -->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
     </div>
-
-
 </div>
 
 <jsp:include page="Footer.jsp"></jsp:include>
@@ -405,6 +485,14 @@
 <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.min.js"></script>
 <!-- MDB Ecommerce JavaScript -->
 <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
+
+<!-- jQuery Plugins -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/slick.min.js"></script>
+<script src="static/js/nouislider.min.js"></script>
+<script src="static/js/jquery.zoom.min.js"></script>
+<script src="static/js/main.js"></script>
 </body>
 </html>
 

@@ -112,14 +112,12 @@
 <!--Main layout-->
 <main>
     <div class="container pt-4">
-
-
         <!--Section: Quan Ly tai Khoan-->
         <section class="mb-4">
             <div class="card">
                 <div class="card-header py-3 row">
                     <div class="col-sm-3">
-                        <h5 class="mb-0 text-left" id="">
+                        <h5 class="mb-0 text-left text-primary" id="">
                             <strong>Quản lý nhà cung cấp</strong>
                         </h5>
                     </div>
@@ -150,7 +148,7 @@
                     <div class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
-                            <tr>
+                            <tr style="background-color: #007bff; color: #fff;">
                                 <th scope="col">ID</th>
                                 <th scope="col">Tên nhà cung cấp</th>
                                 <th scope="col">Số điện thoại</th>
@@ -194,9 +192,8 @@
         </section>
         <!--Section: Quan Ly tai Khoan-->
     </div>
-
-
 </main>
+
 
 <!-- Edit Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">

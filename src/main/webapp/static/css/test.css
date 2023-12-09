@@ -1,0 +1,17 @@
+.col-md-4{
+    max-width: 25%;
+}
+.width-product{
+    max-width: 100%;
+
+}
+.nav-barTab{
+    display: flex;
+}
+.nav-barTab li{
+    padding: 10px;
+}
+
+
+
+

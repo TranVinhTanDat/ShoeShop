@@ -1,57 +1,95 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<!-- Footer -->
-<footer class="text-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
-                <h5>Giày</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <ul class="list-unstyled">
-                    <li><a href="#nike">Nike</a></li>
-                    <li><a href="#adidas">Adidas</a></li>
-                    <li><a href="#moiNhat">Mới nhất</a></li>
-                    <li><a href="#tatCa">Tất cả</a></li>
-                </ul>
-            </div>
 
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto">
-                <h5>LIÊN HỆ VỚI SHOP</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <ul class="list-unstyled">
-                    <li><a href="">Hướng dẫn đặt hàng</a></li>
-                    <li><a href="">Thông tin thanh toán</a></li>
-                    <li><a href="">Chính sách giao hàng và nhận hàng</a></li>
-                    <li><a href="">Liên hệ</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xl-4 mx-auto">
-                <h5>THÔNG TIN FANPAGE</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FWheyFamily-107567741718072&tabs=timeline&width=300&height=90&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
-                        width="300" height="90" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                        allowfullscreen="true"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
+<!-- FOOTER -->
+<footer id="footer" style="margin-top: 100px;">
+    <!-- top footer -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">About Us</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="col-md-3 col-lg-3 col-xl-3">
-                <h5>THÔNG TIN SHOP</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <ul class="list-unstyled">
-                    <li><i class="fa fa-home mr-2"></i>số 1 Võ Văn Ngân Thủ Đức</li>
-                    <li><i class="fa fa-envelope mr-2"></i>shoesfamily@gmail.com</li>
-                    <li><i class="fa fa-phone mr-2"></i>0911217589</li>
-                    <li><i class="fa fa-print mr-2"></i>0911217589</li>
-                </ul>
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Categories</h3>
+                        <ul class="footer-links">
+                            <li><a href="shop">Sản phẩm</a></li>
+                            <li><a href="shop">Giày Nike</a></li>
+                            <li><a href="shop">Giày Adidas</a></li>
+                            <li><a href="shop">Giày Converse</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix visible-xs"></div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Information</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Orders and Returns</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Service</h3>
+                        <ul class="footer-links">
+                            <li><a href="editProfile">My Account</a></li>
+                            <li><a href="managerCart">View Cart</a></li>
+                            <li><a href="DatHang.jsp">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 copyright mt-3">
-                <p class="float-left">
-                    <a href="#">Back to top</a>
-                </p>
-            </div>
-            <div class="col text-center border-top">
-                <strong>Nhom &copy;2021. All rights reserved.</strong>
-            </div>
+            <!-- /row -->
         </div>
+        <!-- /container -->
     </div>
+    <!-- /top footer -->
 
+    <!-- bottom footer -->
+    <div id="bottom-footer" class="section">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="footer-payments">
+                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                    </ul>
+                    <span class="copyright">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</span>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bottom footer -->
 </footer>
+<!-- /FOOTER -->

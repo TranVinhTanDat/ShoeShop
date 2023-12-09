@@ -116,26 +116,26 @@
 
 <!--Main layout-->
 <main>
-    <div class="container pt-4">
+    <div class="container pt-4" style="background-color: #f8f9fa; color: #343a40;">
 
-
-        <!--Section: Top 10 san pham ban chay-->
+        <!--Section: Top 5 Nhân Viên Bán Hàng Xuất Sắc-->
         <section class="mb-4">
-            <div class="card">
-                <div class="card-header py-3">
-                    <h5 class="mb-0 text-center"><strong>Top 10 sản phẩm bán chạy nhất</strong></h5>
+            <div class="card" style="border: 1px solid #dee2e6; border-radius: 0.25rem;">
+
+                <div class="card-header py-3" style="background-color: #007bff; color: #fff; border-bottom: 1px solid #dee2e6;">
+                    <h5 class="mb-0 text-center"><strong>Danh sách Top 10 Sản Phẩm Bán Chạy Nhất</strong></h5>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-12 text-right">
-                        <form action="xuatExcelTop10ProductControl" method="get">
-                            <button type="submit" class="mb-0 text-center btn btn-primary">Xuất file Excel</button>
+                <div class="row py-3 justify-content-end">
+                    <div class="col-sm-12 text-center">
+                        <form action="exportTop5EmployeesToExcel" method="get">
+                            <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
                         </form>
                     </div>
                 </div>
 
-                <c:if test="${mess!=null }">
-                    <div class="alert alert-success" role="alert">
+                <c:if test="${mess != null}">
+                    <div class="alert alert-success" role="alert" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                             ${mess}
                     </div>
                 </c:if>
@@ -146,10 +146,10 @@
                             <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">SoLuongDaBan</th>
+                                <th scope="col">Tên</th>
+                                <th scope="col">Ảnh</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Số Lượng Đã Bán</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -170,17 +170,14 @@
                             </c:forEach>
                             </tbody>
                         </table>
-
-
                     </div>
                 </div>
             </div>
         </section>
         <!--Section: Quan Ly tai Khoan-->
     </div>
-
-
 </main>
+
 
 
 <script src="js/manager.js" type="text/javascript"></script>

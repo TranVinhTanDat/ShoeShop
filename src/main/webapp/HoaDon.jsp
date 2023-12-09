@@ -17,7 +17,9 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
-
+    <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -117,7 +119,40 @@
             </c:if>
 
             <div class="card">
-                <div class="card-header py-3 row">
+                   <div class="content-slider_bar" style="width: 1110px">
+    <div class="input-group">
+        <div class="input-group-prepend rounded" style="height: 100%">
+            <button type="submit" class="btn btn-search pr-1" style="padding: 4px">
+                <i class="rounded bi bi-search"></i>
+            </button>
+        </div>
+        <input type="text" placeholder="Search ..." class="form-control" style="height: 100%" >
+    </div>
+    <div class="author-logout" style="position: relative;">
+        <i class="bi bi-person"></i>
+        <div class="log-out" ><a href="/Orchestra/user/logout.php">Log Out</a>
+            <span></span>
+        </div>
+    </div>
+</div>
+                            <div class="page-header">
+                <h4 class="page-title m-1">Dữ liệu</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="bi bi-house"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="bi bi-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Hóa đơn</a>
+                        </li>
+                    </ul>
+            </div>
+                
+<!--                <div class="card-header py-3 row">
                     <div class="col-sm-6">
                         <h5 class="mb-0 text-left" id="">
                             <strong>Hóa Đơn</strong>
@@ -132,10 +167,66 @@
                             </form>
                         </h5>
                     </div>
-                </div>
+                </div>-->
+  <div class="row m-2">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="add-row_length">
+                                    <label>Show
+                                        <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                            <option value="10">10</option><option value="25">25</option><option value="50">50</option>
+                                            <option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6">
+                                                <div id="add-row_filter" class="dataTables_filter">
+                                                    <label>Search:
+                                                    <form action="" method="post">
+                                                            <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+                                                            </form>
+                        </label>
+                    </div>
+                    </div>
+                        </div>
+ <form action="xuatExcelControl" method="get">
+                                
+                                <button style="    float: right;" type="submit" class="mb-0 text-center btn btn-primary">Xuất file Excel</button>
+                            </form>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover text-nowrap">
+                          <table id="add-row " class="overflow-scroll display scroll table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
+                        <thead>
+                                <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">Mã HD</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Khách hàng</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tổng tiền</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Ngày xuất HD</th>
+                                
+                                 
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr><th rowspan="1" colspan="1">Mã HD</th><th rowspan="1" colspan="1">Khách hàng</th>
+                                    <th rowspan="1" colspan="1">Tổng Tiền</th>
+                                    <th rowspan="1" colspan="1">Ngày xuất HD</th>
+                                
+                            </tfoot>
+                            <tbody style="overflow-y:auto; height: 200px">   
+                                 <c:forEach items="${listAllInvoice}" var="i">
+                                 <tr role="row" class="odd">
+                                    <td class="sorting_1">${i.maHD}</td>
+                                    <c:forEach items="${listAllAccount}" var="a">
+                                        <c:if test="${i.accountID==a.id }">
+                                            <td>${a.user }</td>
+                                        </c:if>
+                                    </c:forEach>
+                                    <td>${String.format("%.02f",i.tongGia) }</td>
+                                    <td>${i.ngayXuat }</td>
+                                </tr>
+                            </c:forEach>
+                                
+                               
+                                    
+
+                            </tbody>
+                        </table>
+<!--                        <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
                                 <th scope="col"></th>
@@ -161,7 +252,7 @@
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
+                        </table>-->
                     </div>
                 </div>
 
@@ -217,6 +308,13 @@
 
         });
     }
+    $(document).ready(function () {
+  $('#dtVerticalScrollExample').DataTable({
+    "scrollY": "200px",
+    "scrollCollapse": true,
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
 </script>
 </body>
 </html>
