@@ -6,6 +6,7 @@ import com.j2ee.shoestoreweb.entity.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,38 +101,114 @@ public class DAO {
         return 0;
     }
 
-    public double totalMoneyDay(int day) {
-        String query = "SELECT SUM(tongGia) FROM Invoice " +
-                "WHERE DAYOFWEEK(ngayXuat) = ? " +
-                "GROUP BY ngayXuat";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setInt(1, day);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getDouble(1);
-            }
-        } catch (Exception e) {
+    public double totalMoneyDay(int day) {          
+        int year = 2021;
+        int month = 11;
+        String arr[] = {"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"};
+        int arrDay[] = {0,0,0,0,0,0,0};
+        
+        LocalDate today =  java.time.LocalDate.now();
+        String a = today.getDayOfWeek().toString();
+        
+        year = today.getYear();
+        month = today.getMonthValue();
+        int index = 1;
+        int dayOfMonth = today.getDayOfMonth();
+        
+        switch(a){
+            case "SUNDAY" : 
+                
+                index = 1;
+                break;
+             case "MONDAY" : 
+                
+                index = 2;
+                break;
+                
+              case "TUESDAY" : 
+               
+                index = 3;
+                break;
+              case "WEDNESDAY" : 
+             
+                index = 4;
+                break;
+                
+                case "THURSDAY" : 
+                
+                index = 5;
+                break;
+                 case "FRIDAY" : 
+               
+                index = 6;
+                break;
+                
+                  case "SATURDAY" : 
+              
+                index = 7;
+                break;
         }
-        return 0;
+        for(int i=0;i<arrDay.length;i++){
+            if(i+1 < index){
+                int dayValue = dayOfMonth- (index-(i+1));
+                arrDay[i] = dayValue;
+            }
+            if(i+1 == index)
+                arrDay[i] = dayOfMonth;
+            if(i+1 > index)
+            {
+                int dayValue = dayOfMonth- (index+(i+1));
+                arrDay[i] = dayValue;
+            }
+        }
+        List<String> arrSumOfWeek = new ArrayList<>();
+         List<Invoice> list = getAllInvoice();
+        double sum = 0;
+        for(Invoice value : list){
+        
+            String s = value.getNgayXuat().toString();
+            String temp[] = s.split("-");
+            if(Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month
+                    && Integer.parseInt(temp[2]) == arrDay[day-1]){
+                sum += value.getTongGia();
+            }
+        }
+        return sum;
+        
+        
+        
+        
+//        String query = "SELECT SUM(tongGia) FROM Invoice " +
+//                "WHERE DAYOFWEEK(ngayXuat) = ? " +
+//                "GROUP BY ngayXuat";
+//        try {
+//            conn = new DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setInt(1, day);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+//                return rs.getDouble(1);
+//            }
+//        } catch (Exception e) {
+//        }
+//        return 0;
     }
 
     public double totalMoneyMonth(int month) {
-        String query = "SELECT SUM(tongGia) FROM Invoice " +
-                "WHERE MONTH(ngayXuat) = ? " +
-                "GROUP BY MONTH(ngayXuat)";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setInt(1, month);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getDouble(1);
+        int year = 2021;
+        double sum = 0;
+        List<Invoice> list = getAllInvoice();
+        
+        for(Invoice value : list){
+        
+            String s = value.getNgayXuat().toString();
+            String temp[] = s.split("-");
+            if(Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month){
+                sum += value.getTongGia();
             }
-        } catch (Exception e) {
         }
-        return 0;
+        
+        return sum;
     }
 
     public int countAllProduct() {
