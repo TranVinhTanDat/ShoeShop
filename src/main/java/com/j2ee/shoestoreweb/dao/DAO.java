@@ -126,7 +126,6 @@ public class DAO {
                 break;
                 
               case "TUESDAY" : 
-               
                 index = 3;
                 break;
               case "WEDNESDAY" : 
@@ -157,11 +156,10 @@ public class DAO {
                 arrDay[i] = dayOfMonth;
             if(i+1 > index)
             {
-                int dayValue = dayOfMonth- (index+(i+1));
+                int dayValue = dayOfMonth+ ((i+1)-index);
                 arrDay[i] = dayValue;
             }
         }
-        List<String> arrSumOfWeek = new ArrayList<>();
          List<Invoice> list = getAllInvoice();
         double sum = 0;
         for(Invoice value : list){
@@ -195,7 +193,7 @@ public class DAO {
     }
 
     public double totalMoneyMonth(int month) {
-        int year = 2021;
+        int year = java.time.LocalDate.now().getYear();
         double sum = 0;
         List<Invoice> list = getAllInvoice();
         
