@@ -27,12 +27,11 @@ public class CategoryShopControl extends HttpServlet {
         out.println("<div class=\"product-container\">"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");

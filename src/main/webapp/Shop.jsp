@@ -73,6 +73,58 @@
             margin: 0 1rem 1rem 0; /* Điều chỉnh khoảng cách giữa các card */
         }
 
+        /*Navigation*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        /* Navigation styles */
+        #navigation {
+            background-color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        #responsive-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
+        .nav-barTab {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-barTab li {
+            margin-right: 10px;
+            padding: 15px; /* Expand clickable area */
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-barTab li:hover {
+            background-color: #c11818;
+            border-radius: 5px; /* Smoother transition */
+        }
+
+        .nav-barTab li a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /*End Navigation*/
     </style>
 </head>
 
@@ -85,7 +137,24 @@
 
 </header>
 <!--Main Navigation-->
+<%--Navigation--%>
+<nav id="navigation">
+    <div class="container">
+        <div id="responsive-nav">
+            <ul class="nav-barTab">
+                <li><a href="home">Home</a></li>
+                <li><a href="shop">Product</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">NIKE</a></li>
+                <li><a href="#">ADIDAS</a></li>
+                <li><a href="#">BITIS</a></li>
+                <li><a href="#">CONVERSE</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
+<%--End Navigation--%>
 <!-- Main layout -->
 <main>
     <div class="container" style="margin-top:100px">
@@ -228,7 +297,7 @@
                     <%--<div class="col-12 col-md-3 text-center text-md-left d-flex justify-content-around">
                         <a href="#!" class="text-reset"><i class="fas fa-th-list fa-lg mr-1"></i></a>
                         <a href="#!" class="text-reset"><i class="fas fa-th-large fa-lg"></i></a>
-                    </div--%>>
+                    </div--%>
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
@@ -241,12 +310,12 @@
                                             <option value="4">Category 4</option>
                                             <option value="5">Category 5</option>
                                         </select>
-                                        <label class="text-center">Tất cả sản phẩm</label>
+                                        <label class="text-center" style="">Tất cả sản phẩm</label>
                                         <button class="btn-save btn btn-primary btn-sm mt-2">Save</button>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5 d-flex justify-content-center align-items-center pagination">
-                                    <nav aria-label="Page navigation example" style="margin-left: -310px;">
+                                    <nav aria-label="Page navigation example" style="margin-left: 150px; width: 600px;">
                                         <ul class="pagination pagination-circle justify-content-center mb-0">
                                             <c:if test="${tag != 1}">
                                                 <li class="page-item"><a href="shop?index=${tag-1 }" class="page-link"><i

@@ -105,14 +105,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchByName(txtSearch);
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -137,6 +137,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterPriceUnder100Request(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -147,14 +148,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchPriceUnder100();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -179,6 +180,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterPrice100to200Request(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -189,14 +191,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchPrice100To200();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -221,6 +223,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterPriceAbove200Request(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -231,14 +234,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchPriceAbove200();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -263,6 +266,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterPriceMinToMaxRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -274,14 +278,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchByPriceMinToMax(priceMin, priceMax);
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -306,6 +310,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterColorBlackRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -316,14 +321,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchColorBlack();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -348,6 +353,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterColorGrayRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -358,14 +364,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchColorGray();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -390,6 +396,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterColorWhiteRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -400,14 +407,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchColorWhite();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -432,6 +439,7 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
     protected void processFilterColorYellowRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -442,14 +450,14 @@ public class ShopController extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.searchColorYellow();
         PrintWriter out = response.getWriter();
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
-            out.println("    <div class=\"product\" style=\"height: 470px;\">");
+            out.println("    <div class=\"product\" style=\"height: 480px;\">");
             out.println("        <div class=\"product-img\">");
             out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
             out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
             out.println("                <div class=\"product-label\">");
-            out.println("                    <span class=\"sale\">-30%</span>");
             out.println("                    <span class=\"new\">NEW</span>");
             out.println("                </div>");
             out.println("            </a>");
@@ -474,5 +482,6 @@ public class ShopController extends HttpServlet {
             out.println("    </div>");
             out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 }

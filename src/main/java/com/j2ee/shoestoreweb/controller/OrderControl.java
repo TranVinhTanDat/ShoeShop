@@ -134,7 +134,7 @@ public class OrderControl extends HttpServlet {
 
             email.setContent(sb.toString());
             EmailUtils.send(email);
-            request.setAttribute("mess", "Dat hang thanh cong!");
+            request.setAttribute("mess", "Dat hang thanh cong! Vui long kiem tra Email.");
 
             dao.deleteCartByAccountID(accountID);
 

@@ -212,7 +212,7 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product -->
                                 <c:forEach items="${list8Last}" var="o">
-                                    <div class="product">
+                                    <div class="product" style="height: 500px;">
                                         <div class="product-img">
                                             <a href="detail?pid=${o.id}" title="View Product">
                                                 <img src="${o.image}" alt="">
@@ -263,7 +263,7 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product -->
                                 <c:forEach items="${list4NikeLast}" var="o">
-                                    <div class="product">
+                                    <div class="product" style="height: 500px;">
                                         <div class="product-img">
                                             <a href="detail?pid=${o.id}" title="View Product">
                                                 <img src="${o.image}" alt="">
@@ -314,7 +314,7 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product -->
                                 <c:forEach items="${list4AdidasLast}" var="o">
-                                    <div class="product">
+                                    <div class="product" style="height: 500px;">
                                         <div class="product-img">
                                             <a href="detail?pid=${o.id}" title="View Product">
                                                 <img src="${o.image}" alt="">

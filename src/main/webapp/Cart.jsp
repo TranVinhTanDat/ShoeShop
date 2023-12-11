@@ -24,6 +24,162 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+    <style>
+        /* Bảng sản phẩm giỏ hàng */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: -20px;
+        }
+
+        /* Header của bảng */
+        .custom-table thead th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            text-align: left;
+            padding: 35px;
+        }
+
+        /* Dòng dữ liệu */
+        .custom-table tbody td {
+            padding: 20px;
+            vertical-align: middle;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* Định dạng container chứa hình ảnh và link */
+        .custom-cell-content {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Định dạng hình ảnh */
+        .custom-img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px; /* Khoảng cách giữa hình ảnh và link */
+        }
+
+        /* Định dạng custom-link */
+        .custom-link {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+            flex: 1; /* Kéo link ra toàn bộ phần trống còn lại */
+        }
+
+        /* Nút thêm, bớt */
+        .custom-btn-subtract,
+        .custom-btn-add {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            vertical-align: middle;
+        }
+
+        /* Nút xóa */
+        .custom-btn-danger {
+            border: none;
+            background: none;
+            color: red;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Số lượng */
+        .custom-amount {
+            margin: 0 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Hover cho nút xóa */
+        .custom-btn-danger:hover {
+            text-decoration: underline;
+        }
+
+        /* Hover cho link */
+        .custom-link {
+            /* Các thuộc tính chung */
+            color: #333; /* Màu chữ mặc định */
+            text-decoration: none; /* Loại bỏ gạch chân mặc định cho liên kết */
+            transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+
+            /* Hiệu ứng hover */
+            &:hover {
+                color: red; /* Thay đổi màu khi di chuột qua */
+                transform: scale(1.1); /* Phóng to khi di chuột qua */
+                /* hoặc các hiệu ứng khác như đổi màu gradient, thay đổi đổ bóng, vv. */
+            }
+        }
+
+
+        /* Định dạng số lượng và các nút */
+        .custom-cell .custom-cell-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-cell .custom-cell-controls .custom-btn-subtract,
+        .custom-cell .custom-cell-controls .custom-btn-add {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-cell .custom-cell-controls .custom-btn-subtract {
+            color: red;
+        }
+
+        .custom-cell .custom-cell-controls .custom-btn-add {
+            color: green;
+        }
+
+        .custom-cell .custom-cell-controls .custom-btn-subtract:hover,
+        .custom-cell .custom-cell-controls .custom-btn-add:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+
+        .custom-cell .custom-cell-controls .custom-amount {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10000px 0; /* Điều chỉnh khoảng cách xích xuống của số lượng */
+        }
+
+        .custom-alert {
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            /* Thêm các thuộc tính chung cho thông báo */
+        }
+
+        .custom-alert-success {
+            background-color: #dff0d8; /* Màu nền cho thông báo thành công */
+            color: #3c763d; /* Màu chữ cho thông báo thành công */
+            border: 1px solid #d6e9c6; /* Viền cho thông báo thành công */
+        }
+
+        /* Hiệu ứng hover */
+        .custom-alert-success:hover {
+            opacity: 0.9; /* Giảm độ mờ khi di chuột qua */
+            /* Các hiệu ứng khác nếu bạn muốn */
+        }
+
+
+    </style>
 </head>
 
 <body onload="loadTotalMoney()">
@@ -37,40 +193,40 @@
                     <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
 
                         <!-- Shopping cart table -->
-                        <div class="table-responsive">
-                            <table class="table">
+                        <div class="custom-table-responsive">
+                            <table class="custom-table shopping-cart-table">
                                 <thead>
                                 <c:if test="${error!=null }">
-                                    <div class="alert alert-danger" role="alert">
+                                    <div class="custom-alert custom-alert-danger" role="alert">
                                             ${error}
                                     </div>
                                 </c:if>
                                 <c:if test="${mess!=null }">
-                                    <div class="alert alert-success" role="alert">
+                                    <div class="custom-alert custom-alert-success" role="alert">
                                             ${mess}
                                     </div>
                                 </c:if>
                                 <tr>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="p-2 px-3 text-uppercase">Sản Phẩm</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Sản Phẩm</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Đơn Giá</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Đơn Giá</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Màu Sắc</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Màu Sắc</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Delivery</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Delivery</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Kích Thước</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Kích Thước</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Số Lượng</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Số Lượng</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Xóa</div>
+                                    <th scope="col" class="custom-border-0 custom-bg-light">
+                                        <div class="custom-header-cell">Xóa</div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -79,41 +235,32 @@
                                     <c:forEach items="${listProduct}" var="p">
                                         <c:if test="${o.productID == p.id}">
                                             <tr>
-                                                <th scope="row">
-                                                    <div class="p-2">
-
-                                                        <img src="${p.image}" alt="" width="70"
-                                                             class="img-fluid rounded shadow-sm">
-
-                                                        <div class="ml-3 d-inline-block align-middle">
-                                                            <h5 class="mb-0"><a href="#"
-                                                                                class="text-dark d-inline-block">${p.name}</a>
-                                                            </h5><span
-                                                                class="text-muted font-weight-normal font-italic"></span>
+                                                <td class="custom-cell">
+                                                    <div class="custom-cell-content">
+                                                        <img src="${p.image}" alt="" width="70" class="custom-img">
+                                                        <div class="custom-text">
+                                                            <h5 class="custom-heading"><a href="#" class="custom-link">${p.name}</a></h5>
+                                                            <span class="custom-info"></span>
                                                         </div>
                                                     </div>
-                                                </th>
-                                                <td class="align-middle"><strong>${p.price}$</strong></td>
-                                                <td class="align-middle"><strong>${p.color}</strong></td>
-                                                <td class="align-middle"><strong>${p.delivery}</strong></td>
-
-                                                <td class="align-middle">
-                                                    <strong>${o.size}</strong>
                                                 </td>
-
-                                                <td class="align-middle">
-                                                    <a href="subAmountCart?productID=${o.productID}&amount=${o.amount}">
-                                                        <button class="btnSub">-</button>
+                                                <td class="custom-cell">${p.price}$</td>
+                                                <td class="custom-cell">${p.color}</td>
+                                                <td class="custom-cell">${p.delivery}</td>
+                                                <td class="custom-cell">${o.size}</td>
+                                                <td class="custom-cell">
+                                                    <a href="subAmountCart?productID=${o.productID}&amount=${o.amount}" class="custom-link">
+                                                        <button class="custom-btn-subtract">-</button>
                                                     </a>
-                                                    <strong>${o.amount}</strong>
-                                                    <a href="addAmountCart?productID=${o.productID}&amount=${o.amount}">
-                                                        <button class="btnAdd">+</button>
+                                                    <span class="custom-amount">${o.amount}</span>
+                                                    <a href="addAmountCart?productID=${o.productID}&amount=${o.amount}" class="custom-link">
+                                                        <button class="custom-btn-add">+</button>
                                                     </a>
                                                 </td>
-                                                <td class="align-middle"><a href="deleteCart?productID=${o.productID }"
-                                                                            class="text-dark">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </a>
+                                                <td class="custom-cell">
+                                                    <a href="deleteCart?productID=${o.productID}" class="custom-text-dark">
+                                                        <button type="button" class="custom-btn custom-btn-danger">Delete</button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </c:if>
@@ -123,12 +270,13 @@
                             </table>
                         </div>
                         <!-- End -->
+
                     </div>
                 </div>
 
                 <div class="row py-5 p-4 bg-white rounded shadow-sm">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 550px;">
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thành tiền</div>
 
                         <div class="p-4">
@@ -140,7 +288,7 @@
                                      <h5 class="font-weight-bold">110 $</h5>
                                  </li> -->
                             </ul>
-                            <a href="order" class="btn btn-dark rounded-pill py-2 btn-block text-white">Thanh Toán</a>
+                            <a href="order" class="btn btn-success rounded-pill py-2 btn-block text-white">Thanh Toán</a>
                         </div>
                     </div>
                 </div>
