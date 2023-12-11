@@ -111,25 +111,40 @@ public class HomeController extends HttpServlet {
         List<Product> list = dao.getNext4AdidasProduct(iamount);
         PrintWriter out = response.getWriter();
 
+        out.println("<div class=\"product-container row\" style=\"margin-top: 25px;\">"); // Mở thẻ div mới để chứa các card sản phẩm và thiết lập lưới
         for (Product o : list) {
-            out.println(" <div class=\"productAdidas col-12 col-md-6 col-lg-3\">\r\n"
-                    + "                                <div class=\"card\">\r\n"
-                    + "                                <div class=\"view zoom z-depth-2 rounded\">\r\n"
-                    + "                                    <img class=\"img-fluid w-100\" src=\"" + o.getImage() + "\" alt=\"Card image cap\">\r\n"
-                    + "                                    </div>\r\n"
-                    + "                                    <div class=\"card-body\">\r\n"
-                    + "                                        <h4 class=\"card-title show_txt\"><a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">" + o.getName() + "</a></h4>\r\n"
-                    + "                                        <p class=\"card-text show_txt\">" + o.getTitle() + "</p>\r\n"
-                    + "                                        <div class=\"row\">\r\n"
-                    + "                                            <div class=\"col\">\r\n"
-                    + "                                                <p class=\"btn btn-success btn-block\">" + o.getPrice() + " $</p>\r\n"
-                    + "                                            </div>\r\n"
-                    + "                                           \r\n"
-                    + "                                        </div>\r\n"
-                    + "                                    </div>\r\n"
-                    + "                                </div>\r\n"
-                    + "                            </div>");
+            out.println("<div class=\"col-md-4 col-xs-6\">");
+            out.println("    <div class=\"product productAdidas\" style=\"height: 500px;\">");
+            out.println("        <div class=\"product-img\">");
+            out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
+            out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
+            out.println("                <div class=\"product-label\">");
+            out.println("                    <span class=\"new\">NEW</span>");
+            out.println("                </div>");
+            out.println("            </a>");
+            out.println("        </div>");
+            out.println("        <div class=\"product-body\">");
+            out.println("            <p class=\"product-category\">Category</p>");
+            out.println("            <h3 class=\"product-name\"><a href=\"detail?pid=" + o.getId() + "\">" + o.getName() + "</a></h3>");
+            out.println("            <h4 class=\"product-price\">$" + o.getPrice() + " <del class=\"product-old-price\">$990.00</del></h4>");
+            out.println("            <div class=\"product-rating\">");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("            </div>");
+            out.println("            <div class=\"product-btns\">");
+            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-shopping-cart\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
+            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-shopping-basket\"></i><span class=\"tooltipp\">add to compare</span></button>");
+            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            out.println("            </div>");
+            out.println("        </div>");
+            out.println("    </div>");
+            out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
+
     }
 
     protected void processLoadMoreNikeRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -141,24 +156,40 @@ public class HomeController extends HttpServlet {
         List<Product> list = dao.getNext4NikeProduct(iamount);
         PrintWriter out = response.getWriter();
 
+        out.println("<div class=\"product-container row\" style=\"margin-left: 38px;\">"); // Mở thẻ div mới để chứa các card sản phẩm và thiết lập lưới
         for (Product o : list) {
-            out.println("<div class=\"productNike col-12 col-md-6 col-lg-3\">\r\n"
-                    + "                                <div class=\"card\">\r\n"
-                    + "                                 <div class=\"view zoom z-depth-2 rounded\">\r\n"
-                    + "                                    <img class=\"img-fluid w-100\" src=\"" + o.getImage() + "\" alt=\"Card image cap\">\r\n"
-                    + "                                    </div>\r\n"
-                    + "                                    <div class=\"card-body\">\r\n"
-                    + "                                        <h4 class=\"card-title show_txt\"><a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">" + o.getName() + "</a></h4>\r\n"
-                    + "                                        <p class=\"card-text show_txt\">" + o.getTitle() + "</p>\r\n"
-                    + "                                        <div class=\"row\">\r\n"
-                    + "                                            <div class=\"col\">\r\n"
-                    + "                                                <p class=\"btn btn-success btn-block\">" + o.getPrice() + " $</p>\r\n"
-                    + "                                            </div>\r\n"
-                    + "                                            \r\n"
-                    + "                                        </div>\r\n"
-                    + "                                    </div>\r\n"
-                    + "                                </div>\r\n"
-                    + "                            </div>");
+            out.println("<div class=\"col-md-4 col-xs-6\">");
+            out.println("    <div class=\"product productNike\" style=\"height: 500px;\">");
+            out.println("        <div class=\"product-img\">");
+            out.println("            <a href=\"detail?pid=" + o.getId() + "\" title=\"View Product\">");
+            out.println("                <img src=\"" + o.getImage() + "\" alt=\"" + o.getName() + "\">");
+            out.println("                <div class=\"product-label\">");
+            out.println("                    <span class=\"new\">NEW</span>");
+            out.println("                </div>");
+            out.println("            </a>");
+            out.println("        </div>");
+            out.println("        <div class=\"product-body\">");
+            out.println("            <p class=\"product-category\">Category</p>");
+            out.println("            <h3 class=\"product-name\"><a href=\"detail?pid=" + o.getId() + "\">" + o.getName() + "</a></h3>");
+            out.println("            <h4 class=\"product-price\">$" + o.getPrice() + " <del class=\"product-old-price\">$990.00</del></h4>");
+            out.println("            <div class=\"product-rating\">");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("                <i class=\"fa fa-star\"></i>");
+            out.println("            </div>");
+            out.println("            <div class=\"product-btns\">");
+            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-shopping-cart\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
+            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-shopping-basket\"></i><span class=\"tooltipp\">add to compare</span></button>");
+            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            out.println("            </div>");
+            out.println("        </div>");
+            out.println("    </div>");
+            out.println("</div>");
         }
+        out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
+
+
     }
 }

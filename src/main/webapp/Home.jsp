@@ -27,111 +27,111 @@
     <link rel="stylesheet" href="static/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="static/css/style.css">
 </head>
-    <style>
-        /* Carousel styling */
-        #introCarousel,
-        .carousel-inner,
-        .carousel-item,
-        .carousel-item.active {
-            height: 100vh;
+<style>
+    /* Carousel styling */
+    #introCarousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 100vh;
+    }
+
+    .carousel-item:nth-child(1) {
+        background-image: url('static/img/BIA.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(2) {
+        background-image: url('static/img/slider-8.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(3) {
+        background-image: url('static/img/slide4.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+    }
+
+    /* Height for devices larger than 576px */
+    @media (min-width: 992px) {
+        #introCarousel {
+            margin-top: -58.59px;
         }
+    }
 
-        .carousel-item:nth-child(1) {
-            background-image: url('static/img/BIA.jpg');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-position: center center;
-        }
+    /* .navbar .nav-link {
+         color: #fff !important;
+     }*/
+    .product-img img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
 
-        .carousel-item:nth-child(2) {
-            background-image: url('static/img/slider-8.png');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-position: center center;
-        }
-
-        .carousel-item:nth-child(3) {
-            background-image: url('static/img/slide4.jpg');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-position: center center;
-        }
-
-        /* Height for devices larger than 576px */
-        @media (min-width: 992px) {
-            #introCarousel {
-                margin-top: -58.59px;
-            }
-        }
-
-        /* .navbar .nav-link {
-             color: #fff !important;
-         }*/
-        .product-img img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
-
-    <style>
-        /* Reset and general styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    /* Reset and general styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
 
 
-        /* Navigation styles */
-        #navigation {
-            background-color: #333;
-        }
+    /* Navigation styles */
+    #navigation {
+        background-color: #333;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
 
-        #responsive-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 50px;
-        }
+    #responsive-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+    }
 
-        .nav-barTab {
-            list-style: none;
-            display: flex;
-        }
+    .nav-barTab {
+        list-style: none;
+        display: flex;
+    }
 
-        .nav-barTab li {
-            margin-right: 10px;
-            padding: 15px; /* Expand clickable area */
-            transition: background-color 0.3s ease;
-        }
+    .nav-barTab li {
+        margin-right: 10px;
+        padding: 15px; /* Expand clickable area */
+        transition: background-color 0.3s ease;
+    }
 
-        .nav-barTab li:hover {
-            background-color: #c11818;
-            border-radius: 5px; /* Smoother transition */
-        }
+    .nav-barTab li:hover {
+        background-color: #c11818;
+        border-radius: 5px; /* Smoother transition */
+    }
 
-        .nav-barTab li a {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+    .nav-barTab li a {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+    }
 
-        /*.nav-barTab li a:hover {
-            background-color: #c11818;
-        }*/
+    /*.nav-barTab li a:hover {
+        background-color: #c11818;
+    }*/
 
-    </style>
+</style>
 
 </head>
 <body class="skin-light" onload="loadAmountCart()">
@@ -143,11 +143,10 @@
             <ul class="nav-barTab">
                 <li><a href="home">Home</a></li>
                 <li><a href="shop">Product</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">NIKE</a></li>
-                <li><a href="#">ADIDAS</a></li>
-                <li><a href="#">BITIS</a></li>
-                <li><a href="#">CONVERSE</a></li>
+                <li><a href="shop">NIKE</a></li>
+                <li><a href="shop">ADIDAS</a></li>
+                <li><a href="shop">BITIS</a></li>
+                <li><a href="shop">CONVERSE</a></li>
             </ul>
         </div>
     </div>
@@ -202,7 +201,7 @@
 <div class="section">
     <div class="container">
 
-        <div class="row" style="margin-top:25px">
+        <div class="row" style="margin-left:25px">
             <h1 style="text-align:center; width:100%" id="moiNhat">SẢN PHẨM MỚI NHẤT</h1>
             <div class="col-md-12">
                 <div class="row" id="contentMoiNhat">
@@ -220,6 +219,7 @@
                                                     <span class="new">NEW</span>
                                                 </div>
                                         </div>
+
                                         <div class="product-body">
                                             <p class="product-category">Category</p>
                                             <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
@@ -232,8 +232,8 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="add-to-wishlist"><i class="fa fa-shopping-cart"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-shopping-basket"></i><span class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                             </div>
                                         </div>
@@ -254,72 +254,81 @@
 
 
         <div class="row" style="margin-top:25px">
-            <h1 style="text-align:center; width:100%" id="nike">GIÀY NIKE</h1>
+            <h1 style="width:100%" id="nike">GIÀY NIKE</h1>
+            <div class="col-md-12 text-center">
+                <div id="loadMoreContainer">
+                    <button onclick="loadMoreNike()" class="btn btn-primary mt-4" style="margin-left: 1090px;">Load more</button>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="row" id="contentNike">
-                    <div class="products-tabs">
-                        <!-- tab -->
-                        <div class="tab-pane active">
-                            <div class="products-slick" data-nav="#slick-nav-1">
-                                <!-- product -->
-                                <c:forEach items="${list4NikeLast}" var="o">
-                                    <div class="product" style="height: 500px;">
-                                        <div class="product-img">
-                                            <a href="detail?pid=${o.id}" title="View Product">
-                                                <img src="${o.image}" alt="">
-                                                <div class="product-label">
-<%--                                                    <span class="sale">-30%</span>--%>
-                                                    <span class="new">NEW</span>
+                    <div class="product-container" style="margin-left: 38px;">
+                        <div class="products-tabs">
+                            <!-- tab -->
+                            <div class="tab-pane active">
+                                <div class="products-slick" data-nav="#slick-nav-1">
+                                    <c:forEach items="${list4NikeLast}" var="o">
+                                        <div class="product productNike" style="height: 500px;">
+                                            <div class="product-img">
+                                                <a href="detail?pid=${o.id}" title="View Product">
+                                                    <img src="${o.image}" alt="">
+                                                    <div class="product-label">
+                                                        <!-- <span class="sale">-30%</span> -->
+                                                        <span class="new">NEW</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">Category</p>
+                                                <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
+                                                <h4 class="product-price">$980.00 <del class="product-old-price">${o.price} $</del></h4>
+                                                <div class="product-rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
                                                 </div>
-                                        </div>
-                                        <div class="product-body">
-                                            <p class="product-category">Category</p>
-                                            <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
-                                            <h4 class="product-price">$980.00 <del class="product-old-price">${o.price} $</del></h4>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                <div class="product-btns">
+                                                    <button class="add-to-wishlist"><i class="fa fa-shopping-cart"></i><span class="tooltipp">add to wishlist</span></button>
+                                                    <button class="add-to-compare"><i class="fa fa-shopping-basket"></i><span class="tooltipp">add to compare</span></button>
+                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                </div>
                                             </div>
                                         </div>
-                                            <%--        <div class="add-to-cart">
-                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                                    </div>--%>
-                                    </div>
-                                </c:forEach>
-                                <!-- /product -->
+                                    </c:forEach>
+                                </div>
+                                <div class="products-slick-nav"></div>
                             </div>
-                            <div class="products-slick-nav"></div>
+                            <!-- /tab -->
                         </div>
-                        <!-- /tab -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row" style="margin-top:25px">
+
+        <div class="row" style="margin-left:62px;">
             <h1 style="text-align:center; width:100%" id="adidas">GIÀY ADIDAS</h1>
+            <div class="col-md-12 text-center">
+                <div id="">
+                    <button onclick="loadMoreAdidas()" class="btn btn-primary mt-4" style="margin-left: 1000px;">Load more</button>
+                </div>
+            </div>
             <div class="col-md-12">
-                <div class="row" id="list4AdidasLast">
+                <div class="row" id="contentAdidas">
                     <div class="products-tabs">
                         <!-- tab -->
                         <div  class="tab-pane active">
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product -->
                                 <c:forEach items="${list4AdidasLast}" var="o">
-                                    <div class="product" style="height: 500px;">
+                                    <div class="product productAdidas" style="height: 500px;">
                                         <div class="product-img">
                                             <a href="detail?pid=${o.id}" title="View Product">
                                                 <img src="${o.image}" alt="">
                                                 <div class="product-label">
-                                                    <%--<span class="sale">-30%</span>--%>
+                                                        <%--<span class="sale">-30%</span>--%>
                                                     <span class="new">NEW</span>
                                                 </div>
                                         </div>
@@ -335,8 +344,8 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="add-to-wishlist"><i class="fa fa-shopping-cart"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-shopping-basket"></i><span class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                             </div>
                                         </div>
@@ -357,15 +366,9 @@
 
         </div>
 
-
-
-
-
-
-
-
     </div>
 </div>
+
 
 <jsp:include page="Footer.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -425,7 +428,7 @@
         });
     }
 
-        // function searchByName(param) {
+    // function searchByName(param) {
     //     var txtSearch = param.value;
     //     $.ajax({
     //         url: "/shoestoreweb/searchAjax",
