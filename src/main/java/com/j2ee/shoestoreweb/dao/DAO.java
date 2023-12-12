@@ -70,6 +70,102 @@ public class DAO {
         }
         return list;
     }
+    public List<Invoice> searchInvoice(String name){
+        List<Invoice> list = getAllInvoice();
+        List<Invoice> result = new ArrayList<>();
+        try{
+            result = SearchIdInvoice(name, list);
+            if(result.size() == 0){
+             result = SearchMoneyInvoice(name, list);
+            }
+        }catch(Exception ex){
+            result = SearchNameCustomerInvoice(name,list);
+        }
+        return result;
+    }
+    public List<Account> searchAccount(String name){
+        List<Account> list = getAllAccount();
+        List<Account> result = new ArrayList<>();
+        result = searchName(name, list);
+        if(result.size() == 0){
+            result = searchEmail(name, list);
+        }
+        return result;
+    }
+    public List<Account> searchName(String name, List<Account> list){
+        List<Account> result = new ArrayList<>();
+        
+        
+        while(name.length() > 1 && result.size() == 0){
+        
+            for(Account value : list){
+                if(value.getUser().contains(name)){
+                    result.add(value);
+                }
+            }
+            if(result.size() == 0){
+                name = name.substring(0,name.length()-1);
+            }
+        }
+         return result;
+    }
+        public List<Account> searchEmail(String name, List<Account> list){
+        List<Account> result = new ArrayList<>();
+            for(Account value : list){
+                if(value.getEmail().equals(name)){
+                    result.add(value);
+                    break;
+                }
+            }
+         return result;
+    }
+    
+    public List<Invoice> SearchIdInvoice(String name, List<Invoice> list){
+         List<Invoice> result = new ArrayList<>();
+        for(Invoice value : list){
+            if(value.getMaHD() == Integer.parseInt(name)){
+                result.add(value);
+                break;
+            }
+        
+        }
+        return result;
+    
+    }
+    public List<Invoice> SearchNameCustomerInvoice(String name, List<Invoice> list){
+        List<Invoice> result = new ArrayList<>();
+        List<Account> listCu = getAllAccount();
+        int idCu = -1;
+        for(Account value : listCu){
+            if(value.getUser().contains(name)){
+                idCu = value.getId();
+                break;
+            }
+        }
+        
+        if(idCu != -1){
+            for(Invoice value : list){
+                if(value.getAccountID() == idCu){
+                    result.add(value);
+
+                }
+
+            }
+        }
+        return result;
+    
+    }
+     public List<Invoice> SearchMoneyInvoice(String name, List<Invoice> list){
+         List<Invoice> result = new ArrayList<>();
+        for(Invoice value : list){
+            if(value.getTongGia() == Integer.parseInt(name)){
+                result.add(value);
+            }
+        
+        }
+        return result;
+    
+    }
 
     public int countAllProductBySellID(int sell_ID) {
         String query = "SELECT COUNT(*) FROM Product WHERE sell_ID = ?";

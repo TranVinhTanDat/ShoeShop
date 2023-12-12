@@ -126,7 +126,10 @@
                 <i class="rounded bi bi-search"></i>
             </button>
         </div>
-        <input type="text" placeholder="Search ..." class="form-control" style="height: 100%" >
+         <form action="searchhd" method="get">
+                                                           <input type="search" name="search" placeholder="Search ..." class="form-control" style="height: 100%" >
+                                                    </form>
+        
     </div>
     <div class="author-logout" style="position: relative;">
         <i class="bi bi-person"></i>
@@ -172,14 +175,19 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="dataTables_length" id="add-row_length">
                                     <label>Show
-                                        <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                        <form action="filter" method="get" >
+                                              <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
                                             <option value="10">10</option><option value="25">25</option><option value="50">50</option>
-                                            <option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6">
+                                            <option value="100">100</option>
+                                            <input style="width: 50px" type="submit"  value="lọc"   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+                                              </select>
+                                            
+                                        </form> entries</label></div></div><div class="col-sm-12 col-md-6">
                                                 <div id="add-row_filter" class="dataTables_filter">
                                                     <label>Search:
-                                                    <form action="" method="post">
+                                                    <form action="searchhd" method="get">
                                                             <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
-                                                            </form>
+                                                    </form>
                         </label>
                     </div>
                     </div>

@@ -16,10 +16,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@WebServlet(name = "AccountController", urlPatterns = {"/managerAccount", "/addAccount", "/deleteAccount", "/xuatExcelAccountControl"})
+@WebServlet(name = "AccountController", urlPatterns = {"/managerAccount", "/addAccount", "/deleteAccount", "/xuatExcelAccountControl", "/searchAccount", "/filterAccount"})
 public class AccountController extends HttpServlet {
 
     @Override
@@ -47,6 +48,12 @@ public class AccountController extends HttpServlet {
             case "/xuatExcelAccountControl":
                 processExportExcelRequest(request, response);
                 break;
+            case "/searchAccount":
+                processExportSearchAccountRequest(request, response);
+                break;
+            case "/filterAccount":
+                processViewAccountFilter(request, response);
+                break;
             default:
                 break;
         }
@@ -61,6 +68,36 @@ public class AccountController extends HttpServlet {
         request.setAttribute("listAllAccount", list);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
+    
+     protected void processViewAccountFilter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+         String name = request.getParameter("add-row_length");
+            int length = Integer.parseInt(name);
+            List<Account> result = new ArrayList<>();
+        DAO dao = new DAO();
+        
+
+        List<Account> list = dao.getAllAccount();
+        for(Account value : list){
+                       result.add(value);
+                       length--;
+                       if(length<=0)
+                           break;
+                   }
+        request.setAttribute("listAllAccount", result);
+        request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
+    }
+    protected void processExportSearchAccountRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+         String name = request.getParameter("search");
+        DAO dao = new DAO();
+
+        List<Account> list = dao.searchAccount(name);
+
+        request.setAttribute("listAllAccount", list);
+        request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
+    }
+    
 
     protected void processAddAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

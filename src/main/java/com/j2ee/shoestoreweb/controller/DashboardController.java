@@ -80,7 +80,7 @@ public class DashboardController extends HttpServlet {
         
             String s = value.getNgayXuat().toString();
             String temp[] = s.split("-");
-            if(Integer.parseInt(temp[0]) == 2021){
+            if(Integer.parseInt(temp[0]) == 2023){
                 money += value.getTongGia();
             }
         }
