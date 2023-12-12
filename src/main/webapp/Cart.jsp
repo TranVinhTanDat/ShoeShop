@@ -283,12 +283,12 @@
                             <ul class="list-unstyled mb-4" id="contentTotalMoney">
                                 <!--  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền hàng</strong><strong>100 $</strong></li>
                                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Phí vận chuyển</strong><strong>Free ship</strong></li>
-                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">VAT</strong><strong>10 $</strong></li>
+                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">VAT</strong><strong>5 $</strong></li>
                                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng thanh toán</strong>
                                      <h5 class="font-weight-bold">110 $</h5>
                                  </li> -->
                             </ul>
-                            <a href="order" class="btn btn-success rounded-pill py-2 btn-block text-white">Thanh Toán</a>
+                            <a href="order" class="btn btn-success rounded-pill py-2 btn-block text-white"> Đặt hàng</a>
                         </div>
                     </div>
                 </div>

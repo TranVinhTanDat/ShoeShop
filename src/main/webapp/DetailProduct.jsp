@@ -229,19 +229,19 @@
                                     <td>
                                         <div class="mt-1">
                                             <div class="form-check form-check-inline pl-0">
-                                                <input type="radio" class="form-check-input" id="small" value="small"
+                                                <input type="radio" class="form-check-input" id="small" value="Small"
                                                        name="size" checked>
                                                 <label class="form-check-label small text-uppercase card-link-secondary"
                                                        for="small">Small</label>
                                             </div>
                                             <div class="form-check form-check-inline pl-0">
-                                                <input type="radio" class="form-check-input" id="medium" value="medium"
+                                                <input type="radio" class="form-check-input" id="medium" value="Medium"
                                                        name="size">
                                                 <label class="form-check-label small text-uppercase card-link-secondary"
                                                        for="medium">Medium</label>
                                             </div>
                                             <div class="form-check form-check-inline pl-0">
-                                                <input type="radio" class="form-check-input" id="large" value="large"
+                                                <input type="radio" class="form-check-input" id="large" value="Large"
                                                        name="size">
                                                 <label class="form-check-label small text-uppercase card-link-secondary"
                                                        for="large">Large</label>
@@ -255,8 +255,7 @@
                         <div class="mt-1">
                             <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
                             <button type="submit" class="btn btn-light btn-md mr-1 mb-2"><i
-                                    class="fas fa-shopping-cart pr-2"></i>Add to
-                                cart
+                                    class="fas fa-shopping-cart pr-2"></i>Add to cart
                             </button>
                         </div>
                     </form>

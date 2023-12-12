@@ -43,7 +43,7 @@ public class LoginControl extends HttpServlet {
         DAO dao = new DAO();
         Account a = dao.login(username, password);
         if (a == null) {
-            request.setAttribute("error", "Sai username hoac password!");
+            request.setAttribute("error", "Invalid username or password!");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
