@@ -19,7 +19,7 @@
             <a href="managerAccount" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fas fa-user-circle fa-fw me-3"></i><span>Quản lý tài khoản</span>
             </a>
-            <a href="manager" class="list-group-item list-group-item-action py-2 ripple">
+            <a href="managerProduct" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fas fa-shoe-prints fa-fw me-3"></i><span>Quản lý sản phẩm</span>
             </a>
             <a href="top10" class="list-group-item list-group-item-action py-2 ripple">

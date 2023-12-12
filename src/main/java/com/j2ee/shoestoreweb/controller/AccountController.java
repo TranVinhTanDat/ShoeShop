@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@WebServlet(name = "AccountController", urlPatterns = {"/managerAccount", "/addAccount", "/deleteAccount", "/xuatExcelAccountControl", "/searchAccount", "/filterAccount"})
+@WebServlet(name = "AccountController", urlPatterns = {"/managerAccount", "/addAccount",
+    "/deleteAccount", "/xuatExcelAccountControl", "/searchAccount", "/filterAccount","/editAcc","/editAccount"})
 public class AccountController extends HttpServlet {
 
     @Override
@@ -54,6 +55,12 @@ public class AccountController extends HttpServlet {
             case "/filterAccount":
                 processViewAccountFilter(request, response);
                 break;
+            case "/editAcc":
+                processGetAccount(request, response);
+                break;
+            case "/editAccount":
+                processEditAccount(request, response);
+                break;
             default:
                 break;
         }
@@ -62,12 +69,47 @@ public class AccountController extends HttpServlet {
     protected void processViewAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
-
+       
         List<Account> list = dao.getAllAccount();
-
         request.setAttribute("listAllAccount", list);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
+    protected void processGetAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        DAO dao = new DAO();
+        String id = request.getParameter("id");
+        Account a = dao.getAcc(id);
+        List<Account> list = dao.getAllAccount();
+        request.setAttribute("listAllAccount", list);
+        request.setAttribute("accEdit", a);
+        request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
+    }
+    protected void processEditAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        DAO dao = new DAO();
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String pass = request.getParameter("pass");
+        String role = request.getParameter("add-row_length");
+        Account a = dao.getAcc(id);
+        
+        a.setUser(name);
+        a.setPass(pass);
+        if(Integer.parseInt(role) == 0){
+            a.setIsSell(0);
+            a.setIsAdmin(1);
+        }else{
+            a.setIsSell(1);
+            a.setIsAdmin(0);
+        }
+        
+        dao.UpdateAccount(a);
+        List<Account> list = dao.getAllAccount();
+        
+        request.setAttribute("listAllAccount", list);
+        request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
+    }
+    
     
      protected void processViewAccountFilter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

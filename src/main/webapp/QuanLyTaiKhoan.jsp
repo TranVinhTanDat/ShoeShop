@@ -103,8 +103,47 @@
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     }</style>
 </head>
-<body>
-
+<body style="position: relative" >
+      <c:if test="${accEdit != null }" >
+      <div style="position: fixed;width: 100%; height: 100%; z-index: 1000; display: flex;
+           background-color: rgba(144, 189, 166, 0.9); justify-content: center">
+          
+           <div class="card-header" style="background: aliceblue; display: flex; position: absolute;top: 30%">
+               <div>
+                   <a style="position: absolute ;top: 0;
+    right: 0;
+    padding: 6px 14px;
+    font-size: 20px;
+    color: red; text-decoration: none" href="managerAccount" >X</a>
+                   
+               </div>
+                                    <form action="editAccount" method="post" >
+                                        <input type="text" style="visibility: hidden" name = "id" value="${accEdit.id}">
+                                        <div class="card-body">      
+                                             <h1 class="card-title" style="text-align: center">Sửa đổi thông tin tài khoản</h1>
+                                          <div class="row">
+                                              <div class="col-md-12" style="font-size: 18px">
+                                                  <div style="display: flex;" class="form-group form-group-default">
+                                                      <label style="line-height: 36px;" >Tên người dùng</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="name" value="${accEdit.user}" required="required"><br/>
+                                                      <label style="line-height: 36px;" >Mật khẩu</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="pass" value="${accEdit.pass}" required="required"><br/>
+                                                       <label style="line-height: 36px;" >Vai trò</label>
+                                                      <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                                          <option value="1">Người bán hàng</option>
+                                                          <option value="0">Người quản lý</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                                       <input type="submit" value="Sửa tài khoản">
+                                    </div>
+                                        
+                                    </form>
+                                </div> 
+          
+      </div>
+                            </c:if>
 <!--Main Navigation-->
 <header>
     <jsp:include page="LeftAdmin.jsp"></jsp:include>
@@ -115,6 +154,7 @@
 
 <!--Main layout-->
 <main>
+
     <div class="container pt-4">
 
         <!--Section: Quan Ly tai Khoan-->
@@ -231,16 +271,16 @@
                                            <td>Người bán hàng</td>
                                        </c:if>
                                             <c:if test="${o.isSell == 0 }">
-                                           <td>Người mua hàng</td>
+                                           <td>Người quản lý</td>
                                        </c:if>
                                         
                                          <td>${o.email}</td>
                                          <td>
                                            <div class="form-button-action">
                                                                 
-                                                                <button type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                               <button style="width: 60px;min-width: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                                 data-original-title="Edit">
-                                                                    <a href="deleteAccount?id=${o.id}">edit</a>
+                                                                    <a href="editAcc?id=${o.id}">edit</a>
                                                                 
                                                                 </button>
                                                 
@@ -249,7 +289,7 @@
                                        </td>
                                    </tr>  
                                     </c:forEach>
-                                    
+                          
 
                             </tbody>
                         </table>
@@ -336,5 +376,6 @@
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <!-- Custom scripts -->
 <script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>
