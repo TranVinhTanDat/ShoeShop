@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css">
@@ -40,6 +41,7 @@
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -193,8 +195,12 @@
                     </div>
                         </div>
  <form action="xuatExcelControl" method="get">
-                                
-                                <button style="    float: right;" type="submit" class="mb-0 text-center btn btn-primary">Xuất file Excel</button>
+                                <button type="submit" style=" width: 150px;
+    min-width: 0;
+    float: right;
+    height: 36px;
+    margin-right: 32px; background-color: rgb(30, 81, 124) !important; min-width: 0;" class="mb-0 text-center btn btn-primary waves-effect waves-light ripple-surface"> Xuất Excel</button>
+                               
                             </form>
                 <div class="card-body">
                     <div class="table-responsive">

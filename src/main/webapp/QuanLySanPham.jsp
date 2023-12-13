@@ -15,7 +15,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -55,6 +55,7 @@
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -187,10 +188,17 @@
                                 </div></div><div class="col-sm-12 col-md-6">
                                     <div id="add-row_filter" style="display: flex" class="dataTables_filter">
                                                    
-                                                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">Thêm sản phẩm </a>
+                                        <a href="#addEmployeeModal" style="width: 150px;
+    min-width: 0;
+    float: right;
+    height: 36px;
+     min-width: 0;" class="btn btn-success" data-toggle="modal">Thêm sản phẩm </a>
                                                       <form action="xuatExcelProductControl" method="get">
-                                                          <button type="submit" style="background-color: #1e517c !important;
-" class="mb-0 text-center btn btn-primary"> Xuất Excel</button>
+                                                            <button type="submit" style=" width: 120px;
+    min-width: 0;
+    float: right;
+    height: 36px;
+    margin-right: 32px; background-color: rgb(30, 81, 124) !important; min-width: 0;" class="mb-0 text-center btn btn-primary waves-effect waves-light ripple-surface"> Xuất Excel</button>
                         </form>
                     </div>
                     </div>
@@ -228,14 +236,14 @@
                                     <td>
                                         
                                             
-                                          <button style="width: 80px;min-width: 0 ;background-color: aqua !important;" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                          <button style="width: 80px;min-width: 0 ;height:36px;min-height: 0 ;background-color: aqua !important;" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                                 data-original-title="Edit">
                                                                     <a href="loadProduct?pid=${o.id}">Edit</a>
                                                                 
                                                                 </button>
                                                                     
-                                         <button style="width: 90px;min-width: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
-                                                                data-original-title="Edit">
+                                         <button style="width: 90px;min-width: 0;height:36px;min-height: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                                                data-original-title="Delete">
                                              <a style="color: #000; text-align: center" href="delete?pid=${o.id}">Delete</a>
                                                                 
                                                                 </button>

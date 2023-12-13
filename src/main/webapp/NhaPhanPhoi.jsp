@@ -45,11 +45,12 @@
     <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -267,7 +268,7 @@
                                         </c:if>
                                     </c:forEach>
                                     <td>
-                                         <button style="width: 90px;min-width: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                         <button style="width: 90px;min-width: 0;height:36px;min-height: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                                 data-original-title="Edit">
                                              <a style="color: #000; text-align: center" href="deleteSupplier?id=${o.idSupplier}">Delete</a>
                                                                 

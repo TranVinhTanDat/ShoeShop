@@ -52,6 +52,7 @@
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -61,6 +62,7 @@
           href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.8.1/compiled.min.css">
     <link rel="stylesheet" type="text/css"
           href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>body {
         background-color: #fbfbfb;
     }
@@ -278,7 +280,7 @@
                                          <td>
                                            <div class="form-button-action">
                                                                 
-                                               <button style="width: 60px;min-width: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                               <button style="width: 80px;min-width: 0 ;height:36px;min-height: 0 ;background-color: aqua !important;" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                                 data-original-title="Edit">
                                                                     <a href="editAcc?id=${o.id}">edit</a>
                                                                 

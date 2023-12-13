@@ -30,7 +30,7 @@ public class ProductController extends HttpServlet {
         }
 
         int id;
-        if(a.getIsSell() == 1)
+        if(a.getIsSell() == 0)
             id = 1;
         else
             id = 0;
