@@ -113,7 +113,7 @@ response.sendRedirect(redirectURL);
 
 <!--Main layout-->
 <main>
-    <div class="container pt-4">
+    <div class="fluid-container p-3">
 
         <!-- Section: Main chart -->
         <section class="mb-4" id="doanhThuThu">

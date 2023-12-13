@@ -106,7 +106,7 @@
   <c:if test="${addSu != null }" >
       <div style="position: fixed;width: 100%; height: 100%; z-index: 1000; display: flex;
            background-color: rgba(144, 189, 166, 0.9); justify-content: center">
-          
+
            <div class="card-header" style="background: aliceblue; display: flex; position: absolute;top: 3%;width: 50%;">
                <div>
                    <a style="position: absolute ;top: 0;
@@ -114,11 +114,11 @@
     padding: 6px 14px;
     font-size: 20px;
     color: red; text-decoration: none" href="managerSupplier" >X</a>
-                   
+
                </div>
                                     <form action="addSupplierYour" method="post" >
                                         <input type="text" style="visibility: hidden" name = "id" value="${accEdit.id}">
-                                        <div class="card-body">      
+                                        <div class="card-body">
                                              <h1 class="card-title" style="text-align: center">Thêm nhà cung cấp</h1>
                                           <div class="row">
                                               <div class="col-md-12" style="font-size: 18px">
@@ -142,10 +142,10 @@
                                           </div>
                                                        <input type="submit" value="Thêm NCC">
                                     </div>
-                                        
+
                                     </form>
-                                </div> 
-          
+                                </div>
+
       </div>
                             </c:if>
 <!--Main Navigation-->
@@ -170,9 +170,9 @@
             </button>
         </div>
         <form action="searchSupplier" method="get">
-                           <input type="search" name ="search" placeholder="Search ..." class="form-control" style="height: 100%" >                                 
+                           <input type="search" name ="search" placeholder="Search ..." class="form-control" style="height: 100%" >
                                                             </form>
-       
+
     </div>
     <div class="author-logout" style="position: relative;">
         <i class="bi bi-person"></i>
@@ -197,7 +197,7 @@
                         </li>
                     </ul>
             </div>
-                
+
 
                 <c:if test="${error!=null }">
                     <div class="alert alert-danger" role="alert">
@@ -217,10 +217,10 @@
                                                             <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
                                                             </form>
                         </label>
-                                    
+
                                 </div></div><div class="col-sm-12 col-md-6">
                                     <div id="add-row_filter" style="display: flex" class="dataTables_filter">
-                                                   
+
                                         <form action="addSu" method="get">
                                             <input type="submit" value="Thêm NCC" class="btn btn-success">
                                         </form>
@@ -253,7 +253,7 @@
                                     <th rowspan="1" colspan="1">Hãng PP</th>
                                  <th rowspan="1" colspan="1">Action</th></tr>
                             </tfoot>
-                            <tbody>    
+                            <tbody>
                                  <c:forEach items="${listAllSupplier}" var="o">
 
                                 <tr>
@@ -271,14 +271,14 @@
                                          <button style="width: 90px;min-width: 0;height:36px;min-height: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                                 data-original-title="Edit">
                                              <a style="color: #000; text-align: center" href="deleteSupplier?id=${o.idSupplier}">Delete</a>
-                                                                
+
                                                                 </button>
 
                                     </td>
                                 </tr>
                             </c:forEach>
-                             
-                          
+
+
 
                             </tbody>
                         </table>

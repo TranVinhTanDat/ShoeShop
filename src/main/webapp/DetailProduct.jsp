@@ -79,6 +79,9 @@
             height: auto !important;
         }
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body class="skin-light">
 <jsp:include page="Menu.jsp"></jsp:include>
@@ -203,7 +206,7 @@
                     </div>
                     <hr>
 
-                    <form action="addCart?pid=${detail.id }" method="post">
+                    <form id="addToCartForm" action="addCart?pid=${detail.id }" method="post">
                         <div class="table-responsive mb-2">
                             <table class="table table-sm table-borderless">
                                 <tbody>
@@ -254,8 +257,8 @@
                         </div>
                         <div class="mt-1">
                             <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
-                            <button type="submit" class="btn btn-light btn-md mr-1 mb-2"><i
-                                    class="fas fa-shopping-cart pr-2"></i>Add to cart
+                            <button type="button" class="btn btn-light btn-md mr-1 mb-2" onclick="addToCart()">
+                                <i class="fas fa-shopping-cart pr-2"></i>Add to cart
                             </button>
                         </div>
                     </form>
@@ -423,6 +426,7 @@
 
 
 <jsp:include page="Footer.jsp"></jsp:include>
+
 <script>
     window.addEventListener("load", function loadAmountCart() {
         $.ajax({
@@ -434,6 +438,41 @@
             }
         });
     }, false);
+
+    function addToCart() {
+        var quantity = document.querySelector('#addToCartForm input[name="quantity"]').value;
+        var size = document.querySelector('#addToCartForm input[name="size"]:checked').value;
+
+        $.ajax({
+            url: "/shoestoreweb/addCart?pid=${detail.id}",
+            type: "post",
+            data: {
+                quantity: quantity,
+                size: size
+            },
+            success: function (responseData) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Đã thêm vào giỏ hàng!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                updateCartAmount();
+            }
+        });
+    }
+
+    function updateCartAmount() {
+        $.ajax({
+            url: "/shoestoreweb/loadAllAmountCart",
+            type: "get",
+            data: {},
+            success: function (responseData) {
+                document.getElementById("amountCart").innerHTML = responseData;
+            }
+        });
+    }
+
 
     function addReview(pID) {
         var cntReview = document.getElementById("form76").value;

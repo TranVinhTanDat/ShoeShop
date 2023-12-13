@@ -254,7 +254,7 @@
 
 
         <div class="row" style="margin-top:25px">
-            <h1 style="width:100%" id="nike">GIÀY NIKE</h1>
+            <h1 style="text-align:center; width:100%" id="nike">GIÀY NIKE</h1>
             <div class="col-md-12 text-center">
                 <div id="loadMoreContainer">
                     <button onclick="loadMoreNike()" class="btn btn-primary mt-4" style="margin-left: 1090px;">Load more</button>

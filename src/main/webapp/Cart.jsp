@@ -208,25 +208,25 @@
                                 </c:if>
                                 <tr>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
-                                        <div class="custom-header-cell">Sản Phẩm</div>
+                                        <div class="custom-header-cell">Sản phẩm</div>
                                     </th>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
-                                        <div class="custom-header-cell">Đơn Giá</div>
+                                        <div class="custom-header-cell">Đơn giá</div>
                                     </th>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
-                                        <div class="custom-header-cell">Màu Sắc</div>
+                                        <div class="custom-header-cell">Màu sắc</div>
                                     </th>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
                                         <div class="custom-header-cell">Delivery</div>
                                     </th>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
-                                        <div class="custom-header-cell">Kích Thước</div>
+                                        <div class="custom-header-cell">Kích thước</div>
                                     </th>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
-                                        <div class="custom-header-cell">Số Lượng</div>
+                                        <div class="custom-header-cell">Số lượng</div>
                                     </th>
                                     <th scope="col" class="custom-border-0 custom-bg-light">
-                                        <div class="custom-header-cell">Xóa</div>
+                                        <div class="custom-header-cell"></div>
                                     </th>
                                 </tr>
                                 </thead>
@@ -280,14 +280,7 @@
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thành tiền</div>
 
                         <div class="p-4">
-                            <ul class="list-unstyled mb-4" id="contentTotalMoney">
-                                <!--  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền hàng</strong><strong>100 $</strong></li>
-                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Phí vận chuyển</strong><strong>Free ship</strong></li>
-                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">VAT</strong><strong>5 $</strong></li>
-                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng thanh toán</strong>
-                                     <h5 class="font-weight-bold">110 $</h5>
-                                 </li> -->
-                            </ul>
+                            <ul class="list-unstyled mb-4" id="contentTotalMoney"></ul>
                             <a href="order" class="btn btn-success rounded-pill py-2 btn-block text-white"> Đặt hàng</a>
                         </div>
                     </div>
@@ -311,7 +304,7 @@
     function loadTotalMoney() {
         $.ajax({
             url: "/shoestoreweb/totalMoneyCart",
-            type: "get", //send it through get method
+            type: "get",
             data: {},
             success: function (responseData) {
                 document.getElementById("contentTotalMoney").innerHTML = responseData;
@@ -322,7 +315,7 @@
     window.addEventListener("load", function loadAmountCart() {
         $.ajax({
             url: "/shoestoreweb/loadAllAmountCart",
-            type: "get", //send it through get method
+            type: "get",
             data: {},
             success: function (responseData) {
                 document.getElementById("amountCart").innerHTML = responseData;
