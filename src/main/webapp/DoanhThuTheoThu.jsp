@@ -2,6 +2,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+    <%
+    
+var a = request.getSession().getAttribute("acc");
+if(a == null)
+{
+request.getSession().setAttribute("page", "doanhThuTheoThu");
+String redirectURL = "Login.jsp";
+response.sendRedirect(redirectURL);
+}
+%>
 <head>
     <meta charset="ISO-8859-1">
     <title>Statistic</title>

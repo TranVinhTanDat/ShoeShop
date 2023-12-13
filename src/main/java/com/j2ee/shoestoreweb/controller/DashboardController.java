@@ -25,12 +25,14 @@ public class DashboardController extends HttpServlet {
         int uID;
         DAO dao = new DAO();
         if (a == null) {
+            request.getSession().setAttribute("page", "admin");
             response.sendRedirect("login");
             return;
         }
         uID = a.getId();
         int checkIsAdmin = dao.checkAccountAdmin(uID);
         if (checkIsAdmin == 0) {
+            request.getSession().setAttribute("page", "admin");
             response.sendRedirect("login");
             return;
         }

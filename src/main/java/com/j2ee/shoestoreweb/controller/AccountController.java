@@ -69,7 +69,18 @@ public class AccountController extends HttpServlet {
     protected void processViewAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
-       
+                 HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("acc");
+               if (a == null) {
+            request.getSession().setAttribute("page", "managerAccount");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "managerAccount");
+            response.sendRedirect("login");
+            return;
+        }
         List<Account> list = dao.getAllAccount();
         request.setAttribute("listAllAccount", list);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
