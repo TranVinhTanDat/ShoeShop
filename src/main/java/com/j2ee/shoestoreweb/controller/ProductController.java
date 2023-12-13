@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductController", urlPatterns = {"/manager", "/add", "/edit", "/delete"})
+@WebServlet(name = "ProductController", urlPatterns = {"/managerProduct", "/add", "/edit", "/delete","/searchProduct"})
 public class ProductController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +29,11 @@ public class ProductController extends HttpServlet {
             return;
         }
 
-        int id = a.getId();
+        int id;
+        if(a.getIsSell() == 0)
+            id = 1;
+        else
+            id = 0;
         String index = request.getParameter("index");
         if (index == null) {
             index = "1";
@@ -52,7 +56,7 @@ public class ProductController extends HttpServlet {
 
         String action = request.getServletPath();
 
-        if ("/manager".equals(action)) {
+        if ("/managerProduct".equals(action)) {
             request.getRequestDispatcher("QuanLySanPham.jsp").forward(request, response);
         } else if ("/add".equals(action)) {
             String pname = request.getParameter("name");
@@ -70,7 +74,7 @@ public class ProductController extends HttpServlet {
 
             dao.insertProduct(pname, pimage, pprice, ptitle, pdescription, pcategory, id, pmodel, pcolor, pdelivery, pimage2, pimage3, pimage4);
             request.setAttribute("mess", "Product Added!");
-            request.getRequestDispatcher("manager").forward(request, response);
+            request.getRequestDispatcher("managerProduct").forward(request, response);
         } else if ("/edit".equals(action)) {
             String pid = request.getParameter("id");
             String pname = request.getParameter("name");
@@ -88,7 +92,7 @@ public class ProductController extends HttpServlet {
 
             dao.editProduct(pname, pimage, pprice, ptitle, pdescription, pcategory, pmodel, pcolor, pdelivery, pimage2, pimage3, pimage4, pid);
             request.setAttribute("mess", "Edited!!!!");
-            request.getRequestDispatcher("manager").forward(request, response);
+            request.getRequestDispatcher("managerProduct").forward(request, response);
         } else if ("/delete".equals(action)) {
             String pid = request.getParameter("pid");
             dao.deleteCartByProductID(pid);
@@ -96,7 +100,15 @@ public class ProductController extends HttpServlet {
             dao.deleteSoLuongDaBanByProductID(pid);
             dao.deleteProduct(pid);
             request.setAttribute("mess", "Deleted!");
-            request.getRequestDispatcher("manager").forward(request, response);
+            request.getRequestDispatcher("managerProduct").forward(request, response);
+        }
+        else if("/searchProduct".equals(action)){
+            String name = request.getParameter("search");
+            list = dao.SearchProduct(name);
+            request.setAttribute("tag", 1);
+            request.setAttribute("endPage", 5);
+            request.setAttribute("listP", list);
+            request.getRequestDispatcher("QuanLySanPham.jsp").forward(request, response);
         }
     }
 

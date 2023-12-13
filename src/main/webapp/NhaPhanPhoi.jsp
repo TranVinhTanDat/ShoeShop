@@ -17,7 +17,9 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+  <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -43,11 +45,12 @@
     <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -99,8 +102,52 @@
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     }</style>
 </head>
-<body>
-
+<body style="position: relative">
+  <c:if test="${addSu != null }" >
+      <div style="position: fixed;width: 100%; height: 100%; z-index: 1000; display: flex;
+           background-color: rgba(144, 189, 166, 0.9); justify-content: center">
+          
+           <div class="card-header" style="background: aliceblue; display: flex; position: absolute;top: 3%;width: 50%;">
+               <div>
+                   <a style="position: absolute ;top: 0;
+    right: 0;
+    padding: 6px 14px;
+    font-size: 20px;
+    color: red; text-decoration: none" href="managerSupplier" >X</a>
+                   
+               </div>
+                                    <form action="addSupplierYour" method="post" >
+                                        <input type="text" style="visibility: hidden" name = "id" value="${accEdit.id}">
+                                        <div class="card-body">      
+                                             <h1 class="card-title" style="text-align: center">Thêm nhà cung cấp</h1>
+                                          <div class="row">
+                                              <div class="col-md-12" style="font-size: 18px">
+                                                  <div style="" class="form-group form-group-default">
+                                                      <label style="line-height: 36px;" >Tên NCC</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="name" value="" required="required"><br/>
+                                                      <label style="line-height: 36px;" >SĐT</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="sdt" value="" required="required"><br/>
+                                                       <label style="line-height: 36px;" >Email</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="email" value="" required="required"><br/>
+                                                      <label style="line-height: 36px;" >Địa chỉ</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="address" value="" required="required"><br/>
+                                                      <label style="line-height: 36px;" >Hãng PP</label>
+                                                      <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                                          <option value="1">GIAY ADIDAS</option>
+                                                          <option value="2">GIAY NIKE</option>
+                                                          <option value="3">GIAY BITIS</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                                       <input type="submit" value="Thêm NCC">
+                                    </div>
+                                        
+                                    </form>
+                                </div> 
+          
+      </div>
+                            </c:if>
 <!--Main Navigation-->
 <header>
     <jsp:include page="LeftAdmin.jsp"></jsp:include>
@@ -115,23 +162,42 @@
         <!--Section: Quan Ly tai Khoan-->
         <section class="mb-4">
             <div class="card">
-                <div class="card-header py-3 row">
-                    <div class="col-sm-3">
-                        <h5 class="mb-0 text-left text-primary" id="">
-                            <strong>Quản lý nhà cung cấp</strong>
-                        </h5>
-                    </div>
-
-                    <div class="col-sm-9 text-right">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                class="material-icons">&#xE147;</i></a>
-
-                        <form action="xuatExcelSupplierControl" method="get">
-                            <button type="submit" class="mb-0 text-center btn btn-primary">Xuất file Excel</button>
-                        </form>
-                    </div>
-
-                </div>
+                      <div class="content-slider_bar" style="width: 1110px">
+    <div class="input-group">
+        <div class="input-group-prepend rounded" style="height: 100%">
+            <button type="submit" class="btn btn-search pr-1" style="padding: 4px">
+                <i class="rounded bi bi-search"></i>
+            </button>
+        </div>
+        <form action="searchSupplier" method="get">
+                           <input type="search" name ="search" placeholder="Search ..." class="form-control" style="height: 100%" >                                 
+                                                            </form>
+       
+    </div>
+    <div class="author-logout" style="position: relative;">
+        <i class="bi bi-person"></i>
+        <div class="log-out" ><a href="/Orchestra/user/logout.php">Log Out</a>
+            <span></span>
+        </div>
+    </div>
+</div>
+            <div class="page-header">
+                <h4 class="page-title m-1">Dữ liệu</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="bi bi-house"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="bi bi-arrow-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Nhà cung cấp</a>
+                        </li>
+                    </ul>
+            </div>
+                
 
                 <c:if test="${error!=null }">
                     <div class="alert alert-danger" role="alert">
@@ -143,23 +209,52 @@
                             ${mess}
                     </div>
                 </c:if>
-
+ <div class="row m-2">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="add-row_length">
+                                      <label>Search:
+                                                    <form action="searchSupplier" method="get">
+                                                            <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+                                                            </form>
+                        </label>
+                                    
+                                </div></div><div class="col-sm-12 col-md-6">
+                                    <div id="add-row_filter" style="display: flex" class="dataTables_filter">
+                                                   
+                                        <form action="addSu" method="get">
+                                            <input type="submit" value="Thêm NCC" class="btn btn-success">
+                                        </form>
+                                                      <form action="xuatExcelSupplierControl" method="get">
+                                                          <button  type="submit" style="height: 38px;min-height: 0;width: 150px;min-width: 0;background-color: #1e517c !important;
+" class="mb-0 text-center btn btn-primary"> Xuất Excel</button>
+                        </form>
+                    </div>
+                    </div>
+                        </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover text-nowrap">
-                            <thead>
-                            <tr style="background-color: #007bff; color: #fff;">
-                                <th scope="col">ID</th>
-                                <th scope="col">Tên nhà cung cấp</th>
-                                <th scope="col">Số điện thoại</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Địa chỉ</th>
-                                <th scope="col">Phân phối cho</th>
-                                <th scope="col">Actions</th>
-                            </tr>
+                          <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
+                        <thead>
+                                <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">ID</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tên NCC</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">SĐT</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Email</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Địa chỉ</th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Hãng PP</th>
+                                 <th style="width: 100px;" class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th>
+                                </tr>
                             </thead>
-                            <tbody>
-                            <c:forEach items="${listAllSupplier}" var="o">
+                            <tfoot>
+                                <tr><th rowspan="1" colspan="1">ID</th><th rowspan="1" colspan="1">Tên NCC</th>
+                                    <th rowspan="1" colspan="1">SĐT</th>
+                                    <th rowspan="1" colspan="1">Email</th>
+                                    <th rowspan="1" colspan="1">Địa chỉ</th>
+                                    <th rowspan="1" colspan="1">Hãng PP</th>
+                                 <th rowspan="1" colspan="1">Action</th></tr>
+                            </tfoot>
+                            <tbody>    
+                                 <c:forEach items="${listAllSupplier}" var="o">
 
                                 <tr>
                                     <td>${o.idSupplier}</td>
@@ -173,19 +268,21 @@
                                         </c:if>
                                     </c:forEach>
                                     <td>
-                                        <a href="deleteSupplier?id=${o.idSupplier}">
-                                            <button type="button" class="btn btn-danger"><i class="material-icons"
-                                                                                            data-toggle="tooltip"
-                                                                                            title="Delete">&#xE872;</i>
-                                            </button>
-                                        </a>
+                                         <button style="width: 90px;min-width: 0;height:36px;min-height: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                                                data-original-title="Edit">
+                                             <a style="color: #000; text-align: center" href="deleteSupplier?id=${o.idSupplier}">Delete</a>
+                                                                
+                                                                </button>
+
                                     </td>
                                 </tr>
                             </c:forEach>
-
+                             
+                          
 
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

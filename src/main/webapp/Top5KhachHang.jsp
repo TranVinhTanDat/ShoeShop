@@ -35,6 +35,7 @@
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -180,8 +181,6 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Free_3.8.1/js/mdb.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-
-
 <script type="text/javascript"
         src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
 <!-- MDB -->

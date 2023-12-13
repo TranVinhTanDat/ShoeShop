@@ -138,7 +138,7 @@ public class StatisticController extends HttpServlet {
         request.setAttribute("listAllAccount", listAllAccount);
         request.setAttribute("listTop5KhachHang", listTop5KhachHang);
 //        request.getRequestDispatcher("ManagerAccount.jsp").forward(request, response);
-        request.getRequestDispatcher("Top5KhachHang.jsp").forward(request, response);
+        request.getRequestDispatcher("Top10SanPhamBanChay.jsp").forward(request, response);
     }
 
     protected void processTop5StaffRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -152,7 +152,7 @@ public class StatisticController extends HttpServlet {
         request.setAttribute("listAllAccount", listAllAccount);
         request.setAttribute("listTop5NhanVien", listTop5NhanVien);
 
-        request.getRequestDispatcher("Top5NhanVien.jsp").forward(request, response);
+        request.getRequestDispatcher("Top10SanPhamBanChay.jsp").forward(request, response);
     }
 
     protected void processTop10ProductRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

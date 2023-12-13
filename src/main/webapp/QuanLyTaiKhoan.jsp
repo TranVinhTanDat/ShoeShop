@@ -52,6 +52,7 @@
         body {
             margin: 0;
             padding: 0;
+             font-family: Roboto,sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -61,6 +62,7 @@
           href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.8.1/compiled.min.css">
     <link rel="stylesheet" type="text/css"
           href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>body {
         background-color: #fbfbfb;
     }
@@ -103,8 +105,47 @@
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     }</style>
 </head>
-<body>
-
+<body style="position: relative" >
+      <c:if test="${accEdit != null }" >
+      <div style="position: fixed;width: 100%; height: 100%; z-index: 1000; display: flex;
+           background-color: rgba(144, 189, 166, 0.9); justify-content: center">
+          
+           <div class="card-header" style="background: aliceblue; display: flex; position: absolute;top: 30%">
+               <div>
+                   <a style="position: absolute ;top: 0;
+    right: 0;
+    padding: 6px 14px;
+    font-size: 20px;
+    color: red; text-decoration: none" href="managerAccount" >X</a>
+                   
+               </div>
+                                    <form action="editAccount" method="post" >
+                                        <input type="text" style="visibility: hidden" name = "id" value="${accEdit.id}">
+                                        <div class="card-body">      
+                                             <h1 class="card-title" style="text-align: center">Sửa đổi thông tin tài khoản</h1>
+                                          <div class="row">
+                                              <div class="col-md-12" style="font-size: 18px">
+                                                  <div style="display: flex;" class="form-group form-group-default">
+                                                      <label style="line-height: 36px;" >Tên người dùng</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="name" value="${accEdit.user}" required="required"><br/>
+                                                      <label style="line-height: 36px;" >Mật khẩu</label>
+                                                      <input style="margin-right: 10px" type="text" class="form-control" name="pass" value="${accEdit.pass}" required="required"><br/>
+                                                       <label style="line-height: 36px;" >Vai trò</label>
+                                                      <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                                          <option value="1">Người bán hàng</option>
+                                                          <option value="0">Người quản lý</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                                       <input type="submit" value="Sửa tài khoản">
+                                    </div>
+                                        
+                                    </form>
+                                </div> 
+          
+      </div>
+                            </c:if>
 <!--Main Navigation-->
 <header>
     <jsp:include page="LeftAdmin.jsp"></jsp:include>
@@ -115,6 +156,7 @@
 
 <!--Main layout-->
 <main>
+
     <div class="container pt-4">
 
         <!--Section: Quan Ly tai Khoan-->
@@ -127,7 +169,10 @@
                 <i class="rounded bi bi-search"></i>
             </button>
         </div>
-        <input type="text" placeholder="Search ..." class="form-control" style="height: 100%" >
+        <form action="searchAccount" method="get">
+                           <input type="search" name ="search" placeholder="Search ..." class="form-control" style="height: 100%" >                                 
+                                                            </form>
+       
     </div>
     <div class="author-logout" style="position: relative;">
         <i class="bi bi-person"></i>
@@ -183,12 +228,17 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="dataTables_length" id="add-row_length">
                                     <label>Show
-                                        <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                       <form action="filterAccount" method="get" >
+                                              <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
                                             <option value="10">10</option><option value="25">25</option><option value="50">50</option>
-                                            <option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6">
+                                            <option value="100">100</option>
+                                            <input style="width: 50px" type="submit"  value="lọc"   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+                                              </select>
+                                            
+                                        </form>entries</label></div></div><div class="col-sm-12 col-md-6">
                                                 <div id="add-row_filter" class="dataTables_filter">
                                                     <label>Search:
-                                                    <form action="" method="post">
+                                                    <form action="searchAccount" method="get">
                                                             <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
                                                             </form>
                         </label>
@@ -223,16 +273,16 @@
                                            <td>Người bán hàng</td>
                                        </c:if>
                                             <c:if test="${o.isSell == 0 }">
-                                           <td>Người mua hàng</td>
+                                           <td>Người quản lý</td>
                                        </c:if>
                                         
                                          <td>${o.email}</td>
                                          <td>
                                            <div class="form-button-action">
                                                                 
-                                                                <button type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                               <button style="width: 80px;min-width: 0 ;height:36px;min-height: 0 ;background-color: aqua !important;" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                                 data-original-title="Edit">
-                                                                    <a href="deleteAccount?id=${o.id}">edit</a>
+                                                                    <a href="editAcc?id=${o.id}">edit</a>
                                                                 
                                                                 </button>
                                                 
@@ -241,7 +291,7 @@
                                        </td>
                                    </tr>  
                                     </c:forEach>
-                                    
+                          
 
                             </tbody>
                         </table>
@@ -328,5 +378,6 @@
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <!-- Custom scripts -->
 <script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>

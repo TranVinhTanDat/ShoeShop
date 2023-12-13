@@ -55,6 +55,15 @@ public class DAO {
         }
         return list;
     }
+    public Account getAcc(String id){
+        List<Account> list = getAllAccount();
+        for(Account value : list){
+            if(value.getId() == Integer.parseInt(id))
+                return value;
+        }
+        return null;
+        
+    }
 
     public List<Invoice> getAllInvoice() {
         List<Invoice> list = new ArrayList<>();
@@ -69,6 +78,104 @@ public class DAO {
         } catch (Exception e) {
         }
         return list;
+    }
+    public List<Invoice> searchInvoice(String name){
+        List<Invoice> list = getAllInvoice();
+        List<Invoice> result = new ArrayList<>();
+        try{
+            result = SearchIdInvoice(name, list);
+            if(result.size() == 0){
+             result = SearchMoneyInvoice(name, list);
+            }
+        }catch(Exception ex){
+            result = SearchNameCustomerInvoice(name,list);
+        }
+        return result;
+    }
+    public List<Account> searchAccount(String name){
+        List<Account> list = getAllAccount();
+        List<Account> result = new ArrayList<>();
+        result = searchName(name, list);
+        if(result.size() == 0){
+            result = searchEmail(name, list);
+        }
+        return result;
+    }
+    public List<Account> searchName(String name, List<Account> list){
+        List<Account> result = new ArrayList<>();
+        
+        
+        while(name.length() > 1 && result.size() == 0){
+        
+            for(Account value : list){
+                String n = value.getUser();
+                n = n.substring(0,name.length());
+                if(n.equals(name)){
+                    result.add(value);
+                }
+            }
+            if(result.size() == 0){
+                name = name.substring(0,name.length()-1);
+            }
+        }
+         return result;
+    }
+        public List<Account> searchEmail(String name, List<Account> list){
+        List<Account> result = new ArrayList<>();
+            for(Account value : list){
+                if(value.getEmail().equals(name)){
+                    result.add(value);
+                    break;
+                }
+            }
+         return result;
+    }
+    
+    public List<Invoice> SearchIdInvoice(String name, List<Invoice> list){
+         List<Invoice> result = new ArrayList<>();
+        for(Invoice value : list){
+            if(value.getMaHD() == Integer.parseInt(name)){
+                result.add(value);
+                break;
+            }
+        
+        }
+        return result;
+    
+    }
+    public List<Invoice> SearchNameCustomerInvoice(String name, List<Invoice> list){
+        List<Invoice> result = new ArrayList<>();
+        List<Account> listCu = getAllAccount();
+        int idCu = -1;
+        for(Account value : listCu){
+            if(value.getUser().contains(name)){
+                idCu = value.getId();
+                break;
+            }
+        }
+        
+        if(idCu != -1){
+            for(Invoice value : list){
+                if(value.getAccountID() == idCu){
+                    result.add(value);
+
+                }
+
+            }
+        }
+        return result;
+    
+    }
+     public List<Invoice> SearchMoneyInvoice(String name, List<Invoice> list){
+         List<Invoice> result = new ArrayList<>();
+        for(Invoice value : list){
+            if(value.getTongGia() == Integer.parseInt(name)){
+                result.add(value);
+            }
+        
+        }
+        return result;
+    
     }
 
     public int countAllProductBySellID(int sell_ID) {
@@ -511,7 +618,124 @@ public class DAO {
         }
         return list;
     }
+    public List<Product> SearchProduct(String name){
+        List<Product> list = getAllProduct();
+        List<Product> result = new ArrayList<>();
+        
+        try{
+            result = SearchProductId(name,list);
+            if(result.size() == 0){
+                result = SearchProductPrice(name, list);
+            }
+        }catch(Exception ex){
+         result = SearchProductName(name, list);
+        }
+        
+        return result;
+        
+    }
+    
+    public List<Supplier> SearchSupplier(String name){
+    List<Supplier> list = getAllSupplier();
+    List<Supplier> result = new ArrayList<>();
+        try{
+            result = SearchSupplierId(name,list);
+        }catch(Exception ex){
+            result = SearchSupplierName(name,list);
+        
+        }
+        return result;
+    }
+    public List<Supplier> SearchSupplierId(String name, List<Supplier> list){
+     List<Supplier> result = new ArrayList<>();
+        for(Supplier value : list){
+        
+            if(value.getIdSupplier() == Integer.parseInt(name)){
+                result.add(value);
+                break;
+            }
+        }
+        return result;
+        
+    }
+    public List<Supplier> SearchSupplierName(String name, List<Supplier> list){
+     List<Supplier> result = new ArrayList<>();
+        while(name.length()>1 && result.size() == 0){
+            for(Supplier value : list){
+                String n = value.getNameSupplier();
+                n = n.substring(0,name.length());
+                if(n.equals(name)){
+                    result.add(value);
 
+                }
+            }
+            if(result.size() == 0){
+
+                name = name.substring(0,name.length()-1);
+            }
+        
+        
+        }
+        return result;
+        
+    }
+    
+    
+    public List<Product> SearchProductId(String name, List<Product> list) {
+        List<Product> result = new ArrayList<>();
+        
+        for(Product value : list){
+        
+            if(value.getId() == Integer.parseInt(name)){
+                result.add(value);
+                break;
+            }
+        }
+        
+        return result;
+    }
+    
+        public List<Product> SearchProductName(String name, List<Product> list) {
+        List<Product> result = new ArrayList<>();
+        
+       while(name.length()>1 && result.size() == 0){
+        for(Product value : list){
+            String n = value.getName();
+            n = n.substring(0,name.length());
+            if(n.equals(name)){
+                result.add(value);
+                
+            }
+            
+        }
+        if(result.size() == 0){
+                name = name.substring(0,name.length()-1);
+            }
+       
+       }
+        
+        return result;
+    }
+        
+    public List<Product> SearchProductPrice(String name, List<Product> list) {
+        List<Product> result = new ArrayList<>();
+        
+       
+        for(Product value : list){
+        
+            double price = Double.parseDouble(name);
+            
+            if(value.getPrice() == price || ((value.getPrice()-1) < price && value.getPrice()+1 >price  )){
+                result.add(value);
+                
+            }
+        }
+       
+       
+        
+        return result;
+    }
+    
     public List<Product> getProductByIndex(int indexPage) {
         List<Product> list = new ArrayList<>();
         String query = "SELECT * FROM Product " +
@@ -1340,6 +1564,21 @@ public class DAO {
         } catch (Exception e) {
         }
     }
+    public void AddSupplier(Supplier su) {
+        String query = "INSERT INTO Supplier (nameSupplier, phoneSupplier, emailSupplier, addressSupplier, cateID) " +
+                "VALUES (?, ?, ?, ?, ?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, su.getNameSupplier());
+            ps.setString(2, su.getPhoneSupplier());
+            ps.setString(3, su.getEmailSupplier());
+            ps.setString(4, su.getAddressSupplier());
+            ps.setString(5, su.getCateID()+"");
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
     private static java.sql.Date getCurrentDate() {
         java.util.Date today = new java.util.Date();
@@ -1441,6 +1680,29 @@ public class DAO {
             ps.setString(2, password);
             ps.setString(3, email);
             ps.setInt(4, uID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+        public void UpdateAccount(Account acc) {
+        String query = "UPDATE Account "
+                + "SET user = ?, "
+                + "pass = ?, "
+                + "isSell = ?, "
+                + "isAdmin = ?, "
+                
+                + "email = ? "
+                + "WHERE uID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, acc.getUser());
+            ps.setString(2, acc.getPass());
+            ps.setString(3, acc.getIsSell()+"");
+            ps.setString(4, acc.getIsAdmin()+"");
+            ps.setString(5, acc.getEmail());
+            ps.setInt(6, acc.getId());
             ps.executeUpdate();
         } catch (Exception e) {
         }
