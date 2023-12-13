@@ -148,6 +148,10 @@
         <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up
             New Account
         </button>
+        <hr>
+        <a href="forgotPassword"><button class="btn btn-primary btn-block" type="button" ><i class="fas fa-user-plus"></i> Forgot password
+        </button>
+        </a>
     </form>
 
     <form action="signup" method="post" class="form-signup">

@@ -24,7 +24,7 @@ public class CategoryShopControl extends HttpServlet {
         List<Product> list = dao.getProductByCID(cateID);
         //in list p day
         PrintWriter out = response.getWriter();
-        out.println("<div class=\"product-container\">"); // Mở thẻ div mới để chứa các card sản phẩm
+        out.println("<div class=\"product-container\" >"); // Mở thẻ div mới để chứa các card sản phẩm
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
             out.println("    <div class=\"product\" style=\"height: 480px;\">");
@@ -57,6 +57,7 @@ public class CategoryShopControl extends HttpServlet {
             out.println("</div>");
         }
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
+    }
 
 //        List<Category> listC = dao.getAllCategory();
 //        Product last = dao.getLast();
@@ -68,7 +69,7 @@ public class CategoryShopControl extends HttpServlet {
 //        request.setAttribute("p", last);
 //        request.setAttribute("tag", cateID);
 //        request.getRequestDispatcher("Home.jsp").forward(request, response);
-    }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
