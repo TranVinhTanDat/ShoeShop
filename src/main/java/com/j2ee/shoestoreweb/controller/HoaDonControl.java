@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,18 @@ public class HoaDonControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
-       
-
-        
-
+         HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("acc");
+        if (a == null) {
+            request.getSession().setAttribute("page", "hoaDon");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "hoaDon");
+            response.sendRedirect("login");
+            return;
+        }
         String action = request.getServletPath();
         if ("/hoaDon".equals(action)) {
              DAO dao = new DAO();

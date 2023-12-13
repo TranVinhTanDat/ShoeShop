@@ -24,7 +24,13 @@ public class ProductController extends HttpServlet {
 
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-        if (a == null) {
+  if (a == null) {
+            request.getSession().setAttribute("page", "managerProduct");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "managerProduct");
             response.sendRedirect("login");
             return;
         }
@@ -55,10 +61,14 @@ public class ProductController extends HttpServlet {
         request.setAttribute("listP", list);
 
         String action = request.getServletPath();
-
         if ("/managerProduct".equals(action)) {
+               
+             
             request.getRequestDispatcher("QuanLySanPham.jsp").forward(request, response);
-        } else if ("/add".equals(action)) {
+        }
+        
+        
+        else if ("/add".equals(action)) {
             String pname = request.getParameter("name");
             String pimage = request.getParameter("image");
             String pimage2 = request.getParameter("image2");

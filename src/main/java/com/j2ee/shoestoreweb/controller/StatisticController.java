@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -73,6 +74,18 @@ public class StatisticController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
 
+        HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("acc");
+  if (a == null) {
+            request.getSession().setAttribute("page", "doanhThuTheoThang");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "doanhThuTheoThang");
+            response.sendRedirect("login");
+            return;
+        }
         DAO dao = new DAO();
         double totalMoneyMonth1 = dao.totalMoneyMonth(1);
         double totalMoneyMonth2 = dao.totalMoneyMonth(2);
@@ -106,7 +119,18 @@ public class StatisticController extends HttpServlet {
     protected void processRevenueInWeekRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
+        HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("acc");
+  if (a == null) {
+            request.getSession().setAttribute("page", "doanhThuTheoThu");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "doanhThuTheoThu");
+            response.sendRedirect("login");
+            return;
+        }
         DAO dao = new DAO();
         double totalMoney1 = dao.totalMoneyDay(1);
         double totalMoney2 = dao.totalMoneyDay(2);
@@ -129,7 +153,21 @@ public class StatisticController extends HttpServlet {
 
     protected void processTop5CustomerRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
+        
+                HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("acc");
+  if (a == null) {
+            request.getSession().setAttribute("page", "top10");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "top10");
+            response.sendRedirect("login");
+            return;
+        }
+        
         DAO dao = new DAO();
 
         List<Account> listAllAccount = dao.getAllAccount();
@@ -157,7 +195,18 @@ public class StatisticController extends HttpServlet {
 
     protected void processTop10ProductRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+                HttpSession session = request.getSession();
+        Account a = (Account) session.getAttribute("acc");
+  if (a == null) {
+            request.getSession().setAttribute("page", "top10");
+            response.sendRedirect("login");
+            return;
+        }
+        if (a.getIsAdmin() == 0) {
+            request.getSession().setAttribute("page", "top10");
+            response.sendRedirect("login");
+            return;
+        }
 
         DAO dao = new DAO();
         List<Product> listAllProduct = dao.getAllProduct();

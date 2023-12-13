@@ -62,8 +62,24 @@ public class LoginControl extends HttpServlet {
 
             response.addCookie(u);//luu u va p len Chrome
             response.addCookie(p);
-
-            response.sendRedirect("home");
+//           
+            String role = request.getSession().getAttribute("page").toString()+"";
+            
+            if(role.equals("")){
+                if(a.getIsAdmin() == 1){
+                 response.sendRedirect("admin");
+                }else{
+                    response.sendRedirect("home");
+                }
+            }else{
+            
+                if(a.getIsAdmin() == 1){
+                 response.sendRedirect(role);
+                }else{
+                    response.sendRedirect("home");
+                }
+            }
+           
         }
     }
 }

@@ -2,6 +2,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+        <%
+    
+var a = request.getSession().getAttribute("acc");
+if(a == null)
+{
+request.getSession().setAttribute("page", "top10");
+String redirectURL = "Login.jsp";
+response.sendRedirect(redirectURL);
+}
+%>
 <head>
     <meta charset="ISO-8859-1">
     <title>Statistic</title>
@@ -161,7 +171,7 @@
                         <h1 style="color: red; text-align: center">10 Sản phẩm bán chạy nhất</h1>
                                         <div class="row py-3 justify-content-end">
                     <div class="col-sm-12 text-center">
-                        <form action="#" method="get">
+                        <form action="xuatExcelTop10ProductControl" method="get">
                             <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
                         </form>
                     </div>
@@ -210,11 +220,12 @@
                             </tbody>
                         </table>
                     </c:if>
+                        
                          <c:if test="${listTop5KhachHang != null}">
                               <h1 style="color: red; text-align: center">5 Khách hàng chi tiêu nhiều nhất</h1>
                                         <div class="row py-3 justify-content-end">
                     <div class="col-sm-12 text-center">
-                        <form action="#" method="get">
+                        <form action="xuatExcelTop5CustomerControl" method="get">
                             <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
                         </form>
                     </div>
@@ -260,7 +271,7 @@
                           <h1 style="color: red; text-align: center">5 Nhân viên bán hàng xuất sắc</h1>
                                         <div class="row py-3 justify-content-end">
                     <div class="col-sm-12 text-center">
-                        <form action="#" method="get">
+                        <form action="xuatExcelTop5EmployeeControl" method="get">
                             <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
                         </form>
                     </div>
