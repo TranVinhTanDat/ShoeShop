@@ -108,6 +108,7 @@
             transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
 
             /* Hiệu ứng hover */
+
             &:hover {
                 color: red; /* Thay đổi màu khi di chuột qua */
                 transform: scale(1.1); /* Phóng to khi di chuột qua */
@@ -239,7 +240,9 @@
                                                     <div class="custom-cell-content">
                                                         <img src="${p.image}" alt="" width="70" class="custom-img">
                                                         <div class="custom-text">
-                                                            <h5 class="custom-heading"><a href="#" class="custom-link">${p.name}</a></h5>
+                                                            <h5 class="custom-heading"><a href="#"
+                                                                                          class="custom-link">${p.name}</a>
+                                                            </h5>
                                                             <span class="custom-info"></span>
                                                         </div>
                                                     </div>
@@ -249,17 +252,22 @@
                                                 <td class="custom-cell">${p.delivery}</td>
                                                 <td class="custom-cell">${o.size}</td>
                                                 <td class="custom-cell">
-                                                    <a href="subAmountCart?productID=${o.productID}&amount=${o.amount}" class="custom-link">
+                                                    <a href="subAmountCart?productID=${o.productID}&amount=${o.amount}"
+                                                       class="custom-link">
                                                         <button class="custom-btn-subtract">-</button>
                                                     </a>
                                                     <span class="custom-amount">${o.amount}</span>
-                                                    <a href="addAmountCart?productID=${o.productID}&amount=${o.amount}" class="custom-link">
+                                                    <a href="addAmountCart?productID=${o.productID}&amount=${o.amount}"
+                                                       class="custom-link">
                                                         <button class="custom-btn-add">+</button>
                                                     </a>
                                                 </td>
                                                 <td class="custom-cell">
-                                                    <a href="deleteCart?productID=${o.productID}" class="custom-text-dark">
-                                                        <button type="button" class="custom-btn custom-btn-danger">Delete</button>
+                                                    <a href="deleteCart?productID=${o.productID}"
+                                                       class="custom-text-dark">
+                                                        <button type="button" class="custom-btn custom-btn-danger">
+                                                            Delete
+                                                        </button>
                                                     </a>
                                                 </td>
                                             </tr>

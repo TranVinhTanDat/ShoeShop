@@ -9,7 +9,7 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <% if(session.getAttribute("acc") == null) { %>
+                <% if (session.getAttribute("acc") == null) { %>
                 <!-- Nếu chưa đăng nhập -->
                 <li><a href="login"><i class="fa fa-sign-in"></i> Login</a></li>
                 <% } else { %>
@@ -55,7 +55,8 @@
                             <a class="btn btn-sm ml-3" href="managerCart">
                                 <i class="fa fa-shopping-cart" style="color: #e3e3e3; font-size: 25px"></i>
                                 <span style="font-size: 14px; color: #e3e3e3"></span>
-                                <b><span id="amountCart" class="badge badge-light" style="color:black; font-size: 12px;"></span></b>
+                                <b><span id="amountCart" class="badge badge-light"
+                                         style="color:black; font-size: 12px;"></span></b>
                             </a>
                         </form>
                     </div>

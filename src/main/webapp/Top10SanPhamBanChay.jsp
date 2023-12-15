@@ -2,15 +2,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-        <%
-    
-var a = request.getSession().getAttribute("acc");
-if(a == null)
-{
-request.getSession().setAttribute("page", "top10");
-String redirectURL = "Login.jsp";
-response.sendRedirect(redirectURL);
-}
+<%
+
+    var a = request.getSession().getAttribute("acc");
+    if (a == null) {
+        request.getSession().setAttribute("page", "top10");
+        String redirectURL = "Login.jsp";
+        response.sendRedirect(redirectURL);
+    }
 %>
 <head>
     <meta charset="ISO-8859-1">
@@ -27,10 +26,10 @@ response.sendRedirect(redirectURL);
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -65,7 +64,7 @@ response.sendRedirect(redirectURL);
         body {
             margin: 0;
             padding: 0;
-             font-family: Roboto,sans-serif;
+            font-family: Roboto, sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -136,7 +135,7 @@ response.sendRedirect(redirectURL);
             <div class="card" style="border: 1px solid #dee2e6; border-radius: 0.25rem;">
 
                 <div class="page-header" style="margin: 0">
-                <h4 class="page-title m-1">Dữ liệu</h4>
+                    <h4 class="page-title m-1">Dữ liệu</h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
                             <a href="#">
@@ -150,171 +149,230 @@ response.sendRedirect(redirectURL);
                             <a href="#">Top</a>
                         </li>
                     </ul>
-            </div>
-                <div style="" >
-                    <a href="top10" style="color: black; display: block; padding: 10px; background-color: green; font-size: 16px; margin-bottom: 10px"> =>10 Sản phẩm bán chạy nhất tháng</a>
-                    <a href="top5khachhang" style="color: black; display: block; padding: 10px; background-color: green; font-size: 16px; margin-bottom: 10px"> =>5 Khách hàng tiềm năng</a>
-                    <a href="top5nhanvien" style="color: black; display: block; padding: 10px; background-color: green; font-size: 16px">=>5 Nhân viên tiềm năng</a>
+                </div>
+                <div style="">
+                    <a href="top10"
+                       style="color: black; display: block; padding: 10px; background-color: green; font-size: 16px; margin-bottom: 10px">
+                        =>10 Sản phẩm bán chạy nhất tháng</a>
+                    <a href="top5khachhang"
+                       style="color: black; display: block; padding: 10px; background-color: green; font-size: 16px; margin-bottom: 10px">
+                        =>5 Khách hàng tiềm năng</a>
+                    <a href="top5nhanvien"
+                       style="color: black; display: block; padding: 10px; background-color: green; font-size: 16px">=>5
+                        Nhân viên tiềm năng</a>
                 </div>
 
 
                 <c:if test="${mess != null}">
-                    <div class="alert alert-success" role="alert" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
+                    <div class="alert alert-success" role="alert"
+                         style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                             ${mess}
                     </div>
                 </c:if>
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        
-                    <c:if test="${listTop10Product != null}">
-                        <h1 style="color: red; text-align: center">10 Sản phẩm bán chạy nhất</h1>
-                                        <div class="row py-3 justify-content-end">
-                    <div class="col-sm-12 text-center">
-                        <form action="xuatExcelTop10ProductControl" method="get">
-                            <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
-                        </form>
-                    </div>
-                </div>
-                        <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
-                        <thead>
+
+                        <c:if test="${listTop10Product != null}">
+                            <h1 style="color: red; text-align: center">10 Sản phẩm bán chạy nhất</h1>
+                            <div class="row py-3 justify-content-end">
+                                <div class="col-sm-12 text-center">
+                                    <form action="xuatExcelTop10ProductControl" method="get">
+                                        <button type="submit" class="btn btn-primary float-right"
+                                                style="background-color: #28a745; border-color: #28a745;">Xuất Excel
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <table id="add-row" class="display table table-striped table-hover dataTable" role="grid"
+                                   aria-describedby="add-row_info">
+                                <thead>
                                 <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">ID</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Hình ảnh</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tên</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Giá</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">SL Bán</th>
-                                
-                                
+                                    <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-sort="ascending" aria-label="Mã: activate to sort column descending"
+                                        style="width: 74.05px;">ID
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Hình ảnh
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Tên
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Giá
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">SL
+                                        Bán
+                                    </th>
+
+
                                 </tr>
-                            </thead>
-                            <tfoot>
-                                <tr><th rowspan="1" colspan="1">ID</th><th rowspan="1" colspan="1">Hình ảnh</th>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1">Hình ảnh</th>
                                     <th rowspan="1" colspan="1">Tên</th>
                                     <th rowspan="1" colspan="1">Giá</th>
                                     <th rowspan="1" colspan="1">SL Bán</th>
-                                 
-                            </tfoot>
-                            <tbody>    
-                          <c:forEach items="${listTop10Product}" var="t">
-                                <c:forEach items="${listAllProduct}" var="o">
-                                    <c:if test="${t.productID==o.id }">
-                                        <tr>
-                                            <td>${o.id}</td>
-                                            <td>
-                                                 <img src="${o.image}">
-                                                 
-                                              </td>
-                                            <td>
-                                                ${o.name}
-                                                
-                                            </td>
-                                            <td>${o.price} $</td>
-                                            <td>${t.soLuongDaBan }</td>
-                                        </tr>
-                                    </c:if>
-                                </c:forEach>
-                            </c:forEach>
-                          
 
-                            </tbody>
-                        </table>
-                    </c:if>
-                        
-                         <c:if test="${listTop5KhachHang != null}">
-                              <h1 style="color: red; text-align: center">5 Khách hàng chi tiêu nhiều nhất</h1>
-                                        <div class="row py-3 justify-content-end">
-                    <div class="col-sm-12 text-center">
-                        <form action="xuatExcelTop5CustomerControl" method="get">
-                            <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
-                        </form>
-                    </div>
-                </div>
-                        <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
-                        <thead>
+                                </tfoot>
+                                <tbody>
+                                <c:forEach items="${listTop10Product}" var="t">
+                                    <c:forEach items="${listAllProduct}" var="o">
+                                        <c:if test="${t.productID==o.id }">
+                                            <tr>
+                                                <td>${o.id}</td>
+                                                <td>
+                                                    <img src="${o.image}">
+
+                                                </td>
+                                                <td>
+                                                        ${o.name}
+
+                                                </td>
+                                                <td>${o.price} $</td>
+                                                <td>${t.soLuongDaBan }</td>
+                                            </tr>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:forEach>
+
+
+                                </tbody>
+                            </table>
+                        </c:if>
+
+                        <c:if test="${listTop5KhachHang != null}">
+                            <h1 style="color: red; text-align: center">5 Khách hàng chi tiêu nhiều nhất</h1>
+                            <div class="row py-3 justify-content-end">
+                                <div class="col-sm-12 text-center">
+                                    <form action="xuatExcelTop5CustomerControl" method="get">
+                                        <button type="submit" class="btn btn-primary float-right"
+                                                style="background-color: #28a745; border-color: #28a745;">Xuất Excel
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <table id="add-row" class="display table table-striped table-hover dataTable" role="grid"
+                                   aria-describedby="add-row_info">
+                                <thead>
                                 <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">Mã KH</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tên KH</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Email</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tổng chi tiêu</th>
-                                
-                                
+                                    <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-sort="ascending" aria-label="Mã: activate to sort column descending"
+                                        style="width: 74.05px;">Mã KH
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Tên KH
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Email
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Tổng chi tiêu
+                                    </th>
+
+
                                 </tr>
-                            </thead>
-                            <tfoot>
-                                <tr><th rowspan="1" colspan="1">Mã KH</th><th rowspan="1" colspan="1">Tên KH</th>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">Mã KH</th>
+                                    <th rowspan="1" colspan="1">Tên KH</th>
                                     <th rowspan="1" colspan="1">Email</th>
                                     <th rowspan="1" colspan="1">Tổng chi tiêu</th>
-                                 
-                            </tfoot>
-                            <tbody>    
-                           <c:forEach items="${listTop5KhachHang}" var="topCustomer">
-                                <c:forEach items="${listAllAccount}" var="account">
-                                    <c:if test="${topCustomer.userID == account.id && topCustomer.tongChiTieu != 0.0}">
-                                        <tr>
-                                            <td>${account.id}</td>
-                                            <td>${account.user}</td>
-                                            <td>${account.email}</td>
-                                            <td>${topCustomer.tongChiTieu}</td>
-                                        </tr>
-                                    </c:if>
-                                </c:forEach>
-                            </c:forEach>
-                          
 
-                            </tbody>
-                        </table>
-                    </c:if>
-                        
-                   
-                    <c:if test="${listTop5NhanVien != null}">
-                          <h1 style="color: red; text-align: center">5 Nhân viên bán hàng xuất sắc</h1>
-                                        <div class="row py-3 justify-content-end">
-                    <div class="col-sm-12 text-center">
-                        <form action="xuatExcelTop5EmployeeControl" method="get">
-                            <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
-                        </form>
-                    </div>
-                </div>
-                        <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
-                        <thead>
+                                </tfoot>
+                                <tbody>
+                                <c:forEach items="${listTop5KhachHang}" var="topCustomer">
+                                    <c:forEach items="${listAllAccount}" var="account">
+                                        <c:if test="${topCustomer.userID == account.id && topCustomer.tongChiTieu != 0.0}">
+                                            <tr>
+                                                <td>${account.id}</td>
+                                                <td>${account.user}</td>
+                                                <td>${account.email}</td>
+                                                <td>${topCustomer.tongChiTieu}</td>
+                                            </tr>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:forEach>
+
+
+                                </tbody>
+                            </table>
+                        </c:if>
+
+
+                        <c:if test="${listTop5NhanVien != null}">
+                            <h1 style="color: red; text-align: center">5 Nhân viên bán hàng xuất sắc</h1>
+                            <div class="row py-3 justify-content-end">
+                                <div class="col-sm-12 text-center">
+                                    <form action="xuatExcelTop5EmployeeControl" method="get">
+                                        <button type="submit" class="btn btn-primary float-right"
+                                                style="background-color: #28a745; border-color: #28a745;">Xuất Excel
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <table id="add-row" class="display table table-striped table-hover dataTable" role="grid"
+                                   aria-describedby="add-row_info">
+                                <thead>
                                 <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">Mã NV</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tên NV</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Email</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tổng bán hàng</th>
-                                
-                                
+                                    <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-sort="ascending" aria-label="Mã: activate to sort column descending"
+                                        style="width: 74.05px;">Mã NV
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Tên NV
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Email
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                        aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">
+                                        Tổng bán hàng
+                                    </th>
+
+
                                 </tr>
-                            </thead>
-                            <tfoot>
-                                <tr><th rowspan="1" colspan="1">Mã NV</th><th rowspan="1" colspan="1">Tên NV</th>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">Mã NV</th>
+                                    <th rowspan="1" colspan="1">Tên NV</th>
                                     <th rowspan="1" colspan="1">Email</th>
                                     <th rowspan="1" colspan="1">Tổng bán hàng</th>
-                                 
-                            </tfoot>
-                            <tbody>    
-                           <c:forEach items="${listTop5NhanVien}" var="topEmployee">
-                                <c:forEach items="${listAllAccount}" var="account">
-                                    <c:if test="${topEmployee.userID == account.id && topEmployee.tongBanHang != 0.0}">
-                                        <tr>
-                                            <td>${account.id}</td>
-                                            <td>${account.user}</td>
-                                            <td>${account.email}</td>
-                                            <td>${topEmployee.tongBanHang}</td>
-                                        </tr>
-                                    </c:if>
-                                </c:forEach>
-                            </c:forEach>
-                          
 
-                            </tbody>
-                        </table>
-                    </c:if>
-                          
-                        
-                        
-                    
+                                </tfoot>
+                                <tbody>
+                                <c:forEach items="${listTop5NhanVien}" var="topEmployee">
+                                    <c:forEach items="${listAllAccount}" var="account">
+                                        <c:if test="${topEmployee.userID == account.id && topEmployee.tongBanHang != 0.0}">
+                                            <tr>
+                                                <td>${account.id}</td>
+                                                <td>${account.user}</td>
+                                                <td>${account.email}</td>
+                                                <td>${topEmployee.tongBanHang}</td>
+                                            </tr>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:forEach>
+
+
+                                </tbody>
+                            </table>
+                        </c:if>
+
+
                     </div>
                 </div>
             </div>
@@ -322,7 +380,6 @@ response.sendRedirect(redirectURL);
         <!--Section: Quan Ly tai Khoan-->
     </div>
 </main>
-
 
 
 <script src="js/manager.js" type="text/javascript"></script>

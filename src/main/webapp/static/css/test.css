@@ -1,14 +1,17 @@
-.col-md-4{
+.col-md-4 {
     max-width: 25%;
 }
-.width-product{
+
+.width-product {
     max-width: 100%;
 
 }
-.nav-barTab{
+
+.nav-barTab {
     display: flex;
 }
-.nav-barTab li{
+
+.nav-barTab li {
     padding: 10px;
 }
 

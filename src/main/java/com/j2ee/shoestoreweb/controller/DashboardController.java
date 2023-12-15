@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -60,29 +61,29 @@ public class DashboardController extends HttpServlet {
 
         int allReview = dao.countAllReview();
         int allProduct = dao.countAllProduct();
-       
+
         double sumAllInvoice = dao.sumAllInvoice();
 
         List<Invoice> listAllInvoice = dao.getAllInvoice();
         List<Account> listAllAccount = dao.getAllAccount();
-        
+
         int countCustomer = 0;
         int countEmployee = 0;
-        for(Account value : listAllAccount){
-            if(value.getIsSell() == 0){
+        for (Account value : listAllAccount) {
+            if (value.getIsSell() == 0) {
                 countCustomer++;
-            }      else{
+            } else {
                 countEmployee++;
             }
         }
-        
+
         //doanh thu nam
         double money = 0;
-        for(Invoice value : listAllInvoice){
-        
+        for (Invoice value : listAllInvoice) {
+
             String s = value.getNgayXuat().toString();
             String temp[] = s.split("-");
-            if(Integer.parseInt(temp[0]) == 2023){
+            if (Integer.parseInt(temp[0]) == 2023) {
                 money += value.getTongGia();
             }
         }

@@ -3,14 +3,13 @@
 <!DOCTYPE html>
 <html>
 <%
-    
-var a = request.getSession().getAttribute("acc");
-if(a == null)
-{
-request.getSession().setAttribute("page", "doanhThuTheoThang");
-String redirectURL = "Login.jsp";
-response.sendRedirect(redirectURL);
-}
+
+    var a = request.getSession().getAttribute("acc");
+    if (a == null) {
+        request.getSession().setAttribute("page", "doanhThuTheoThang");
+        String redirectURL = "Login.jsp";
+        response.sendRedirect(redirectURL);
+    }
 %>
 <head>
     <meta charset="ISO-8859-1">
@@ -25,9 +24,9 @@ response.sendRedirect(redirectURL);
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -49,7 +48,7 @@ response.sendRedirect(redirectURL);
         body {
             margin: 0;
             padding: 0;
-            font-family: Roboto,sans-serif;
+            font-family: Roboto, sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -120,7 +119,7 @@ response.sendRedirect(redirectURL);
         <section class="mb-4" id="doanhThuThang">
             <div class="card">
                 <div class="page-header" style="margin: 0">
-                <h4 class="page-title m-1">Dữ liệu</h4>
+                    <h4 class="page-title m-1">Dữ liệu</h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
                             <a href="#">
@@ -134,7 +133,7 @@ response.sendRedirect(redirectURL);
                             <a href="#">Doanh thu</a>
                         </li>
                     </ul>
-            </div>
+                </div>
                 <h4 style="width: 100%;text-align: center">Doanh thu theo tháng</h4>
                 <div class="card-body">
                     <canvas id="horizontalBar"></canvas>
@@ -172,13 +171,13 @@ response.sendRedirect(redirectURL);
 new Chart(document.getElementById("horizontalBar"), {
     "type": "line",
     "data": {
-        "labels": ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8"
-        ,"Tháng 9","Tháng 10","Tháng 11","Tháng 12"],
+        "labels": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8"
+            , "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
         "datasets": [{
             "label": "Doanh thu $",
             "data": [${totalMoneyMonth1}, ${totalMoneyMonth2}, ${totalMoneyMonth3}, ${totalMoneyMonth4},
-     ${totalMoneyMonth5}, ${totalMoneyMonth6}, ${totalMoneyMonth7}, ${totalMoneyMonth8}, ${totalMoneyMonth9},
-     ${totalMoneyMonth10}, ${totalMoneyMonth11}, ${totalMoneyMonth12}],
+                ${totalMoneyMonth5}, ${totalMoneyMonth6}, ${totalMoneyMonth7}, ${totalMoneyMonth8}, ${totalMoneyMonth9},
+                ${totalMoneyMonth10}, ${totalMoneyMonth11}, ${totalMoneyMonth12}],
             "fill": false,
             "backgroundColor": ["#006400", "rgba(255, 159, 64, 0.2)",
                 "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",

@@ -2,15 +2,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-    <%
-    
-var a = request.getSession().getAttribute("acc");
-if(a == null)
-{
-request.getSession().setAttribute("page", "doanhThuTheoThu");
-String redirectURL = "Login.jsp";
-response.sendRedirect(redirectURL);
-}
+<%
+
+    var a = request.getSession().getAttribute("acc");
+    if (a == null) {
+        request.getSession().setAttribute("page", "doanhThuTheoThu");
+        String redirectURL = "Login.jsp";
+        response.sendRedirect(redirectURL);
+    }
 %>
 <head>
     <meta charset="ISO-8859-1">
@@ -25,10 +24,10 @@ response.sendRedirect(redirectURL);
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -49,7 +48,7 @@ response.sendRedirect(redirectURL);
         body {
             margin: 0;
             padding: 0;
-             font-family: Roboto,sans-serif;
+            font-family: Roboto, sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -118,8 +117,8 @@ response.sendRedirect(redirectURL);
         <!-- Section: Main chart -->
         <section class="mb-4" id="doanhThuThu">
             <div class="card">
-              <div class="page-header" style="margin: 0">
-                <h4 class="page-title m-1">Dữ liệu</h4>
+                <div class="page-header" style="margin: 0">
+                    <h4 class="page-title m-1">Dữ liệu</h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
                             <a href="#">
@@ -133,7 +132,7 @@ response.sendRedirect(redirectURL);
                             <a href="#">Doanh thu</a>
                         </li>
                     </ul>
-            </div>
+                </div>
                 <h4 style="width: 100%;text-align: center">Doanh thu theo thứ</h4>
                 <div class="card-body">
                     <canvas class="my-4 w-100" id="pieChart" height="380"></canvas>
@@ -172,7 +171,7 @@ var ctxP = document.getElementById("pieChart").getContext('2d');
 var myPieChart = new Chart(ctxP, {
     type: 'bar',
     data: {
-        
+
         labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         datasets: [{
             data: [${totalMoney2}, ${totalMoney3}, ${totalMoney4}, ${totalMoney5}, ${totalMoney6}, ${totalMoney7}, ${totalMoney1}],

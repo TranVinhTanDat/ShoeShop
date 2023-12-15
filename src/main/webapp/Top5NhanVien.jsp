@@ -35,7 +35,7 @@
         body {
             margin: 0;
             padding: 0;
-             font-family: Roboto,sans-serif;
+            font-family: Roboto, sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -105,20 +105,24 @@
         <section class="mb-4">
             <div class="card" style="border: 1px solid #dee2e6; border-radius: 0.25rem;">
 
-                <div class="card-header py-3" style="background-color: #007bff; color: #fff; border-bottom: 1px solid #dee2e6;">
+                <div class="card-header py-3"
+                     style="background-color: #007bff; color: #fff; border-bottom: 1px solid #dee2e6;">
                     <h5 class="mb-0 text-center"><strong>Danh sách Top 5 Nhân Viên Bán Hàng Xuất Sắc</strong></h5>
                 </div>
 
                 <div class="row py-3 justify-content-end">
                     <div class="col-sm-12 text-center">
                         <form action="exportTop5EmployeesToExcel" method="get">
-                            <button type="submit" class="btn btn-primary float-right" style="background-color: #28a745; border-color: #28a745;">Xuất Excel</button>
+                            <button type="submit" class="btn btn-primary float-right"
+                                    style="background-color: #28a745; border-color: #28a745;">Xuất Excel
+                            </button>
                         </form>
                     </div>
                 </div>
 
                 <c:if test="${mess != null}">
-                    <div class="alert alert-success" role="alert" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
+                    <div class="alert alert-success" role="alert"
+                         style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                             ${mess}
                     </div>
                 </c:if>
@@ -156,7 +160,6 @@
         <!--Section: Top 5 Nhân Viên Bán Hàng Xuất Sắc-->
     </div>
 </main>
-
 
 
 <script src="js/manager.js" type="text/javascript"></script>

@@ -17,7 +17,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -104,32 +104,32 @@
 <main>
     <div class="container pt-4">
 
-   <div class="cart_sta">
-       <h1 style="margin-bottom: 40px">Thống kê</h1>
-               <ul class="flexBlock">
-                    <li class="cart_customer">
-                            <span>Sản phẩm  </span>
-                            <span>${allProduct }</span>
-                    </li>
+        <div class="cart_sta">
+            <h1 style="margin-bottom: 40px">Thống kê</h1>
+            <ul class="flexBlock">
+                <li class="cart_customer">
+                    <span>Sản phẩm  </span>
+                    <span>${allProduct }</span>
+                </li>
 
-                    <li class="cart_music">
-                        <span>Khách hàng</span>
-                        <span>${countCustomer}</span>
-                    </li>
+                <li class="cart_music">
+                    <span>Khách hàng</span>
+                    <span>${countCustomer}</span>
+                </li>
 
-                    <li class="cart_sum">
-                        <span>Nhân viên</span>
-                        <span>${countEmployee}</span>
-                    </li>
-                   
-                    <li class="cart_sum">
-                        <span>Doanh thu</span>
-                        <span>${money}</span>
-                    </li>
-               </ul>
-            </div>
+                <li class="cart_sum">
+                    <span>Nhân viên</span>
+                    <span>${countEmployee}</span>
+                </li>
+
+                <li class="cart_sum">
+                    <span>Doanh thu</span>
+                    <span>${money}</span>
+                </li>
+            </ul>
+        </div>
         <!--Section: Statistics with subtitles-->
-<!--        <section>
+        <!--        <section>
             <div class="row" id="total">
                 <div class="col-xl-6 col-md-12 mb-4">
                     <div class="card">

@@ -11,10 +11,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductController", urlPatterns = {"/managerProduct", "/add", "/edit", "/delete","/searchProduct"})
+@WebServlet(name = "ProductController", urlPatterns = {"/managerProduct", "/add", "/edit", "/delete", "/searchProduct"})
 public class ProductController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -24,7 +25,7 @@ public class ProductController extends HttpServlet {
 
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-  if (a == null) {
+        if (a == null) {
             request.getSession().setAttribute("page", "managerProduct");
             response.sendRedirect("login");
             return;
@@ -36,7 +37,7 @@ public class ProductController extends HttpServlet {
         }
 
         int id;
-        if(a.getIsSell() == 0)
+        if (a.getIsSell() == 0)
             id = 1;
         else
             id = 0;
@@ -62,13 +63,10 @@ public class ProductController extends HttpServlet {
 
         String action = request.getServletPath();
         if ("/managerProduct".equals(action)) {
-               
-             
+
+
             request.getRequestDispatcher("QuanLySanPham.jsp").forward(request, response);
-        }
-        
-        
-        else if ("/add".equals(action)) {
+        } else if ("/add".equals(action)) {
             String pname = request.getParameter("name");
             String pimage = request.getParameter("image");
             String pimage2 = request.getParameter("image2");
@@ -111,8 +109,7 @@ public class ProductController extends HttpServlet {
             dao.deleteProduct(pid);
             request.setAttribute("mess", "Deleted!");
             request.getRequestDispatcher("managerProduct").forward(request, response);
-        }
-        else if("/searchProduct".equals(action)){
+        } else if ("/searchProduct".equals(action)) {
             String name = request.getParameter("search");
             list = dao.SearchProduct(name);
             request.setAttribute("tag", 1);

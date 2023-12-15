@@ -140,7 +140,8 @@
 
         <div class="form-group form-check">
             <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1" style="margin-left: 16px; margin-top: 1px;">Remember me</label>
+            <label class="form-check-label" for="exampleCheck1" style="margin-left: 16px; margin-top: 1px;">Remember
+                me</label>
         </div>
 
         <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
@@ -149,8 +150,9 @@
             New Account
         </button>
         <hr>
-        <a href="forgotPassword"><button class="btn btn-primary btn-block" type="button" ><i class="fas fa-user-plus"></i> Forgot password
-        </button>
+        <a href="forgotPassword">
+            <button class="btn btn-primary btn-block" type="button"><i class="fas fa-user-plus"></i> Forgot password
+            </button>
         </a>
     </form>
 

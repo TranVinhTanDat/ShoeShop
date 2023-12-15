@@ -6,6 +6,7 @@ import com.j2ee.shoestoreweb.entity.Account;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+
 import java.io.IOException;
 
 @WebServlet(name = "LoginControl", urlPatterns = {"/login"})
@@ -66,21 +67,21 @@ public class LoginControl extends HttpServlet {
             String role = request.getSession().getAttribute("page") != null ? request.getSession().getAttribute("page").toString() : "";
 
 
-            if(role.equals("")){
-                if(a.getIsAdmin() == 1){
-                 response.sendRedirect("admin");
-                }else{
+            if (role.equals("")) {
+                if (a.getIsAdmin() == 1) {
+                    response.sendRedirect("admin");
+                } else {
                     response.sendRedirect("home");
                 }
-            }else{
-            
-                if(a.getIsAdmin() == 1){
-                 response.sendRedirect(role);
-                }else{
+            } else {
+
+                if (a.getIsAdmin() == 1) {
+                    response.sendRedirect(role);
+                } else {
                     response.sendRedirect("home");
                 }
             }
-           
+
         }
     }
 }

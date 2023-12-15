@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class HoaDonControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-         HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
         if (a == null) {
             request.getSession().setAttribute("page", "hoaDon");
@@ -36,7 +37,7 @@ public class HoaDonControl extends HttpServlet {
         }
         String action = request.getServletPath();
         if ("/hoaDon".equals(action)) {
-             DAO dao = new DAO();
+            DAO dao = new DAO();
 
             double sumAllInvoice = dao.sumAllInvoice();
             List<Invoice> listAllInvoice = dao.getAllInvoice();
@@ -46,9 +47,8 @@ public class HoaDonControl extends HttpServlet {
             request.setAttribute("listAllAccount", listAllAccount);
             request.setAttribute("sumAllInvoice", sumAllInvoice);
             request.getRequestDispatcher("HoaDon.jsp").forward(request, response);
-        }
-        else if("/searchhd".equals(action)){
-            
+        } else if ("/searchhd".equals(action)) {
+
             String name = request.getParameter("search");
             DAO dao = new DAO();
 
@@ -59,24 +59,22 @@ public class HoaDonControl extends HttpServlet {
             request.setAttribute("listAllInvoice", listAllInvoice);
             request.setAttribute("listAllAccount", listAllAccount);
             request.setAttribute("sumAllInvoice", sumAllInvoice);
-             request.getRequestDispatcher("HoaDon.jsp").forward(request, response);
-        }
-        
-        else if("/filter".equals(action)){
-            
-           DAO dao = new DAO();
+            request.getRequestDispatcher("HoaDon.jsp").forward(request, response);
+        } else if ("/filter".equals(action)) {
+
+            DAO dao = new DAO();
             String name = request.getParameter("add-row_length");
             int length = Integer.parseInt(name);
             double sumAllInvoice = dao.sumAllInvoice();
             List<Invoice> listAllInvoice = dao.getAllInvoice();
             List<Invoice> result = new ArrayList<>();
-            for(Invoice value : listAllInvoice){
+            for (Invoice value : listAllInvoice) {
                 result.add(value);
                 length--;
-                if(length<=0)
+                if (length <= 0)
                     break;
             }
-            
+
             List<Account> listAllAccount = dao.getAllAccount();
 
             request.setAttribute("listAllInvoice", result);
@@ -84,7 +82,7 @@ public class HoaDonControl extends HttpServlet {
             request.setAttribute("sumAllInvoice", sumAllInvoice);
             request.getRequestDispatcher("HoaDon.jsp").forward(request, response);
         }
-       
+
     }
 
     @Override

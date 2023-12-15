@@ -56,7 +56,8 @@
             display: block;
             margin: 0 auto;
         }
-        .col-md-5 pagination{
+
+        .col-md-5 pagination {
             width: 20%;
         }
 
@@ -79,7 +80,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
 
 
         /* Navigation styles */
@@ -173,7 +173,8 @@
                         <h5 style="font-weight: bold">Categories</h5>
                         <div class="text-muted small text-uppercase d-flex flex-column flex-wrap">
                             <c:forEach items="${listCC}" var="o">
-                                <p class="mb-3"><a onclick="load(${o.cid})" class="card-link-secondary">${o.cname}</a></p>
+                                <p class="mb-3"><a onclick="load(${o.cid})" class="card-link-secondary">${o.cname}</a>
+                                </p>
                             </c:forEach>
                         </div>
                     </section>
@@ -286,11 +287,6 @@
             <!-- Sidebar Column -->
 
 
-
-
-
-
-
             <!-- Section: Block Content -->
             <section class="mb-3">
                 <div class="row d-flex justify-content-between align-items-center">
@@ -298,43 +294,44 @@
                         <a href="#!" class="text-reset"><i class="fas fa-th-list fa-lg mr-1"></i></a>
                         <a href="#!" class="text-reset"><i class="fas fa-th-large fa-lg"></i></a>
                     </div--%>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
-                                    <div class="select-outline position-relative w-100">
-                                        <select class="mdb-select md-outline md-form" searchable="Search here..">
-                                            <option value="" disabled selected>Choose category</option>
-                                            <option value="1">Category 1</option>
-                                            <option value="2">Category 2</option>
-                                            <option value="3">Category 3</option>
-                                            <option value="4">Category 4</option>
-                                            <option value="5">Category 5</option>
-                                        </select>
-                                        <label class="text-center" style="">Tất cả sản phẩm</label>
-                                        <button class="btn-save btn btn-primary btn-sm mt-2">Save</button>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-5 d-flex justify-content-center align-items-center pagination">
-                                    <nav aria-label="Page navigation example" style="margin-left: 150px; width: 600px;">
-                                        <ul class="pagination pagination-circle justify-content-center mb-0">
-                                            <c:if test="${tag != 1}">
-                                                <li class="page-item"><a href="shop?index=${tag-1 }" class="page-link"><i
-                                                        class="fas fa-chevron-left"></i></a></li>
-                                            </c:if>
-                                            <c:forEach begin="1" end="${endPage }" var="i">
-                                                <li class="${tag==i?'page-item active':'page-item'}"><a href="shop?index=${i }"
-                                                                                                        class="page-link">${i }</a>
-                                                </li>
-                                            </c:forEach>
-                                            <c:if test="${tag != endPage}">
-                                                <li class="page-item"><a href="shop?index=${tag+1 }" class="page-link"><i
-                                                        class="fas fa-chevron-right"></i></a></li>
-                                            </c:if>
-                                        </ul>
-                                    </nav>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
+                                <div class="select-outline position-relative w-100">
+                                    <select class="mdb-select md-outline md-form" searchable="Search here..">
+                                        <option value="" disabled selected>Choose category</option>
+                                        <option value="1">Category 1</option>
+                                        <option value="2">Category 2</option>
+                                        <option value="3">Category 3</option>
+                                        <option value="4">Category 4</option>
+                                        <option value="5">Category 5</option>
+                                    </select>
+                                    <label class="text-center" style="">Tất cả sản phẩm</label>
+                                    <button class="btn-save btn btn-primary btn-sm mt-2">Save</button>
                                 </div>
                             </div>
+                            <div class="col-12 col-md-5 d-flex justify-content-center align-items-center pagination">
+                                <nav aria-label="Page navigation example" style="margin-left: 150px; width: 600px;">
+                                    <ul class="pagination pagination-circle justify-content-center mb-0">
+                                        <c:if test="${tag != 1}">
+                                            <li class="page-item"><a href="shop?index=${tag-1 }" class="page-link"><i
+                                                    class="fas fa-chevron-left"></i></a></li>
+                                        </c:if>
+                                        <c:forEach begin="1" end="${endPage }" var="i">
+                                            <li class="${tag==i?'page-item active':'page-item'}"><a
+                                                    href="shop?index=${i }"
+                                                    class="page-link">${i }</a>
+                                            </li>
+                                        </c:forEach>
+                                        <c:if test="${tag != endPage}">
+                                            <li class="page-item"><a href="shop?index=${tag+1 }" class="page-link"><i
+                                                    class="fas fa-chevron-right"></i></a></li>
+                                        </c:if>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
+                    </div>
 
                 </div>
             </section>
@@ -344,13 +341,12 @@
             <div class="col-md-14 mb-5" style="">
 
 
-
                 <!-- Section: Block Content -->
                 <section>
                     <div id="store" class="width-product" style="">
 
                         <!-- Grid row for Products -->
-                        <div class="row" >
+                        <div class="row">
                             <!-- Product -->
                             <c:forEach items="${listP}" var="o">
                                 <div class="col-md-4 col-xs-6">
@@ -366,7 +362,9 @@
                                         <div class="product-body">
                                             <p class="product-category">Category</p>
                                             <h3 class="product-name"><a href="detail?pid=${o.id}">${o.name}</a></h3>
-                                            <h4 class="product-price">$${o.price} <del class="product-old-price">$990.00</del></h4>
+                                            <h4 class="product-price">$${o.price}
+                                                <del class="product-old-price">$990.00</del>
+                                            </h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -375,9 +373,12 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+                                                        class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span
+                                                        class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span
+                                                        class="tooltipp">quick view</span></button>
                                             </div>
                                         </div>
                                             <%--     <div class="add-to-cart">

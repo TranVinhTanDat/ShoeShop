@@ -76,7 +76,7 @@ public class StatisticController extends HttpServlet {
 
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-  if (a == null) {
+        if (a == null) {
             request.getSession().setAttribute("page", "doanhThuTheoThang");
             response.sendRedirect("login");
             return;
@@ -121,7 +121,7 @@ public class StatisticController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-  if (a == null) {
+        if (a == null) {
             request.getSession().setAttribute("page", "doanhThuTheoThu");
             response.sendRedirect("login");
             return;
@@ -153,11 +153,11 @@ public class StatisticController extends HttpServlet {
 
     protected void processTop5CustomerRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
-                HttpSession session = request.getSession();
+
+
+        HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-  if (a == null) {
+        if (a == null) {
             request.getSession().setAttribute("page", "top10");
             response.sendRedirect("login");
             return;
@@ -167,7 +167,7 @@ public class StatisticController extends HttpServlet {
             response.sendRedirect("login");
             return;
         }
-        
+
         DAO dao = new DAO();
 
         List<Account> listAllAccount = dao.getAllAccount();
@@ -195,9 +195,9 @@ public class StatisticController extends HttpServlet {
 
     protected void processTop10ProductRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-                HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-  if (a == null) {
+        if (a == null) {
             request.getSession().setAttribute("page", "top10");
             response.sendRedirect("login");
             return;

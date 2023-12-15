@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-@WebServlet(name = "SupplierController", urlPatterns = {"/managerSupplier", "/addSupplier", "/deleteSupplier", "/xuatExcelSupplierControl","/searchSupplier","/addSu","/addSupplierYour"})
+@WebServlet(name = "SupplierController", urlPatterns = {"/managerSupplier", "/addSupplier", "/deleteSupplier", "/xuatExcelSupplierControl", "/searchSupplier", "/addSu", "/addSupplierYour"})
 public class SupplierController extends HttpServlet {
 
     @Override
@@ -47,14 +47,14 @@ public class SupplierController extends HttpServlet {
             case "/xuatExcelSupplierControl":
                 processExportExcelRequest(request, response);
                 break;
-                
-             case "/searchSupplier":
+
+            case "/searchSupplier":
                 processSearchSupplierRequest(request, response);
                 break;
-              case "/addSu":
+            case "/addSu":
                 processAddNewSupplierRequest(request, response);
                 break;
-              case "/addSupplierYour":
+            case "/addSupplierYour":
                 processAddYourSupplierRequest(request, response);
                 break;
             default:
@@ -77,29 +77,30 @@ public class SupplierController extends HttpServlet {
 
         request.getRequestDispatcher("NhaPhanPhoi.jsp").forward(request, response);
     }
+
     protected void processAddYourSupplierRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         DAO dao = new DAO();
         Supplier su = new Supplier();
-        
+
         String name = request.getParameter("name");
         String sdt = request.getParameter("sdt");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         String pp = request.getParameter("add-row_length");
-        
+
         su.setNameSupplier(name);
-         su.setPhoneSupplier(sdt);
+        su.setPhoneSupplier(sdt);
         su.setEmailSupplier(email);
         su.setAddressSupplier(address);
         su.setCateID(Integer.parseInt(pp));
-        
+
         dao.AddSupplier(su);
-        
+
         List<Supplier> listAllSupplier = dao.getAllSupplier();
-        
+
         List<Category> listAllCategory = dao.getAllCategory();
 
 
@@ -108,8 +109,8 @@ public class SupplierController extends HttpServlet {
 
         request.getRequestDispatcher("NhaPhanPhoi.jsp").forward(request, response);
     }
-    
-        protected void processAddNewSupplierRequest(HttpServletRequest request, HttpServletResponse response)
+
+    protected void processAddNewSupplierRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Supplier su = new Supplier();
@@ -124,12 +125,12 @@ public class SupplierController extends HttpServlet {
 
         request.getRequestDispatcher("NhaPhanPhoi.jsp").forward(request, response);
     }
-    
-     protected void processSearchSupplierRequest(HttpServletRequest request, HttpServletResponse response)
+
+    protected void processSearchSupplierRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("search");
-        
+
         DAO dao = new DAO();
 
         List<Supplier> listAllSupplier = dao.SearchSupplier(name);

@@ -2,15 +2,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-    <%
-    
-var a = request.getSession().getAttribute("acc");
-if(a == null)
-{
-request.getSession().setAttribute("page", "managerProduct");
-String redirectURL = "Login.jsp";
-response.sendRedirect(redirectURL);
-}
+<%
+
+    var a = request.getSession().getAttribute("acc");
+    if (a == null) {
+        request.getSession().setAttribute("page", "managerProduct");
+        String redirectURL = "Login.jsp";
+        response.sendRedirect(redirectURL);
+    }
 %>
 <head>
     <meta charset="ISO-8859-1">
@@ -25,10 +24,10 @@ response.sendRedirect(redirectURL);
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="css/managerfivefirst.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- Font Awesome -->
@@ -65,7 +64,7 @@ response.sendRedirect(redirectURL);
         body {
             margin: 0;
             padding: 0;
-             font-family: Roboto,sans-serif;
+            font-family: Roboto, sans-serif;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -133,29 +132,30 @@ response.sendRedirect(redirectURL);
         <!--Section: Quan Ly tai Khoan-->
         <section class="mb-4">
             <div class="card">
-                
+
                 <!-- của mình-->
-                  <div class="content-slider_bar" style="width: 1110px">
-    <div class="input-group">
-        <div class="input-group-prepend rounded" style="height: 100%">
-            <button type="submit" class="btn btn-search pr-1" style="padding: 4px">
-                <i class="rounded bi bi-search"></i>
-            </button>
-        </div>
-        <form action="searchProduct" method="get">
-                           <input type="search" name ="search" placeholder="Search ..." class="form-control" style="height: 100%" >                                 
-                                                            </form>
-       
-    </div>
-    <div class="author-logout" style="position: relative;">
-        <i class="bi bi-person"></i>
-        <div class="log-out" ><a href="/Orchestra/user/logout.php">Log Out</a>
-            <span></span>
-        </div>
-    </div>
-</div>
-            <div class="page-header">
-                <h4 class="page-title m-1">Dữ liệu</h4>
+                <div class="content-slider_bar" style="width: 1110px">
+                    <div class="input-group">
+                        <div class="input-group-prepend rounded" style="height: 100%">
+                            <button type="submit" class="btn btn-search pr-1" style="padding: 4px">
+                                <i class="rounded bi bi-search"></i>
+                            </button>
+                        </div>
+                        <form action="searchProduct" method="get">
+                            <input type="search" name="search" placeholder="Search ..." class="form-control"
+                                   style="height: 100%">
+                        </form>
+
+                    </div>
+                    <div class="author-logout" style="position: relative;">
+                        <i class="bi bi-person"></i>
+                        <div class="log-out"><a href="/Orchestra/user/logout.php">Log Out</a>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header">
+                    <h4 class="page-title m-1">Dữ liệu</h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
                             <a href="#">
@@ -169,12 +169,11 @@ response.sendRedirect(redirectURL);
                             <a href="#">Sản phẩm</a>
                         </li>
                     </ul>
-            </div>
-                
-                
-<!--                của mình-->
-                
-                
+                </div>
+
+
+                <!--                của mình-->
+
 
                 <c:if test="${error!=null }">
                     <div class="alert alert-danger" role="alert">
@@ -186,82 +185,109 @@ response.sendRedirect(redirectURL);
                             ${mess}
                     </div>
                 </c:if>
-  <div class="row m-2">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="dataTables_length" id="add-row_length">
-                                      <label>Search:
-                                                    <form action="searchProduct" method="get">
-                                                            <input type="search" name="search" value=""   class="form-control form-control-sm" placeholder="" aria-controls="add-row">
-                                                            </form>
-                        </label>
-                                    
-                                </div></div><div class="col-sm-12 col-md-6">
-                                    <div id="add-row_filter" style="display: flex" class="dataTables_filter">
-                                                   
-                                        <a href="#addEmployeeModal" style="width: 150px;
+                <div class="row m-2">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_length" id="add-row_length">
+                            <label>Search:
+                                <form action="searchProduct" method="get">
+                                    <input type="search" name="search" value="" class="form-control form-control-sm"
+                                           placeholder="" aria-controls="add-row">
+                                </form>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="add-row_filter" style="display: flex" class="dataTables_filter">
+
+                            <a href="#addEmployeeModal" style="width: 150px;
     min-width: 0;
     float: right;
     height: 36px;
      min-width: 0;" class="btn btn-success" data-toggle="modal">Thêm sản phẩm </a>
-                                                      <form action="xuatExcelProductControl" method="get">
-                                                            <button type="submit" style=" width: 120px;
+                            <form action="xuatExcelProductControl" method="get">
+                                <button type="submit" style=" width: 120px;
     min-width: 0;
     float: right;
     height: 36px;
-    margin-right: 32px; background-color: rgb(30, 81, 124) !important; min-width: 0;" class="mb-0 text-center btn btn-primary waves-effect waves-light ripple-surface"> Xuất Excel</button>
-                        </form>
-                    </div>
-                    </div>
+    margin-right: 32px; background-color: rgb(30, 81, 124) !important; min-width: 0;"
+                                        class="mb-0 text-center btn btn-primary waves-effect waves-light ripple-surface">
+                                    Xuất Excel
+                                </button>
+                            </form>
                         </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        
-                         <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
-                        <thead>
-                                <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Mã: activate to sort column descending" style="width: 74.05px;">ID</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Hình ảnh</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tên</th>
-                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Giá</th>
-                                
-                                 <th style="width: 100px;" class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th>
-                                </tr>
+
+                        <table id="add-row" class="display table table-striped table-hover dataTable" role="grid"
+                               aria-describedby="add-row_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                    aria-sort="ascending" aria-label="Mã: activate to sort column descending"
+                                    style="width: 74.05px;">ID
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                    aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Hình
+                                    ảnh
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                    aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Tên
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1"
+                                    aria-label="Hình: activate to sort column ascending" style="width: 77.775px;">Giá
+                                </th>
+
+                                <th style="width: 100px;" class="sorting" tabindex="0" aria-controls="add-row"
+                                    rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">
+                                    Action
+                                </th>
+                            </tr>
                             </thead>
                             <tfoot>
-                                <tr><th rowspan="1" colspan="1">ID</th><th rowspan="1" colspan="1">Hình ảnh</th>
-                                    <th rowspan="1" colspan="1">Tên</th>
-                                    <th rowspan="1" colspan="1">Giá</th>
-                                 <th rowspan="1" colspan="1">Action</th></tr>
+                            <tr>
+                                <th rowspan="1" colspan="1">ID</th>
+                                <th rowspan="1" colspan="1">Hình ảnh</th>
+                                <th rowspan="1" colspan="1">Tên</th>
+                                <th rowspan="1" colspan="1">Giá</th>
+                                <th rowspan="1" colspan="1">Action</th>
+                            </tr>
                             </tfoot>
-                            <tbody>    
-                              <c:forEach items="${listP}" var="o">
+                            <tbody>
+                            <c:forEach items="${listP}" var="o">
                                 <tr>
                                     <td>${o.id}</td>
-                                     <td>
+                                    <td>
                                         <img src="${o.image}">
                                     </td>
                                     <td>${o.name}</td>
-                                   
+
                                     <td>${o.price} $</td>
                                     <td>
-                                        
-                                            
-                                          <button style="width: 80px;min-width: 0 ;height:36px;min-height: 0 ;background-color: aqua !important;" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
-                                                                data-original-title="Edit">
-                                                                    <a href="loadProduct?pid=${o.id}">Edit</a>
-                                                                
-                                                                </button>
-                                                                    
-                                         <button style="width: 90px;min-width: 0;height:36px;min-height: 0" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
-                                                                data-original-title="Delete">
-                                             <a style="color: #000; text-align: center" href="delete?pid=${o.id}">Delete</a>
-                                                                
-                                                                </button>
-                                        
+
+
+                                        <button style="width: 80px;min-width: 0 ;height:36px;min-height: 0 ;background-color: aqua !important;"
+                                                type="submit" data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger"
+                                                data-original-title="Edit">
+                                            <a href="loadProduct?pid=${o.id}">Edit</a>
+
+                                        </button>
+
+                                        <button style="width: 90px;min-width: 0;height:36px;min-height: 0" type="submit"
+                                                data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                                data-original-title="Delete">
+                                            <a style="color: #000; text-align: center"
+                                               href="delete?pid=${o.id}">Delete</a>
+
+                                        </button>
+
                                     </td>
                                 </tr>
                             </c:forEach>
-                          
+
 
                             </tbody>
                         </table>

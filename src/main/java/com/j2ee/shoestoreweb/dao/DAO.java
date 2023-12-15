@@ -55,14 +55,15 @@ public class DAO {
         }
         return list;
     }
-    public Account getAcc(String id){
+
+    public Account getAcc(String id) {
         List<Account> list = getAllAccount();
-        for(Account value : list){
-            if(value.getId() == Integer.parseInt(id))
+        for (Account value : list) {
+            if (value.getId() == Integer.parseInt(id))
                 return value;
         }
         return null;
-        
+
     }
 
     public List<Invoice> getAllInvoice() {
@@ -79,84 +80,89 @@ public class DAO {
         }
         return list;
     }
-    public List<Invoice> searchInvoice(String name){
+
+    public List<Invoice> searchInvoice(String name) {
         List<Invoice> list = getAllInvoice();
         List<Invoice> result = new ArrayList<>();
-        try{
+        try {
             result = SearchIdInvoice(name, list);
-            if(result.size() == 0){
-             result = SearchMoneyInvoice(name, list);
+            if (result.size() == 0) {
+                result = SearchMoneyInvoice(name, list);
             }
-        }catch(Exception ex){
-            result = SearchNameCustomerInvoice(name,list);
+        } catch (Exception ex) {
+            result = SearchNameCustomerInvoice(name, list);
         }
         return result;
     }
-    public List<Account> searchAccount(String name){
+
+    public List<Account> searchAccount(String name) {
         List<Account> list = getAllAccount();
         List<Account> result = new ArrayList<>();
         result = searchName(name, list);
-        if(result.size() == 0){
+        if (result.size() == 0) {
             result = searchEmail(name, list);
         }
         return result;
     }
-    public List<Account> searchName(String name, List<Account> list){
+
+    public List<Account> searchName(String name, List<Account> list) {
         List<Account> result = new ArrayList<>();
-        
-        
-        while(name.length() > 1 && result.size() == 0){
-        
-            for(Account value : list){
+
+
+        while (name.length() > 1 && result.size() == 0) {
+
+            for (Account value : list) {
                 String n = value.getUser();
-                n = n.substring(0,name.length());
-                if(n.equals(name)){
+                n = n.substring(0, name.length());
+                if (n.equals(name)) {
                     result.add(value);
                 }
             }
-            if(result.size() == 0){
-                name = name.substring(0,name.length()-1);
+            if (result.size() == 0) {
+                name = name.substring(0, name.length() - 1);
             }
         }
-         return result;
+        return result;
     }
-        public List<Account> searchEmail(String name, List<Account> list){
+
+    public List<Account> searchEmail(String name, List<Account> list) {
         List<Account> result = new ArrayList<>();
-            for(Account value : list){
-                if(value.getEmail().equals(name)){
-                    result.add(value);
-                    break;
-                }
-            }
-         return result;
-    }
-    
-    public List<Invoice> SearchIdInvoice(String name, List<Invoice> list){
-         List<Invoice> result = new ArrayList<>();
-        for(Invoice value : list){
-            if(value.getMaHD() == Integer.parseInt(name)){
+        for (Account value : list) {
+            if (value.getEmail().equals(name)) {
                 result.add(value);
                 break;
             }
-        
         }
         return result;
-    
     }
-    public List<Invoice> SearchNameCustomerInvoice(String name, List<Invoice> list){
+
+    public List<Invoice> SearchIdInvoice(String name, List<Invoice> list) {
+        List<Invoice> result = new ArrayList<>();
+        for (Invoice value : list) {
+            if (value.getMaHD() == Integer.parseInt(name)) {
+                result.add(value);
+                break;
+            }
+
+        }
+        return result;
+
+    }
+
+    public List<Invoice> SearchNameCustomerInvoice(String name, List<Invoice> list) {
         List<Invoice> result = new ArrayList<>();
         List<Account> listCu = getAllAccount();
         int idCu = -1;
-        for(Account value : listCu){
-            if(value.getUser().contains(name)){
+        for (Account value : listCu) {
+            if (value.getUser().contains(name)) {
                 idCu = value.getId();
                 break;
             }
         }
-        
-        if(idCu != -1){
-            for(Invoice value : list){
-                if(value.getAccountID() == idCu){
+
+        if (idCu != -1) {
+            for (Invoice value : list) {
+                if (value.getAccountID() == idCu) {
                     result.add(value);
 
                 }
@@ -164,18 +170,19 @@ public class DAO {
             }
         }
         return result;
-    
+
     }
-     public List<Invoice> SearchMoneyInvoice(String name, List<Invoice> list){
-         List<Invoice> result = new ArrayList<>();
-        for(Invoice value : list){
-            if(value.getTongGia() == Integer.parseInt(name)){
+
+    public List<Invoice> SearchMoneyInvoice(String name, List<Invoice> list) {
+        List<Invoice> result = new ArrayList<>();
+        for (Invoice value : list) {
+            if (value.getTongGia() == Integer.parseInt(name)) {
                 result.add(value);
             }
-        
+
         }
         return result;
-    
+
     }
 
     public int countAllProductBySellID(int sell_ID) {
@@ -208,81 +215,78 @@ public class DAO {
         return 0;
     }
 
-    public double totalMoneyDay(int day) {          
+    public double totalMoneyDay(int day) {
         int year = 2021;
         int month = 11;
-        String arr[] = {"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"};
-        int arrDay[] = {0,0,0,0,0,0,0};
-        
-        LocalDate today =  java.time.LocalDate.now();
+        String arr[] = {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"};
+        int arrDay[] = {0, 0, 0, 0, 0, 0, 0};
+
+        LocalDate today = java.time.LocalDate.now();
         String a = today.getDayOfWeek().toString();
-        
+
         year = today.getYear();
         month = today.getMonthValue();
         int index = 1;
         int dayOfMonth = today.getDayOfMonth();
-        
-        switch(a){
-            case "SUNDAY" : 
-                
+
+        switch (a) {
+            case "SUNDAY":
+
                 index = 1;
                 break;
-             case "MONDAY" : 
-                
+            case "MONDAY":
+
                 index = 2;
                 break;
-                
-              case "TUESDAY" : 
+
+            case "TUESDAY":
                 index = 3;
                 break;
-              case "WEDNESDAY" : 
-             
+            case "WEDNESDAY":
+
                 index = 4;
                 break;
-                
-                case "THURSDAY" : 
-                
+
+            case "THURSDAY":
+
                 index = 5;
                 break;
-                 case "FRIDAY" : 
-               
+            case "FRIDAY":
+
                 index = 6;
                 break;
-                
-                  case "SATURDAY" : 
-              
+
+            case "SATURDAY":
+
                 index = 7;
                 break;
         }
-        for(int i=0;i<arrDay.length;i++){
-            if(i+1 < index){
-                int dayValue = dayOfMonth- (index-(i+1));
+        for (int i = 0; i < arrDay.length; i++) {
+            if (i + 1 < index) {
+                int dayValue = dayOfMonth - (index - (i + 1));
                 arrDay[i] = dayValue;
             }
-            if(i+1 == index)
+            if (i + 1 == index)
                 arrDay[i] = dayOfMonth;
-            if(i+1 > index)
-            {
-                int dayValue = dayOfMonth+ ((i+1)-index);
+            if (i + 1 > index) {
+                int dayValue = dayOfMonth + ((i + 1) - index);
                 arrDay[i] = dayValue;
             }
         }
-         List<Invoice> list = getAllInvoice();
+        List<Invoice> list = getAllInvoice();
         double sum = 0;
-        for(Invoice value : list){
-        
+        for (Invoice value : list) {
+
             String s = value.getNgayXuat().toString();
             String temp[] = s.split("-");
-            if(Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month
-                    && Integer.parseInt(temp[2]) == arrDay[day-1]){
+            if (Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month
+                    && Integer.parseInt(temp[2]) == arrDay[day - 1]) {
                 sum += value.getTongGia();
             }
         }
         return sum;
-        
-        
-        
-        
+
+
 //        String query = "SELECT SUM(tongGia) FROM Invoice " +
 //                "WHERE DAYOFWEEK(ngayXuat) = ? " +
 //                "GROUP BY ngayXuat";
@@ -303,16 +307,16 @@ public class DAO {
         int year = java.time.LocalDate.now().getYear();
         double sum = 0;
         List<Invoice> list = getAllInvoice();
-        
-        for(Invoice value : list){
-        
+
+        for (Invoice value : list) {
+
             String s = value.getNgayXuat().toString();
             String temp[] = s.split("-");
-            if(Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month){
+            if (Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month) {
                 sum += value.getTongGia();
             }
         }
-        
+
         return sum;
     }
 
@@ -618,124 +622,126 @@ public class DAO {
         }
         return list;
     }
-    public List<Product> SearchProduct(String name){
+
+    public List<Product> SearchProduct(String name) {
         List<Product> list = getAllProduct();
         List<Product> result = new ArrayList<>();
-        
-        try{
-            result = SearchProductId(name,list);
-            if(result.size() == 0){
+
+        try {
+            result = SearchProductId(name, list);
+            if (result.size() == 0) {
                 result = SearchProductPrice(name, list);
             }
-        }catch(Exception ex){
-         result = SearchProductName(name, list);
+        } catch (Exception ex) {
+            result = SearchProductName(name, list);
         }
-        
+
         return result;
-        
+
     }
-    
-    public List<Supplier> SearchSupplier(String name){
-    List<Supplier> list = getAllSupplier();
-    List<Supplier> result = new ArrayList<>();
-        try{
-            result = SearchSupplierId(name,list);
-        }catch(Exception ex){
-            result = SearchSupplierName(name,list);
-        
+
+    public List<Supplier> SearchSupplier(String name) {
+        List<Supplier> list = getAllSupplier();
+        List<Supplier> result = new ArrayList<>();
+        try {
+            result = SearchSupplierId(name, list);
+        } catch (Exception ex) {
+            result = SearchSupplierName(name, list);
+
         }
         return result;
     }
-    public List<Supplier> SearchSupplierId(String name, List<Supplier> list){
-     List<Supplier> result = new ArrayList<>();
-        for(Supplier value : list){
-        
-            if(value.getIdSupplier() == Integer.parseInt(name)){
+
+    public List<Supplier> SearchSupplierId(String name, List<Supplier> list) {
+        List<Supplier> result = new ArrayList<>();
+        for (Supplier value : list) {
+
+            if (value.getIdSupplier() == Integer.parseInt(name)) {
                 result.add(value);
                 break;
             }
         }
         return result;
-        
+
     }
-    public List<Supplier> SearchSupplierName(String name, List<Supplier> list){
-     List<Supplier> result = new ArrayList<>();
-        while(name.length()>1 && result.size() == 0){
-            for(Supplier value : list){
+
+    public List<Supplier> SearchSupplierName(String name, List<Supplier> list) {
+        List<Supplier> result = new ArrayList<>();
+        while (name.length() > 1 && result.size() == 0) {
+            for (Supplier value : list) {
                 String n = value.getNameSupplier();
-                n = n.substring(0,name.length());
-                if(n.equals(name)){
+                n = n.substring(0, name.length());
+                if (n.equals(name)) {
                     result.add(value);
 
                 }
             }
-            if(result.size() == 0){
+            if (result.size() == 0) {
 
-                name = name.substring(0,name.length()-1);
+                name = name.substring(0, name.length() - 1);
             }
-        
-        
+
+
         }
         return result;
-        
+
     }
-    
-    
+
+
     public List<Product> SearchProductId(String name, List<Product> list) {
         List<Product> result = new ArrayList<>();
-        
-        for(Product value : list){
-        
-            if(value.getId() == Integer.parseInt(name)){
+
+        for (Product value : list) {
+
+            if (value.getId() == Integer.parseInt(name)) {
                 result.add(value);
                 break;
             }
         }
-        
+
         return result;
     }
-    
-        public List<Product> SearchProductName(String name, List<Product> list) {
+
+    public List<Product> SearchProductName(String name, List<Product> list) {
         List<Product> result = new ArrayList<>();
-        
-       while(name.length()>1 && result.size() == 0){
-        for(Product value : list){
-            String n = value.getName();
-            n = n.substring(0,name.length());
-            if(n.equals(name)){
-                result.add(value);
-                
+
+        while (name.length() > 1 && result.size() == 0) {
+            for (Product value : list) {
+                String n = value.getName();
+                n = n.substring(0, name.length());
+                if (n.equals(name)) {
+                    result.add(value);
+
+                }
+
             }
-            
+            if (result.size() == 0) {
+                name = name.substring(0, name.length() - 1);
+            }
+
         }
-        if(result.size() == 0){
-                name = name.substring(0,name.length()-1);
-            }
-       
-       }
-        
+
         return result;
     }
-        
+
     public List<Product> SearchProductPrice(String name, List<Product> list) {
         List<Product> result = new ArrayList<>();
-        
-       
-        for(Product value : list){
-        
+
+
+        for (Product value : list) {
+
             double price = Double.parseDouble(name);
-            
-            if(value.getPrice() == price || ((value.getPrice()-1) < price && value.getPrice()+1 >price  )){
+
+            if (value.getPrice() == price || ((value.getPrice() - 1) < price && value.getPrice() + 1 > price)) {
                 result.add(value);
-                
+
             }
         }
-       
-       
-        
+
+
         return result;
     }
-    
+
     public List<Product> getProductByIndex(int indexPage) {
         List<Product> list = new ArrayList<>();
         String query = "SELECT * FROM Product " +
@@ -1564,6 +1570,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
+
     public void AddSupplier(Supplier su) {
         String query = "INSERT INTO Supplier (nameSupplier, phoneSupplier, emailSupplier, addressSupplier, cateID) " +
                 "VALUES (?, ?, ?, ?, ?)";
@@ -1574,7 +1581,7 @@ public class DAO {
             ps.setString(2, su.getPhoneSupplier());
             ps.setString(3, su.getEmailSupplier());
             ps.setString(4, su.getAddressSupplier());
-            ps.setString(5, su.getCateID()+"");
+            ps.setString(5, su.getCateID() + "");
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -1684,14 +1691,14 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-    
-        public void UpdateAccount(Account acc) {
+
+    public void UpdateAccount(Account acc) {
         String query = "UPDATE Account "
                 + "SET user = ?, "
                 + "pass = ?, "
                 + "isSell = ?, "
                 + "isAdmin = ?, "
-                
+
                 + "email = ? "
                 + "WHERE uID = ?";
         try {
@@ -1699,8 +1706,8 @@ public class DAO {
             ps = conn.prepareStatement(query);
             ps.setString(1, acc.getUser());
             ps.setString(2, acc.getPass());
-            ps.setString(3, acc.getIsSell()+"");
-            ps.setString(4, acc.getIsAdmin()+"");
+            ps.setString(3, acc.getIsSell() + "");
+            ps.setString(4, acc.getIsAdmin() + "");
             ps.setString(5, acc.getEmail());
             ps.setInt(6, acc.getId());
             ps.executeUpdate();

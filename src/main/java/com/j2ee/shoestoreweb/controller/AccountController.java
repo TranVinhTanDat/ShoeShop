@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 @WebServlet(name = "AccountController", urlPatterns = {"/managerAccount", "/addAccount",
-    "/deleteAccount", "/xuatExcelAccountControl", "/searchAccount", "/filterAccount","/editAcc","/editAccount"})
+        "/deleteAccount", "/xuatExcelAccountControl", "/searchAccount", "/filterAccount", "/editAcc", "/editAccount"})
 public class AccountController extends HttpServlet {
 
     @Override
@@ -69,9 +69,9 @@ public class AccountController extends HttpServlet {
     protected void processViewAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
-                 HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-               if (a == null) {
+        if (a == null) {
             request.getSession().setAttribute("page", "managerAccount");
             response.sendRedirect("login");
             return;
@@ -85,6 +85,7 @@ public class AccountController extends HttpServlet {
         request.setAttribute("listAllAccount", list);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
+
     protected void processGetAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
@@ -95,6 +96,7 @@ public class AccountController extends HttpServlet {
         request.setAttribute("accEdit", a);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
+
     protected void processEditAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
@@ -103,46 +105,47 @@ public class AccountController extends HttpServlet {
         String pass = request.getParameter("pass");
         String role = request.getParameter("add-row_length");
         Account a = dao.getAcc(id);
-        
+
         a.setUser(name);
         a.setPass(pass);
-        if(Integer.parseInt(role) == 0){
+        if (Integer.parseInt(role) == 0) {
             a.setIsSell(0);
             a.setIsAdmin(1);
-        }else{
+        } else {
             a.setIsSell(1);
             a.setIsAdmin(0);
         }
-        
+
         dao.UpdateAccount(a);
         List<Account> list = dao.getAllAccount();
-        
+
         request.setAttribute("listAllAccount", list);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
-    
-    
-     protected void processViewAccountFilter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+    protected void processViewAccountFilter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String name = request.getParameter("add-row_length");
-            int length = Integer.parseInt(name);
-            List<Account> result = new ArrayList<>();
+        String name = request.getParameter("add-row_length");
+        int length = Integer.parseInt(name);
+        List<Account> result = new ArrayList<>();
         DAO dao = new DAO();
-        
+
 
         List<Account> list = dao.getAllAccount();
-        for(Account value : list){
-                       result.add(value);
-                       length--;
-                       if(length<=0)
-                           break;
-                   }
+        for (Account value : list) {
+            result.add(value);
+            length--;
+            if (length <= 0)
+                break;
+        }
         request.setAttribute("listAllAccount", result);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
+
     protected void processExportSearchAccountRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String name = request.getParameter("search");
+        String name = request.getParameter("search");
         DAO dao = new DAO();
 
         List<Account> list = dao.searchAccount(name);
@@ -150,7 +153,7 @@ public class AccountController extends HttpServlet {
         request.setAttribute("listAllAccount", list);
         request.getRequestDispatcher("QuanLyTaiKhoan.jsp").forward(request, response);
     }
-    
+
 
     protected void processAddAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
