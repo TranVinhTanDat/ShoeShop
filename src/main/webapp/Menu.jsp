@@ -4,9 +4,9 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> 028 38382 664</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> j2eeprojectshoe@email.com</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> 273 An Duong Vuong</a></li>
             </ul>
             <ul class="header-links pull-right">
                 <% if (session.getAttribute("acc") == null) { %>
@@ -14,7 +14,7 @@
                 <li><a href="login"><i class="fa fa-sign-in"></i> Login</a></li>
                 <% } else { %>
                 <!-- Nếu đã đăng nhập -->
-                <li><a href="#"><i class=""></i> ${sessionScope.acc.user}</a></li>
+                <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.acc.user}</a></li>
                 <li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a></li>
                 <li><a href="EditProfile.jsp"><i class="fa fa-pencil"></i> Edit Profile</a></li>
                 <% } %>
@@ -35,21 +35,16 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="header-search">
-                        <form>
-                            <select class="input-select">
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
-                            </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                        <form id="searchForm" onsubmit="return redirectToPage()">
+                            <input id="searchInput" class="input" style="border-radius: 40px 0px 0px 40px;" placeholder="Search here">
+                            <button type="submit" class="search-btn">Search</button>
                         </form>
                     </div>
                 </div>
 
-                <div class="col-md-3 clearfix">
+                <div class="col-md-1 clearfix">
                     <div class="header-ctn">
                         <form action="search" method="post" class="form-inline my-2 my-lg-0">
                             <a class="btn btn-sm ml-3" href="managerCart">

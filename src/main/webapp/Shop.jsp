@@ -142,13 +142,11 @@
     <div class="container">
         <div id="responsive-nav">
             <ul class="nav-barTab">
-                <li><a href="home">Home</a></li>
-                <li><a href="shop">Product</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">NIKE</a></li>
-                <li><a href="#">ADIDAS</a></li>
-                <li><a href="#">BITIS</a></li>
-                <li><a href="#">CONVERSE</a></li>
+                <li><a href="home">HOME</a></li>
+                <li><a href="shop">PRODUCT</a></li>
+                <c:forEach items="${listCC}" var="o">
+                    <li><a onclick="load(${o.cid})" class="text-white">${o.cname}</a></li>
+                </c:forEach>
             </ul>
         </div>
     </div>

@@ -140,12 +140,11 @@
     <div class="container">
         <div id="responsive-nav">
             <ul class="nav-barTab">
-                <li><a href="home">Home</a></li>
-                <li><a href="shop">Product</a></li>
-                <li><a href="shop">NIKE</a></li>
-                <li><a href="shop">ADIDAS</a></li>
-                <li><a href="shop">BITIS</a></li>
-                <li><a href="shop">CONVERSE</a></li>
+                <li><a href="home">HOME</a></li>
+                <li><a href="shop">PRODUCT</a></li>
+                <c:forEach items="${listCC}" var="o">
+                    <li><a href="shop" onclick="load(${o.cid})" class="text-white">${o.cname}</a></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -158,9 +157,9 @@
      style="margin-top:-2px;">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"><i class="bi bi-chevron-right"></i></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"><i class="bi bi-chevron-right"></i></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"><i class="bi bi-chevron-right"></i></li>
     </ol>
 
     <!-- Inner -->
@@ -470,13 +469,13 @@
 
     function load(cateid) {
         $.ajax({
-            url: "/shoestoreweb/category",
+            url: "/shoestoreweb/categoryShop",
             type: "get", //send it through get method
             data: {
                 cid: cateid
             },
             success: function (responseData) {
-                document.getElementById("content").innerHTML = responseData;
+                document.getElementById("store").innerHTML = responseData;
             }
         });
     }
@@ -490,6 +489,17 @@
                 document.getElementById("amountCart").innerHTML = responseData;
             }
         });
+    }
+
+    function redirectToPage() {
+        var searchTerm = document.getElementById("searchInput").value;
+
+        if (searchTerm.trim() !== "") {
+            window.location.href = 'shop';
+        }
+
+        // Ngăn chặn form submit mặc định
+        return false;
     }
 </script>
 

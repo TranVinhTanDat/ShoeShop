@@ -88,7 +88,54 @@
         padding-top: 0.5rem;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    }</style>
+    }
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .dashboard-container {
+        margin: 50px;
+    }
+
+    .flexBlock {
+        list-style: none;
+        padding: 0;
+    }
+
+    .flexBlock li {
+        border-radius: 10px;
+        padding: 20px;
+        margin: 30px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .product-card {
+        width: 300px;
+        background-color: #87CEEB; /* Sky Blue */
+    }
+
+    .customer-card {
+        width: 300px;
+
+        background-color: #FFD700; /* Gold */
+    }
+
+    .employee-card {
+        width: 300px;
+        background-color: #FF6347; /* Tomato Red */
+    }
+
+    .revenue-card {
+        width: 300px;
+        background-color: #98FB98; /* Pale Green */
+    }
+
+    .flexBlock li span {
+        display: block;
+        margin-bottom: 10px;
+    }
+    </style>
 </head>
 <body>
 
@@ -102,103 +149,58 @@
 
 <!--Main layout-->
 <main>
-    <div class="container pt-4">
+    <div class="container dashboard-container">
+        <h1 class="text-center mb-4">Thống kê</h1>
 
-        <div class="cart_sta">
-            <h1 style="margin-bottom: 40px">Thống kê</h1>
-            <ul class="flexBlock">
-                <li class="cart_customer">
-                    <span>Sản phẩm  </span>
-                    <span>${allProduct }</span>
-                </li>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="flexBlock">
+                    <li class="product-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-box fa-3x"></i>
+                                <h5 class="card-title">Sản phẩm</h5>
+                                <p class="card-text">${allProduct}</p>
+                            </div>
+                        </div>
+                    </li>
 
-                <li class="cart_music">
-                    <span>Khách hàng</span>
-                    <span>${countCustomer}</span>
-                </li>
+                    <li class="customer-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-user fa-3x"></i>
+                                <h5 class="card-title">Khách hàng</h5>
+                                <p class="card-text">${countCustomer}</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-                <li class="cart_sum">
-                    <span>Nhân viên</span>
-                    <span>${countEmployee}</span>
-                </li>
+            <div class="col-md-6">
+                <ul class="flexBlock">
+                    <li class="employee-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-user-tie fa-3x"></i>
+                                <h5 class="card-title">Nhân viên</h5>
+                                <p class="card-text">${countEmployee}</p>
+                            </div>
+                        </div>
+                    </li>
 
-                <li class="cart_sum">
-                    <span>Doanh thu</span>
-                    <span>${money}</span>
-                </li>
-            </ul>
+                    <li class="revenue-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-chart-line fa-3x"></i>
+                                <h5 class="card-title">Doanh thu</h5>
+                                <p class="card-text">${money}</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!--Section: Statistics with subtitles-->
-        <!--        <section>
-            <div class="row" id="total">
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Products</h4>
-                                        <p class="mb-0"></p>
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0">${allProduct }</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <i
-                                                class="far fa-comment-alt text-warning fa-3x me-4"
-                                        ></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Comments</h4>
-                                        <p class="mb-0"></p>
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0">${allReview }</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <h2 class="h1 mb-0 me-4">$${sumAllInvoice }</h2>
-                                    </div>
-                                    <div>
-                                        <h4>Total Sales</h4>
-                                        <p class="mb-0"></p>
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="far fa-heart text-danger fa-3x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>-->
-        <!--Section: Statistics with subtitles-->
     </div>
 </main>
 
