@@ -111,7 +111,7 @@ public class HomeController extends HttpServlet {
         List<Product> list = dao.getNext4AdidasProduct(iamount);
         PrintWriter out = response.getWriter();
 
-        out.println("<div class=\"product-container row\" style=\"margin-top: 25px;\">"); // Mở thẻ div mới để chứa các card sản phẩm và thiết lập lưới
+        out.println("<div class=\"product-container row\" style=\"margin-left: 38px;\">"); // Mở thẻ div mới để chứa các card sản phẩm và thiết lập lưới
         for (Product o : list) {
             out.println("<div class=\"col-md-4 col-xs-6\">");
             out.println("    <div class=\"product productAdidas\" style=\"height: 500px;\">");

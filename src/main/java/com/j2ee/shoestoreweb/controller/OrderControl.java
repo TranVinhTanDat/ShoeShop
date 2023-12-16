@@ -35,8 +35,9 @@ public class OrderControl extends HttpServlet {
                 }
             }
         }
-        double totalMoneyVAT = totalMoney + totalMoney * 0.1;
+        double totalMoneyVAT = totalMoney + totalMoney * 0.05;
 
+        //Tong ban hang cua nhan vien
         double tongTienBanHangThem = 0;
         int sell_ID;
         for (Cart c : list) {
@@ -55,6 +56,7 @@ public class OrderControl extends HttpServlet {
             }
         }
 
+        //So luong da ban
         for (Cart c : list) {
             for (Product p : list2) {
                 if (c.getProductID() == p.getId()) {
@@ -115,10 +117,10 @@ public class OrderControl extends HttpServlet {
             email.setFrom("j2eeprojectshoe@gmail.com");
             email.setFromPassword("mzrb jsji baam yagp");
             email.setTo(emailAddress);
-            email.setSubject("Dat hang thanh cong tu Fashion Family");
+            email.setSubject("Dat hang thanh cong tu Fashion Shoe");
             StringBuilder sb = new StringBuilder();
             sb.append("Dear ").append(name).append("<br>");
-            sb.append("Ban vua dat dang tu Fashion Family. <br> ");
+            sb.append("Ban vua dat dang tu Fashion Shoe. <br> ");
             sb.append("Dia chi nhan hang cua ban la: <b>").append(deliveryAddress).append(" </b> <br>");
             sb.append("So dien thoai khi nhan hang cua ban la: <b>").append(phoneNumber).append(" </b> <br>");
             sb.append("Cac san pham ban dat la: <br>");
@@ -130,7 +132,7 @@ public class OrderControl extends HttpServlet {
                 }
             }
             sb.append("Tong Tien: ").append(String.format("%.02f", totalMoneyVAT)).append("$").append("<br>");
-            sb.append("Cam on ban da dat hang tai Fashion Family<br>");
+            sb.append("Cam on ban da dat hang tai Fashion Shoe<br>");
             sb.append("Chu cua hang");
 
             email.setContent(sb.toString());

@@ -84,7 +84,7 @@ public class CartController extends HttpServlet {
             }
         }
 
-        double totalMoneyVAT = totalMoney + totalMoney * 0.1;
+        double totalMoneyVAT = totalMoney * 0.05 + totalMoney;
 
         PrintWriter out = response.getWriter();
         out.println(" <li class=\"d-flex justify-content-between py-3 border-bottom\"><strong class=\"text-muted\">Tổng tiền hàng</strong><strong>" + totalMoney + "</strong></li>\r\n"
@@ -116,11 +116,11 @@ public class CartController extends HttpServlet {
         if (cartExisted != null) {
             amountExisted = cartExisted.getAmount();
             dao.editAmountAndSizeCart(accountID, productID, (amountExisted + amount), size);
-            request.setAttribute("mess", "Da tang so luong san pham!");
+//            request.setAttribute("mess", "Da tang so luong san pham!");
             request.getRequestDispatcher("managerCart").forward(request, response);
         } else {
             dao.insertCart(accountID, productID, amount, size);
-            request.setAttribute("mess", "Da them san pham vao gio hang!");
+//            request.setAttribute("mess", "Da them san pham vao gio hang!");
             request.getRequestDispatcher("managerCart").forward(request, response);
         }
     }
@@ -140,7 +140,7 @@ public class CartController extends HttpServlet {
         amount += 1;
         DAO dao = new DAO();
         dao.editAmountCart(accountID, productID, amount);
-        request.setAttribute("mess", "Da tang so luong!");
+        request.setAttribute("mess", "Đã tăng số lượng!");
         request.getRequestDispatcher("managerCart").forward(request, response);
     }
 
@@ -159,7 +159,7 @@ public class CartController extends HttpServlet {
         amount -= 1;
         DAO dao = new DAO();
         dao.editAmountCart(accountID, productID, amount);
-        request.setAttribute("mess", "Da giam so luong!");
+        request.setAttribute("mess", "Đã giảm số lượng!");
         request.getRequestDispatcher("managerCart").forward(request, response);
     }
 
@@ -168,7 +168,7 @@ public class CartController extends HttpServlet {
         int productID = Integer.parseInt(request.getParameter("productID"));
         DAO dao = new DAO();
         dao.deleteCart(productID);
-        request.setAttribute("mess", "Da xoa san pham khoi gio hang!");
+        request.setAttribute("mess", "Đã xóa sản phẩm khỏi giỏ hàng !");
         request.getRequestDispatcher("managerCart").forward(request, response);
     }
 

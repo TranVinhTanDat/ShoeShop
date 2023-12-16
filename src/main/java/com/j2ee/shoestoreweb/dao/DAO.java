@@ -320,6 +320,23 @@ public class DAO {
         return sum;
     }
 
+    public List<Invoice> InvoiceOfMonth(int month) {
+        int year = java.time.LocalDate.now().getYear();
+        double sum = 0;
+        List<Invoice> list = getAllInvoice();
+        List<Invoice> result = new ArrayList<>();
+        for (Invoice value : list) {
+
+            String s = value.getNgayXuat().toString();
+            String temp[] = s.split("-");
+            if (Integer.parseInt(temp[0]) == year && Integer.parseInt(temp[1]) == month) {
+                result.add(value);
+            }
+        }
+
+        return result;
+    }
+
     public int countAllProduct() {
         String query = "SELECT COUNT(*) FROM Product";
         try {
@@ -805,7 +822,7 @@ public class DAO {
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, ngayXuat);
+            ps.setString(1, "13");
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Invoice(rs.getInt(1), rs.getInt(2), rs.getDouble(3), rs.getDate(4)));

@@ -320,72 +320,59 @@
         </div>
 
 
-        <div class="row" style="margin-left:62px;">
-            <h1 style="text-align:center; width:100%" id="adidas">GIÀY ADIDAS</h1>
-            <div class="col-md-12 text-center">
-                <div id="">
-                    <button onclick="loadMoreAdidas()" class="btn btn-primary mt-4" style="margin-left: 1000px;">Load
-                        more
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row" id="contentAdidas">
-                    <div class="products-tabs">
-                        <!-- tab -->
-                        <div class="tab-pane active">
-                            <div class="products-slick" data-nav="#slick-nav-1">
-                                <!-- product -->
-                                <c:forEach items="${list4AdidasLast}" var="o">
-                                    <div class="product productAdidas" style="height: 500px;">
-                                        <div class="product-img">
-                                            <a href="detail?pid=${o.id}" title="View Product">
-                                                <img src="${o.image}" alt="">
-                                                <div class="product-label">
-                                                        <%--<span class="sale">-30%</span>--%>
-                                                    <span class="new">NEW</span>
-                                                </div>
-                                        </div>
-                                        <div class="product-body">
-                                            <p class="product-category">Category</p>
-                                            <h3 class="product-name"><a href="detail?pid=${o.id}"
-                                                                        title="View Product">${o.name}</a></h3>
-                                            <h4 class="product-price">$980.00
-                                                <del class="product-old-price">${o.price} $</del>
-                                            </h4>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-shopping-cart"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i
-                                                        class="fa fa-shopping-basket"></i><span class="tooltipp">add to compare</span>
-                                                </button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span
-                                                        class="tooltipp">quick view</span></button>
-                                            </div>
-                                        </div>
-                                            <%--      <div class="add-to-cart">
-                                                      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                                  </div>--%>
-                                    </div>
-                                </c:forEach>
-                                <!-- /product -->
-                            </div>
-                            <div class="products-slick-nav"></div>
-                        </div>
-                        <!-- /tab -->
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+<div class="row" style="margin-top:25px">
+<h1 style="text-align:center; width:100%" id="adidas">GIÀY ADIDAS</h1>
+<div class="col-md-12 text-center">
+    <div id="">
+        <button onclick="loadMoreAdidas()" class="btn btn-primary mt-4" style="margin-left: 1090px;">Load more</button>
+    </div>
+</div>
+<div class="col-md-12">
+<div class="row" id="contentAdidas">
+<div class="product-container" style="margin-left: 38px;">
+<div class="products-tabs">
+<!-- tab -->
+<div class="tab-pane active">
+<div class="products-slick" data-nav="#slick-nav-1">
+<c:forEach items="${list4AdidasLast}" var="o">
+    <div class="product productAdidas" style="height: 500px;">
+    <div class="product-img">
+    <a href="detail?pid=${o.id}" title="View Product">
+    <img src="${o.image}" alt="">
+    <div class="product-label">
+    <!-- <span class="sale">-30%</span> -->
+    <span class="new">NEW</span>
+    </div>
+    </a>
+    </div>
+    <div class="product-body">
+    <p class="product-category">Category</p>
+    <h3 class="product-name"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h3>
+    <h4 class="product-price">$980.00 <del class="product-old-price">${o.price} $</del></h4>
+    <div class="product-rating">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    </div>
+    <div class="product-btns">
+    <button class="add-to-wishlist"><i class="fa fa-shopping-cart"></i><span class="tooltipp">add to wishlist</span></button>
+        <button class="add-to-compare"><i class="fa fa-shopping-basket"></i><span class="tooltipp">add to compare</span></button>
+        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+    </div>
+    </div>
+    </div>
+</c:forEach>
+</div>
+    <div class="products-slick-nav"></div>
+</div>
+    <!-- /tab -->
+</div>
+</div>
+</div>
+</div>
+</div>
 
     </div>
 </div>

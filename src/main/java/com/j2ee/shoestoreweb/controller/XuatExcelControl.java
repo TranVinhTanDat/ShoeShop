@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
@@ -26,11 +27,11 @@ public class XuatExcelControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String ngayXuat = request.getParameter("dateHoaDon");
+       int month = LocalDate.now().getMonthValue();
 
         DAO dao = new DAO();
 
-        List<Invoice> list = dao.searchByNgayXuat(ngayXuat);
+        List<Invoice> list = dao.InvoiceOfMonth(month);
         List<Account> listAllAccount = dao.getAllAccount();
 
         int maximum = 2147483647;
@@ -41,7 +42,7 @@ public class XuatExcelControl extends HttpServlet {
         int randomNum = rn.nextInt(range) + minimum;
 
 
-        FileOutputStream file = new FileOutputStream("C:\\ExcelWebBanGiay\\" + "hoa-don-" + ngayXuat + "-" + Integer.toString(randomNum) + ".xlsx");
+        FileOutputStream file = new FileOutputStream("C:\\Users\\IT\\Desktop\\IT\\" + "hoa-don-" + month + "-" + Integer.toString(randomNum) + ".xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet workSheet = workbook.createSheet("1");
         XSSFRow row;
@@ -58,7 +59,7 @@ public class XuatExcelControl extends HttpServlet {
         cell2 = row.createCell(2);
         cell2.setCellValue("Tổng Giá($)");
         cell3 = row.createCell(3);
-        cell3.setCellValue("Ngày Xuất");
+        cell3.setCellValue("Thang Xuất");
 
         double tongGia;
         int i = 0;
@@ -76,7 +77,7 @@ public class XuatExcelControl extends HttpServlet {
                     cell2 = row.createCell(2);
                     cell2.setCellValue(tongGia);
                     cell3 = row.createCell(3);
-                    cell3.setCellValue(ngayXuat);
+                    cell3.setCellValue(month+"");
                 }
             }
         }
