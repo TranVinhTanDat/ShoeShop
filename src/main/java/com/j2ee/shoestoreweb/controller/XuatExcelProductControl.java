@@ -37,7 +37,7 @@ public class XuatExcelProductControl extends HttpServlet {
         int range = maximum - minimum + 1;
         int randomNum = rn.nextInt(range) + minimum;
 
-        FileOutputStream file = new FileOutputStream("C:\\Users\\IT\\Desktop\\IT\\" + "san-pham" + Integer.toString(randomNum) + ".xlsx");
+        FileOutputStream file = new FileOutputStream("C:\\ExcelWebBanGiay\\" + "san-pham" + Integer.toString(randomNum) + ".xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet workSheet = workbook.createSheet("1");
         XSSFRow row;

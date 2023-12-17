@@ -228,34 +228,34 @@
                         <h5 class="mb-3">Color</h5>
                         <!-- Color Checkboxes -->
                         <div class="btn-group btn-group-toggle btn-color-group d-flex flex-wrap">
-                            <label class="btn rounded-circle white border-inset-grey p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle white border-inset-grey p-3 m-2">
                                 <input onchange="searchByColorWhite()" type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle grey p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle grey p-3 m-2">
                                 <input onchange="searchByColorGray()" type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle black p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle black p-3 m-2">
                                 <input onchange="searchByColorBlack()" type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle green p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle green p-3 m-2">
                                 <input type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle blue p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle blue p-3 m-2">
                                 <input type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle purple p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle purple p-3 m-2">
                                 <input type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle yellow p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle yellow p-3 m-2">
                                 <input onchange="searchByColorYellow()" type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle indigo p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle indigo p-3 m-2">
                                 <input type="checkbox" checked autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle red p-3 m-2">
+                            <label style="width: 20px;height: 20px" class="btn rounded-circle red p-3 m-2">
                                 <input type="checkbox" autocomplete="off">
                             </label>
-                            <label class="btn rounded-circle orange p-3 m-2">
+                            <label style="width: 20px;height: 20px"  class="btn rounded-circle orange p-3 m-2">
                                 <input type="checkbox" autocomplete="off">
                             </label>
                         </div>
@@ -370,14 +370,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span
-                                                        class="tooltipp">add to compare</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span
-                                                        class="tooltipp">quick view</span></button>
-                                            </div>
+<%--                                            <div class="product-btns">--%>
+<%--                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span--%>
+<%--                                                        class="tooltipp">add to wishlist</span></button>--%>
+<%--                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span--%>
+<%--                                                        class="tooltipp">add to compare</span></button>--%>
+<%--                                                <button class="quick-view"><i class="fa fa-eye"></i><span--%>
+<%--                                                        class="tooltipp">quick view</span></button>--%>
+<%--                                            </div>--%>
                                         </div>
                                             <%--     <div class="add-to-cart">
                                                      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>

@@ -37,8 +37,8 @@
 
                 <div class="col-md-8">
                     <div class="header-search">
-                        <form id="searchForm" onsubmit="return redirectToPage()">
-                            <input id="searchInput" class="input" style="border-radius: 40px 0px 0px 40px;" placeholder="Search here">
+                        <form action="searchForm" method="get" >
+                            <input id="searchInput" name="search" class="input" style="border-radius: 40px 0px 0px 40px;" placeholder="Search here">
                             <button type="submit" class="search-btn">Search</button>
                         </form>
                     </div>

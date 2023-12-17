@@ -49,14 +49,13 @@ public class CategoryShopControl extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 

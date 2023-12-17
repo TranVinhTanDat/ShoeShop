@@ -726,11 +726,9 @@ public class DAO {
             for (Product value : list) {
                 String n = value.getName();
                 n = n.substring(0, name.length());
-                if (n.equals(name)) {
+                if (n.compareToIgnoreCase(name) == 0) {
                     result.add(value);
-
                 }
-
             }
             if (result.size() == 0) {
                 name = name.substring(0, name.length() - 1);

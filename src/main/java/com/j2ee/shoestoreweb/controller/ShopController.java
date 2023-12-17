@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "ShopController", urlPatterns = {"/shop", "/searchAjaxShop", "/searchAjaxPriceUnder100Shop", "/searchAjaxPrice100To200Shop", "/searchAjaxPriceAbove200Shop", "/searchAjaxPriceMinToMax", "/searchAjaxColorBlack", "/searchAjaxColorGray", "/searchAjaxColorWhite", "/searchAjaxColorYellow"})
+@WebServlet(name = "ShopController", urlPatterns = {"/searchForm","/shop", "/searchAjaxShop", "/searchAjaxPriceUnder100Shop", "/searchAjaxPrice100To200Shop", "/searchAjaxPriceAbove200Shop", "/searchAjaxPriceMinToMax", "/searchAjaxColorBlack", "/searchAjaxColorGray", "/searchAjaxColorWhite", "/searchAjaxColorYellow"})
 public class ShopController extends HttpServlet {
 
     @Override
@@ -60,6 +60,9 @@ public class ShopController extends HttpServlet {
             case "/searchAjaxColorYellow":
                 processFilterColorYellowRequest(request, response);
                 break;
+            case "/searchForm":
+                processSearchaaRequest(request, response);
+                break;
             default:
                 break;
         }
@@ -80,6 +83,36 @@ public class ShopController extends HttpServlet {
         int indexPage = Integer.parseInt(index);
 
         List<Product> list = dao.getProductByIndex(indexPage);
+//        List<Category> listC = dao.getAllCategory();
+        int allProduct = dao.countAllProduct();
+        int endPage = allProduct / 9;
+        if (allProduct % 9 != 0) {
+            endPage++;
+        }
+        request.setAttribute("tag", indexPage);
+        request.setAttribute("endPage", endPage);
+        request.setAttribute("listCC", listC);
+        request.setAttribute("listP", list);
+
+
+        request.getRequestDispatcher("Shop.jsp").forward(request, response);
+        //404 -> url
+        //500 -> jsp properties
+    }
+    protected void processSearchaaRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        //b1: get data from dao
+        DAO dao = new DAO();
+        String name = request.getParameter("search");
+//       List<Product> list = dao.SearchProduct(name);
+        List<Category> listC = dao.getAllCategory();
+
+
+        String index = request.getParameter("index");
+        index = "1";
+        int indexPage = Integer.parseInt(index);
+
+        List<Product> list = dao.SearchProduct(name);
 //        List<Category> listC = dao.getAllCategory();
         int allProduct = dao.countAllProduct();
         int endPage = allProduct / 9;
@@ -129,14 +162,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -172,14 +204,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -215,14 +246,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -258,14 +288,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -302,14 +331,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -345,14 +373,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -388,14 +415,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -431,14 +457,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 
@@ -474,14 +499,13 @@ public class ShopController extends HttpServlet {
             out.println("                <i class=\"fa fa-star\"></i>");
             out.println("            </div>");
             out.println("            <div class=\"product-btns\">");
-            out.println("                <button class=\"add-to-wishlist\"><i class=\"fa fa-heart-o\"></i><span class=\"tooltipp\">add to wishlist</span></button>");
-            out.println("                <button class=\"add-to-compare\"><i class=\"fa fa-exchange\"></i><span class=\"tooltipp\">add to compare</span></button>");
-            out.println("                <button class=\"quick-view\"><i class=\"fa fa-eye\"></i><span class=\"tooltipp\">quick view</span></button>");
+            // Bỏ đi các button và icon tại đây
             out.println("            </div>");
             out.println("        </div>");
             out.println("    </div>");
             out.println("</div>");
         }
+
         out.println("</div>"); // Đóng thẻ div chứa các card sản phẩm
     }
 }
